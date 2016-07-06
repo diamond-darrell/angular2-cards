@@ -1,7 +1,10 @@
 var path = require('path');
 
 module.exports = {
-    entry: path.join(__dirname, 'public', 'src','index.js'),
+    entry: [
+        'bootstrap-loader',
+        path.join(__dirname, 'public', 'src', 'index.js')
+    ],
     output: {
         path: path.join(__dirname, 'public', 'dist'),
         filename: 'vendor.js',
@@ -9,14 +12,27 @@ module.exports = {
     },
     devtool: 'source-map',
     module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                }
-            },
-        ]
+        loaders: [{
+            test: /\.css$/,
+            loaders: ['style', 'css', 'postcss']
+        }, {
+            test: /\.scss$/,
+            loaders: ['style', 'css', 'postcss', 'sass']
+        }, {
+            test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: "url?limit=10000"
+        }, {
+            test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+            loader: 'file'
+        }, {
+            test: /bootstrap-sass\/assets\/javascripts\//,
+            loader: 'imports?jQuery=jquery'
+        }, {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015']
+            }
+        }]
     }
 }
