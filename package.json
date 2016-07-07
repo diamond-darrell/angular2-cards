@@ -3,15 +3,13 @@
   "version": "0.0.0",
   "description": "Test",
   "scripts": {
-    "start": "npm run lite",
-    "lite": "lite-server",
-    "webpack": "webpack --progress",
-    "postinstall": "npm run webpack",
+    "start": "npm run lite-server",
+    "postinstall": "npm run webpack --progress",
     "server": "webpack-dev-server --inline --progress --profile --colors --hot --watch --display-error-details --display-cached --content-base ./"
   },
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.9",
+    "angular2": "^2.0.0-beta.17",
     "bootstrap": "^3.3.6",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.35.0",
