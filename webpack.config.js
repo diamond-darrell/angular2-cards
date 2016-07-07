@@ -14,7 +14,8 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.css$/,
-            loaders: ['style', 'css', 'postcss']
+            loaders: ['raw-loader'],
+            exclude: ['./node_modules/']
         }, {
             test: /\.scss$/,
             loaders: ['style', 'css', 'postcss', 'sass']
@@ -24,6 +25,10 @@ module.exports = {
         }, {
             test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
             loader: 'file'
+        }, {
+            test: /\.html$/,
+            loader: 'raw-loader',
+            exclude: ['./index.html']
         }, {
             test: /bootstrap-sass\/assets\/javascripts\//,
             loader: 'imports?jQuery=jquery'
