@@ -12,9 +12,6 @@ import { TodoService } from '../todo.service';
 })
 export class TodoListComponent {
   @Input() todoList = null;
-  @Output() onRemoveCardHolder = new EventEmitter();
-
-  todos = [];
 
   static get parameters() {
     return [[TodoService]];
@@ -22,10 +19,6 @@ export class TodoListComponent {
 
   constructor(todoService) {
     this.todoService = todoService;
-  }
-
-  removeTodoList(id) {
-    //TODO implement removeTodoList
   }
 
   addTodo(description) {

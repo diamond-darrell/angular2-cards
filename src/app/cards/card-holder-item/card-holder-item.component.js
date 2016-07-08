@@ -5,6 +5,7 @@ import { TodoListComponent } from '../../todo/todo-list/todo-list.component';
   selector: 'card-holder-item',
   directives: [TodoListComponent],
   template: require('./card-holder-item.component.html'),
+  styles: [`.ligth { color: #fff; }`],
 })
 export class CardHolderItem {
   @Input() card = null;
