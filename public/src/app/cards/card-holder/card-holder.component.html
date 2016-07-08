@@ -4,7 +4,8 @@
   </div>
   <div class="panel-body">
     <card-item
-      *ngFor="let card of cardHolder.cardsList"
+      class="col-md-4"
+      *ngFor="let card of cardsList"
       [card]="card"
       (onRemoveCardItem)="removeCardItem($id)"></card-item>
   </div>

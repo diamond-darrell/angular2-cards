@@ -1,5 +1,6 @@
 <div class="container">
   <card-holder
+    class="row"
     *ngFor="let cardHolder of cardHolders"
     [cardHolder]="cardHolder"
     (onRemoveCardHolder)="removeCardHolder($id)"></card-holder>

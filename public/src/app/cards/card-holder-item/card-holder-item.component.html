@@ -1,0 +1,10 @@
+<div class="card-holder-item panel panel-primary">
+  <div class="panel-heading">
+    {{card.title}}
+  </div>
+  <div class="panel-body">
+    <todo-list
+      [todoList]="todoList"
+      (onRemoveTodoList)="removeTodoList($id)"></todo-list>
+  </div>
+</div>
