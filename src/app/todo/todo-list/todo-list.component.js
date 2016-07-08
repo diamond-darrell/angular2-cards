@@ -7,7 +7,7 @@ import { TodoService } from '../todo.service';
   selector: 'todo-list',
   directives: [TodoInputComponent, TodoItemComponent],
   template: require('./todo-list.component.html'),
-  styles: [`ul { list-style: none; }`],
+  styles: [`ul { list-style: none; padding: 0; }`],
   providers: [TodoService]
 })
 export class TodoListComponent {
@@ -23,6 +23,10 @@ export class TodoListComponent {
 
   addTodo(description) {
     this.todoService.addTodo(description);
+  }
+
+  removeTodo(todo) {
+    this.todoService.removeTodo(todo);
   }
 
   toggleTodo(todo) {

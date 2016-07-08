@@ -9,6 +9,15 @@ export class TodoService {
     this.todos = [...this.todos, new Todo(description)];
   }
 
+  removeTodo(todo) {
+    const position = this.todos.indexOf(todo);
+
+    this.todos = [
+      ...this.todos.slice(0, position),
+      ...this.todos.slice(position + 1)
+    ];
+  }
+
   toggleTodo(todo) {
     const position = this.todos.indexOf(todo);
 
