@@ -1,0 +1,7 @@
+<div class="container">
+  <card-holder
+    *ngFor="let cardHolder of cardHolders"
+    [cardHolder]="cardHolder"
+    (onRemoveCardHolder)="removeCardHolder($id)"></card-holder>
+  <new-card-holder-btn (onAddCardHolder)="addCardHolder()"></new-card-holder-btn>
+</div>
