@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    {{cardHolder.title}}
+  </div>
+  <div class="panel-body">
+    <card-item
+      *ngFor="let card of cardHolder.cardsList"
+      [card]="card"
+      (onRemoveCardItem)="removeCardItem($id)"></card-item>
+  </div>
+</div>

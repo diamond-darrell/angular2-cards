@@ -1,12 +1,10 @@
 import { Component } from 'angular2/core';
+import { CardsComponent } from '../cards/cards.component';
 
 @Component({
   selector: 'my-app',
-  template: '<h1 class="text-info">Hello, {{name}}!</h1>'
+  directives: [CardsComponent],
+  template: '<all-cards></all-cards>'
 })
 
-export class AppComponent {
-  constructor() {
-    this.name = 'world';
-  }
-}
+export class AppComponent { }
