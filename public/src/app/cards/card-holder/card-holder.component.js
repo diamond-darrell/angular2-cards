@@ -1,15 +1,21 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
-import { CardItem } from '../card-item/card-item.component';
+import { CardHolderItem } from '../card-holder-item/card-holder-item.component';
 
 @Component({
   selector: 'card-holder',
-  directives: [],
+  directives: [CardHolderItem],
   template: require('./card-holder.component.html')
-
 })
 export class CardHolderComponent {
   @Input() cardHolder = null;
   @Output() onRemoveCardHolder = new EventEmitter();
+
+  //TODO take from cardHolder.cardsList
+  cardsList = [
+    { id: 1, title: 'Todos1' },
+    { id: 2, title: 'Todos2' },
+    { id: 3, title: 'Todos3' },
+  ];
 
   removeCardItem(id) {
     //TODO implement removeCardItem
