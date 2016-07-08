@@ -1,7 +1,7 @@
 <div class="card-holder-item panel panel-primary">
   <div class="panel-heading">
     {{todoList?.title}}
-    <button class="close ligth" (click)="onRemoveCardHolder.emit(todoList)">&times;</button>
+    <button class="close ligth" (click)="onRemoveTodoList.emit(todoList)">&times;</button>
   </div>
   <div class="panel-body">
     <todo-list [todoList]="todoList"></todo-list>

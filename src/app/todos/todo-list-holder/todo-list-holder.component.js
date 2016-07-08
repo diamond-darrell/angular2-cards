@@ -9,15 +9,11 @@ import { TodoListComponent } from '../todo-list/todo-list.component';
 })
 export class TodoListHolder {
   @Input() todoList = null;
-  @Output() onRemoveCardHolder = new EventEmitter();
+  @Output() onRemoveTodoList = new EventEmitter();
 
   todoLists = {
     id: 1,
     title: 'Todo1',
     todos: [1, 2]
   };
-
-  removeTodoList(id) {
-    //TODO implement removeTodoList
-  }
 }

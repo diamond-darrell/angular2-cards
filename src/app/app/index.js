@@ -1,9 +1,11 @@
 import { Component } from 'angular2/core';
 import { CardHolderComponent } from '../cards/card-holder/card-holder.component';
 import { AddHolderBtnComponent } from '../cards/add-card-holder-btn/add-card-holder-btn.component';
+import { CardsService } from '../cards/shared/cards.service';
 
 @Component({
   selector: 'my-app',
+  providers: [CardsService],
   directives: [
     CardHolderComponent,
     AddHolderBtnComponent
@@ -12,7 +14,7 @@ import { AddHolderBtnComponent } from '../cards/add-card-holder-btn/add-card-hol
   <div class="container">
     <card-holder
       class="row"
-      *ngFor="let cardHolder of cardHolders"
+      *ngFor="let cardHolder of cardsService.cards"
       [cardHolder]="cardHolder"
       (onRemoveCardHolder)="removeCardHolder($event)"></card-holder>
     <add-card-holder-btn (onAddCardHolder)="addCardHolder()"></add-card-holder-btn>
@@ -20,15 +22,11 @@ import { AddHolderBtnComponent } from '../cards/add-card-holder-btn/add-card-hol
   `
 })
 export class AppComponent {
-  cardHolders = [
-    { id: 1, title: 'Card1', cardsList: [1]}
-  ];
-
-  removeCardHolder(id) {
-    //TODO implement removeCardHolder
+  static get parameters() {
+    return [[CardsService]]
   }
 
-  addCardHolder() {
-    //TODO implement addCardHolder
+  constructor(cardsService) {
+    this.cardsService = cardsService;
   }
 }

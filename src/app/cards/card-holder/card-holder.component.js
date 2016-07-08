@@ -10,6 +10,9 @@ export class CardHolderComponent {
   @Input() cardHolder = null;
   @Output() onRemoveCardHolder = new EventEmitter();
 
+  constructor(cardsService) {
+    this.cardsService = cardsService;
+  }
   //TODO take from cardHolder.cardsList
   cardsList = [
     { id: 1, title: 'Todos1' }

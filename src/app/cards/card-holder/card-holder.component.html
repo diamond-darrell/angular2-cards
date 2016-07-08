@@ -6,8 +6,8 @@
   <div class="panel-body">
     <todo-list-holder
       class="col-md-4"
-      *ngFor="let todoList of cardsList"
+      *ngFor="let todoList of cardHolder.todoLists"
       [todoList]="todoList"
-      (onRemoveCardItem)="removeCardItem($event)"></todo-list-holder>
+      (onRemoveTodoList)="removeTodoList($event)"></todo-list-holder>
   </div>
 </div>
