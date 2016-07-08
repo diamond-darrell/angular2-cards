@@ -10,4 +10,8 @@ export class Todo {
   toggle() {
     this.status = 'active' === this.status ? 'completed' : 'active';
   }
+
+  isCompleted() {
+    return 'completed' === this.status;
+  }
 }

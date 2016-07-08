@@ -6,6 +6,7 @@ import { Component, Input, Output, EventEmitter } from 'angular2/core';
   <input
     #todo (keyup.enter)="addTodo(todo.value); todo.value=''"
     type="text"
+    placeholder="What you wanna do?"
     class="form-control"/>
   `
 })

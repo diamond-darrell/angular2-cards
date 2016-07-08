@@ -7,6 +7,7 @@ import { TodoService } from '../todo.service';
   selector: 'todo-list',
   directives: [TodoInputComponent, TodoItemComponent],
   template: require('./todo-list.component.html'),
+  styles: [`ul { list-style: none; }`],
   providers: [TodoService]
 })
 export class TodoListComponent {
