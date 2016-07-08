@@ -1,22 +1,37 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
+import { TodoInputComponent } from '../todo-input/todo-input.component';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'todo-list',
-  directives: [],
-  template: require('./todo-list.component.html')
-
+  directives: [TodoInputComponent, TodoItemComponent],
+  template: require('./todo-list.component.html'),
+  providers: [TodoService]
 })
 export class TodoListComponent {
-  @Input() card = null;
+  @Input() todoList = null;
   @Output() onRemoveCardHolder = new EventEmitter();
 
-  todoLists = {
-    id: 1,
-    title: 'Todo1',
-    todos: [1, 2]
-  };
+  todos = [];
+
+  static get parameters() {
+    return [[TodoService]];
+  }
+
+  constructor(todoService) {
+    this.todoService = todoService;
+  }
 
   removeTodoList(id) {
     //TODO implement removeTodoList
+  }
+
+  addTodo(description) {
+    this.todoService.addTodo(description);
+  }
+
+  toggleTodo(todo) {
+    this.todoService.toggleTodo(todo);
   }
 }

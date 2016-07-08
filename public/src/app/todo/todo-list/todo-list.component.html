@@ -1,0 +1,8 @@
+<ul>
+  <todo-item
+    *ngFor="let todo of todoService.todos"
+    [todo]=todo
+    (onToggleTodo)="toggleTodo($event)"></todo-item>
+</ul>
+
+<todo-input (onAddTodo)="addTodo($event)"></todo-input>
