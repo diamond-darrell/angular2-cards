@@ -3,12 +3,12 @@ var path = require('path');
 module.exports = {
     entry: [
         'bootstrap-loader',
-        path.join(__dirname, 'public', 'src', 'index.js')
+        path.join(__dirname, 'src', 'index.js')
     ],
     output: {
-        path: path.join(__dirname, 'public', 'dist'),
+        path: path.join(__dirname, 'dist'),
         filename: 'vendor.js',
-        publicPath: '/public/dist'
+        publicPath: '/dist'
     },
     devtool: 'source-map',
     module: {

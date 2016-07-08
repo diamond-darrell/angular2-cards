@@ -1,12 +1,13 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
+import { TodoListComponent } from '../../todo/todo-list/todo-list.component';
 
 @Component({
-  selector: 'todo-list',
-  directives: [],
-  template: require('./todo-list.component.html')
-
+  selector: 'card-holder-item',
+  directives: [TodoListComponent],
+  template: require('./card-holder-item.component.html'),
+  styles: [`.ligth { color: #fff; }`],
 })
-export class TodoListComponent {
+export class CardHolderItem {
   @Input() card = null;
   @Output() onRemoveCardHolder = new EventEmitter();
 

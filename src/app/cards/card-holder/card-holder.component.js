@@ -12,9 +12,7 @@ export class CardHolderComponent {
 
   //TODO take from cardHolder.cardsList
   cardsList = [
-    { id: 1, title: 'Todos1' },
-    { id: 2, title: 'Todos2' },
-    { id: 3, title: 'Todos3' },
+    { id: 1, title: 'Todos1' }
   ];
 
   removeCardItem(id) {

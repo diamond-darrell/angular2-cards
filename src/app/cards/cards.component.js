@@ -8,8 +8,7 @@ import { CardHolderComponent } from './card-holder/card-holder.component';
 })
 export class CardsComponent {
   cardHolders = [
-    { id: 1, title: 'Card1', cardsList: [1, 2]},
-    { id: 2, title: 'Card2', cardsList: [3]}
+    { id: 1, title: 'Card1', cardsList: [1]}
   ];
 
   removeCardHolder(id) {
