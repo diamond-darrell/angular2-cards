@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
-import { CardHolderItem } from '../card-holder-item/card-holder-item.component';
+import { CardHolderItem } from '../../todos/todo-list-holder/todo-list-holder.component';
 
 @Component({
   selector: 'card-holder',
@@ -17,5 +17,9 @@ export class CardHolderComponent {
 
   removeCardItem(id) {
     //TODO implement removeCardItem
+  }
+
+  removeCardsHolder() {
+    //TODO implement removeCardsHolder
   }
 }

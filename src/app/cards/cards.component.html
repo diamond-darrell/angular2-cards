@@ -1,8 +1,0 @@
-<div class="container">
-  <card-holder
-    class="row"
-    *ngFor="let cardHolder of cardHolders"
-    [cardHolder]="cardHolder"
-    (onRemoveCardHolder)="removeCardHolder($event)"></card-holder>
-  <new-card-holder-btn (onAddCardHolder)="addCardHolder()"></new-card-holder-btn>
-</div>
