@@ -1,12 +1,12 @@
 import { Injectable } from 'angular2/core';
-import { TodoItem } from './todo-item/todo-item';
+import { Todo } from './todo.model';
 
 @Injectable()
 export class TodoService {
   todos = [];
 
   addTodo(description) {
-    this.todos = [...this.todos, new TodoItem(description)];
+    this.todos = [...this.todos, new Todo(description)];
   }
 
   toggleTodo(todo) {
