@@ -4,10 +4,10 @@
     <button class="close ligth" (click)="removeCardsHolder()">&times;</button>
   </div>
   <div class="panel-body">
-    <card-holder-item
+    <todo-list-holder
       class="col-md-4"
-      *ngFor="let card of cardsList"
-      [card]="card"
-      (onRemoveCardItem)="removeCardItem($event)"></card-holder-item>
+      *ngFor="let todoList of cardsList"
+      [todoList]="todoList"
+      (onRemoveCardItem)="removeCardItem($event)"></todo-list-holder>
   </div>
 </div>

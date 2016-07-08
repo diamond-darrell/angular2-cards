@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
-import { CardHolderItem } from '../../todos/todo-list-holder/todo-list-holder.component';
+import { TodoListHolder } from '../../todos/todo-list-holder/todo-list-holder.component';
 
 @Component({
   selector: 'card-holder',
-  directives: [CardHolderItem],
+  directives: [TodoListHolder],
   template: require('./card-holder.component.html')
 })
 export class CardHolderComponent {

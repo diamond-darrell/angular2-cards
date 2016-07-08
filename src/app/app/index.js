@@ -1,9 +1,13 @@
 import { Component } from 'angular2/core';
 import { CardHolderComponent } from '../cards/card-holder/card-holder.component';
+import { AddHolderBtnComponent } from '../cards/add-card-holder-btn/add-card-holder-btn.component';
 
 @Component({
   selector: 'my-app',
-  directives: [CardHolderComponent],
+  directives: [
+    CardHolderComponent,
+    AddHolderBtnComponent
+  ],
   template: `
   <div class="container">
     <card-holder
@@ -11,7 +15,7 @@ import { CardHolderComponent } from '../cards/card-holder/card-holder.component'
       *ngFor="let cardHolder of cardHolders"
       [cardHolder]="cardHolder"
       (onRemoveCardHolder)="removeCardHolder($event)"></card-holder>
-    <new-card-holder-btn (onAddCardHolder)="addCardHolder()"></new-card-holder-btn>
+    <add-card-holder-btn (onAddCardHolder)="addCardHolder()"></add-card-holder-btn>
   </div>
   `
 })
