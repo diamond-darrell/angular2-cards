@@ -26,7 +26,7 @@ export class CardsService {
     const cardIndex = this.cards.indexOf(cardHolder);
 
     if (cardHolder) {
-      cardHolder.todoLists.push(new TodoList(title));
+      cardHolder.addTodoList(new TodoList(title));
 
       this.cards = [
         ...this.cards.slice(0, cardIndex),
