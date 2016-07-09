@@ -10,11 +10,11 @@ import { CardsService } from '../shared/cards.service';
     TodoListHolderComponent,
     AddTodoListBtnComponent
   ],
-  template: require('./card-holder.component.html')
+  template: require('./card-holder.component.html'),
+  styles: [`.title-input { max-width: 95%;  display: inline-block; }`]
 })
 export class CardHolderComponent {
   @Input() cardHolder = null;
-  @Output() onRemoveCardHolder = new EventEmitter();
   @Output() onRemoveCardHolder = new EventEmitter();
 
   static get parameters() {
@@ -25,8 +25,8 @@ export class CardHolderComponent {
     this.cardsService = cardsService;
   }
 
-  removeTodoList() {
-    //TODO implement removeCardItem
+  removeTodoList(todoList) {
+    this.cardsService.removeTodoList(this.cardHolder, todoList);
   }
 
   addTodoList() {
@@ -35,5 +35,9 @@ export class CardHolderComponent {
 
   setTodoListTitle(params) {
     this.cardsService.updateTodoListTitle(this.cardHolder, params);
+  }
+
+  setCardHolderTitle(title) {
+    this.cardsService.updateCardHolderTitle(this.cardHolder, title);
   }
 }

@@ -12,12 +12,24 @@ export class CardHolder {
     return this.todoLists.find(todoList => todoList.id === id);
   }
 
-  updateTodoList(oldTodoList, newTodoList) {
-    const todoListIndex = this.todoLists.indexOf(oldTodoList);
+  //FIXME investigate immutable way
+  updateTodoList(todoList, title) {
+    const todoListIndex = this.todoLists.indexOf(todoList);
+
+    todoList.title = title;
 
     this.todoLists = [
       ...this.todoLists.slice(0, todoListIndex),
-      newTodoList,
+      todoList,
+      ...this.todoLists.slice(todoListIndex + 1)
+    ];
+  }
+
+  removeTodoList(todoList) {
+    const todoListIndex = this.todoLists.indexOf(todoList);
+
+    this.todoLists = [
+      ...this.todoLists.slice(0, todoListIndex),
       ...this.todoLists.slice(todoListIndex + 1)
     ];
   }

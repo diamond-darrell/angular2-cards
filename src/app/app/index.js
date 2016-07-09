@@ -33,4 +33,8 @@ export class AppComponent {
   addCardHolder() {
     this.cardsService.addCardHolder();
   }
+
+  removeCardHolder(cardsHolder) {
+    this.cardsService.removeCardHolder(cardsHolder);
+  }
 }

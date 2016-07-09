@@ -5,7 +5,10 @@ import { TodoListComponent } from '../todo-list/todo-list.component';
   selector: 'todo-list-holder',
   directives: [TodoListComponent],
   template: require('./todo-list-holder.component.html'),
-  styles: [`.ligth { color: #fff; }`],
+  styles: [
+    `.ligth { color: #fff; }`,
+    `.title-input { max-width: 95%;  display: inline-block; }`
+  ],
 })
 export class TodoListHolderComponent {
   @Input() todoList = null;

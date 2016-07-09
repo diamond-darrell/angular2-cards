@@ -1,7 +1,7 @@
 <div class="card-holder-item panel panel-primary">
   <div class="panel-heading">
     <span *ngIf="todoList.title">{{todoList?.title}}</span>
-    <input class="form-control"
+    <input class="form-control title-input"
       #tlTitle
       *ngIf="!todoList.title"
       (keyUp.enter)="setTodoListTitle(tlTitle.value)" />
