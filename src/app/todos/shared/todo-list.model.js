@@ -6,10 +6,4 @@ export class TodoList {
       this.title = title;
       this.todos = [];
     }
-
-    setTitle(title) {
-      if (title && title !== this.title) {
-        this.title = title;
-      }
-    }
 }

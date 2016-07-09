@@ -8,6 +8,11 @@
       class="col-md-4"
       *ngFor="let todoList of cardHolder.todoLists"
       [todoList]="todoList"
-      (onRemoveTodoList)="removeTodoList($event)"></todo-list-holder>
+      (onRemoveTodoList)="removeTodoList($event)"
+      (onSetTodoListTitle)="setTodoListTitle($event)">
+    </todo-list-holder>
+    <add-todo-list-btn
+      (onAddTodoList)="addTodoList()">
+    </add-todo-list-btn>
   </div>
 </div>

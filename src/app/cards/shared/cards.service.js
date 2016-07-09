@@ -5,6 +5,7 @@ import { TodoList } from '../../todos/shared/todo-list.model';
 @Injectable()
 export class CardsService {
   cards = [new CardHolder('Test')];
+  todoLists = [];
 
   addCardHolder(title = '') {
     this.cards = [
@@ -27,6 +28,22 @@ export class CardsService {
 
     if (cardHolder) {
       cardHolder.todoLists.push(new TodoList(title));
+
+      this.cards = [
+        ...this.cards.slice(0, cardIndex),
+        cardHolder,
+        ...this.cards.slice(cardIndex + 1)
+      ];
+    }
+  }
+
+  updateTodoListTitle(cardHolder, {todoList, title = ''}) {
+    const cardIndex = this.cards.indexOf(cardHolder);
+
+    if (cardHolder) {
+      const newTodoList = Object.assign({}, todoList, {title});
+
+      cardHolder.updateTodoList(todoList, newTodoList);
 
       this.cards = [
         ...this.cards.slice(0, cardIndex),
