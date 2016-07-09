@@ -1,21 +1,43 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
-import { CardHolderItem } from '../card-holder-item/card-holder-item.component';
+import { TodoListHolderComponent } from '../../todos/todo-list-holder/todo-list-holder.component';
+import { AddTodoListBtnComponent } from '../../todos/add-todo-list-btn/add-todo-list-btn.component';
+import { CardsService } from '../shared/cards.service';
 
 @Component({
   selector: 'card-holder',
-  directives: [CardHolderItem],
-  template: require('./card-holder.component.html')
+  providers: [CardsService],
+  directives: [
+    TodoListHolderComponent,
+    AddTodoListBtnComponent
+  ],
+  template: require('./card-holder.component.html'),
+  styles: [`.title-input { max-width: 95%;  display: inline-block; }`]
 })
 export class CardHolderComponent {
   @Input() cardHolder = null;
   @Output() onRemoveCardHolder = new EventEmitter();
 
-  //TODO take from cardHolder.cardsList
-  cardsList = [
-    { id: 1, title: 'Todos1' }
-  ];
+  static get parameters() {
+    return [[CardsService]];
+  }
 
-  removeCardItem(id) {
-    //TODO implement removeCardItem
+  constructor(cardsService) {
+    this.cardsService = cardsService;
+  }
+
+  removeTodoList(todoList) {
+    this.cardsService.removeTodoList(this.cardHolder, todoList);
+  }
+
+  addTodoList() {
+    this.cardsService.addTodoList(this.cardHolder, '');
+  }
+
+  setTodoListTitle(params) {
+    this.cardsService.updateTodoListTitle(this.cardHolder, params);
+  }
+
+  setCardHolderTitle(title) {
+    this.cardsService.updateCardHolderTitle(this.cardHolder, title);
   }
 }

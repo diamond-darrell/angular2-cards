@@ -1,10 +1,40 @@
 import { Component } from 'angular2/core';
-import { CardsComponent } from '../cards/cards.component';
+import { CardHolderComponent } from '../cards/card-holder/card-holder.component';
+import { AddHolderBtnComponent } from '../cards/add-card-holder-btn/add-card-holder-btn.component';
+import { CardsService } from '../cards/shared/cards.service';
 
 @Component({
   selector: 'my-app',
-  directives: [CardsComponent],
-  template: '<all-cards></all-cards>'
+  providers: [CardsService],
+  directives: [
+    CardHolderComponent,
+    AddHolderBtnComponent
+  ],
+  template: `
+  <div class="container">
+    <card-holder
+      class="row"
+      *ngFor="let cardHolder of cardsService.cards"
+      [cardHolder]="cardHolder"
+      (onRemoveCardHolder)="removeCardHolder($event)"></card-holder>
+    <add-card-holder-btn (onAddCardHolder)="addCardHolder()"></add-card-holder-btn>
+  </div>
+  `
 })
+export class AppComponent {
+  static get parameters() {
+    return [[CardsService]]
+  }
 
-export class AppComponent { }
+  constructor(cardsService) {
+    this.cardsService = cardsService;
+  }
+
+  addCardHolder() {
+    this.cardsService.addCardHolder();
+  }
+
+  removeCardHolder(cardsHolder) {
+    this.cardsService.removeCardHolder(cardsHolder);
+  }
+}
