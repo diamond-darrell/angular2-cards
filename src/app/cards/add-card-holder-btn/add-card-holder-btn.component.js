@@ -1,7 +1,11 @@
-import { Component } from 'angular2/core';
+import { Component, Output, EventEmitter } from 'angular2/core';
 
 @Component({
   selector: 'add-card-holder-btn',
-  template: `<button class="form-control btn-primary">Add card</button>`
+  template: `
+  <button class="form-control btn-primary"
+    (click)="onAddCardHolder.emit()">Add card</button>`
 })
-export class AddHolderBtnComponent { }
+export class AddHolderBtnComponent {
+  @Output() onAddCardHolder = new EventEmitter();
+}

@@ -29,4 +29,8 @@ export class AppComponent {
   constructor(cardsService) {
     this.cardsService = cardsService;
   }
+
+  addCardHolder() {
+    this.cardsService.addCardHolder();
+  }
 }
