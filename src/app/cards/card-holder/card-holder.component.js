@@ -13,7 +13,11 @@ import { CardsService } from '../shared/cards.service';
     CardHeaderComponent
   ],
   template: require('./card-holder.component.html'),
-
+  styles: [`
+    .panel-body {
+      min-height: 165px;
+    }
+  `]
 })
 export class CardHolderComponent {
   @Input() cardHolder = null;
