@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Test",
   "scripts": {
-    "start": "npm run lite-server",
+    "start": "./node_modules/.bin/lite-server",
     "postinstall": "./node_modules/.bin/webpack --progress",
     "server": "webpack-dev-server --inline --progress --profile --colors --hot --watch --display-error-details --display-cached --content-base ./"
   },
