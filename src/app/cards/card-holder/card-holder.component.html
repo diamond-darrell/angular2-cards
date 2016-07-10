@@ -1,11 +1,11 @@
 <div class="panel panel-info">
   <div class="panel-heading">
     <span *ngIf="cardHolder.title">{{cardHolder?.title}}</span>
-    <input class="form-control title-input"
-      #tlTitle
-      *ngIf="!cardHolder.title"
-      (keyUp.enter)="setCardHolderTitle(tlTitle.value)" />
-    <button class="close ligth" (click)="onRemoveCardHolder.emit(cardHolder)">&times;</button>
+    <card-header
+      [placeholder]="'Card\'s title'"
+      [title]="cardHolder.title"
+      (onSetTitle)="setCardHolderTitle($event)"
+      (onRemove)="onRemoveCardHolder.emit(cardHolder)"></card-header>
   </div>
   <div class="panel-body">
     <todo-list-holder

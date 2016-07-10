@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
 import { TodoListHolderComponent } from '../../todos/todo-list-holder/todo-list-holder.component';
 import { AddTodoListBtnComponent } from '../../todos/add-todo-list-btn/add-todo-list-btn.component';
+import { CardHeaderComponent } from '../../shared/card-header/card-header.component';
 import { CardsService } from '../shared/cards.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { CardsService } from '../shared/cards.service';
   providers: [CardsService],
   directives: [
     TodoListHolderComponent,
-    AddTodoListBtnComponent
+    AddTodoListBtnComponent,
+    CardHeaderComponent
   ],
   template: require('./card-holder.component.html'),
-  styles: [`.title-input { max-width: 95%;  display: inline-block; }`]
+
 })
 export class CardHolderComponent {
   @Input() cardHolder = null;

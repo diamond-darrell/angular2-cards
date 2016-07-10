@@ -1,9 +1,9 @@
 <header></header>
 <main class="container">
-  <div *ngIf="!cardsService.cards.length">
-    <h1>Angular 2 Cards App</h1>
-    <h4>Press "Add card" button in bottom right corner to start</h4>
-  </div>
+  <h1>Angular 2 Cards App</h1>
+  <h4 *ngIf="!cardsService.cards.length">
+    Press "Add card" button in bottom right corner to start
+  </h4>
 
   <card-holder
     class="row"
