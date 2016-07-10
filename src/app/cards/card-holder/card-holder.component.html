@@ -15,7 +15,10 @@
       (onRemoveTodoList)="removeTodoList($event)"
       (onSetTodoListTitle)="setTodoListTitle($event)">
     </todo-list-holder>
+    
+    <!-- FIXME remove hardcode -->
     <add-todo-list-btn
+      *ngIf="cardHolder.todoLists.length < 3"
       (onAddTodoList)="addTodoList()">
     </add-todo-list-btn>
   </div>
