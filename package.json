@@ -5,7 +5,7 @@
   "scripts": {
     "start": "./node_modules/.bin/lite-server",
     "build": "./node_modules/.bin/webpack --progress",
-    "postinstall": "npm run buid",
+    "postinstall": "npm run build",
     "server": "webpack-dev-server --inline --progress --profile --colors --hot --watch --display-error-details --display-cached --content-base ./"
   },
   "license": "ISC",
