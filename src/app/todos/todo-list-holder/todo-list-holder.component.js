@@ -11,7 +11,8 @@ import { CardHeaderComponent } from '../../shared/card-header/card-header.compon
   template: require('./todo-list-holder.component.html'),
   styles: [
     `.ligth { color: #fff; }`,
-    `.title-input { max-width: 95%;  display: inline-block; }`
+    `.title-input { max-width: 95%;  display: inline-block; }`,
+    `.panel-body { background-color: #bdc3c7; }`
   ],
 })
 export class TodoListHolderComponent {
