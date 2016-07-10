@@ -5,10 +5,7 @@
   "scripts": {
     "start": "npm run lite-server",
     "postinstall": "./node_modules/.bin/webpack --progress",
-    "server": "webpack-dev-server --inline --progress --profile --colors --hot --watch --display-error-details --display-cached --content-base ./",
-
-    "heroku-prebuild": "heroku config:set NPM_CONFIG_PRODUCTION=false",
-    "heroku-postbuild": "heroku config:set NPM_CONFIG_PRODUCTION=true"
+    "server": "webpack-dev-server --inline --progress --profile --colors --hot --watch --display-error-details --display-cached --content-base ./"
   },
   "license": "ISC",
   "dependencies": {
