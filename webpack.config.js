@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'vendor.js',
-        publicPath: '/dist'
+        publicPath: '/public/dist'
     },
     devtool: 'source-map',
     module: {
@@ -28,7 +28,7 @@ module.exports = {
         }, {
             test: /\.html$/,
             loader: 'raw-loader',
-            exclude: ['./index.html']
+            exclude: ['./public/index.html']
         }, {
             test: /bootstrap-sass\/assets\/javascripts\//,
             loader: 'imports?jQuery=jquery'

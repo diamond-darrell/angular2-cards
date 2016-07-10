@@ -1,9 +1,8 @@
 {
   "name": "angular2-cards",
   "version": "0.2.0",
-  "description": "Test",
+  "description": "Angular2 Cards App",
   "scripts": {
-    "start": "./node_modules/.bin/lite-server",
     "postinstall": "./node_modules/.bin/webpack --progress",
     "server": "webpack-dev-server --inline --progress --profile --colors --hot --watch --display-error-details --display-cached --content-base ./"
   },
