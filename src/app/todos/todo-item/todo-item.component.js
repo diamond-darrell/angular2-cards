@@ -1,17 +1,18 @@
 import { Component, Input, Output, EventEmitter } from 'angular2/core';
+import { ToggleTodoBtnComponent } from '../toggle-todo-btn/toggle-todo-btn.component';
 
 @Component({
   selector: 'todo-item',
+  directives: [ToggleTodoBtnComponent],
   styles: [require('./todo-item.component.css')],
   template: `
-  <li class="list-group-item" [ngClass]="todo.status">
-    <!--//FIXME fix close butto styles -->
+  <li>
     <button class="close" (click)="onRemoveTodo.emit(todo)">&times;</button>
-    <span class="checkbox" (click)="onToggleTodo.emit(todo)">
-      <input type="checkbox" [checked]="todo.isCompleted()"/>
-      <label [ngClass]="todo.status">
-        {{todo?.description}}
-      </label>
+    <toggle-todo-btn
+      [isCompleted]="todo.isCompleted()"
+      (onToggle)="onToggleTodo.emit(todo)"></toggle-todo-btn>
+    <span [ngClass]="todo.status">
+      {{todo?.description}}
     </span>
   </li>
   `
