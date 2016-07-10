@@ -1,0 +1,12 @@
+<div class="card-holder-item panel panel-primary">
+  <div class="panel-heading">
+    <card-header
+      [placeholder]="'Todo-list\'s title'"
+      [title]="todoList.title"
+      (onSetTitle)="setTodoListTitle($event)"
+      (onRemove)="onRemoveTodoList.emit(todoList)"></card-header>
+  </div>
+  <div class="panel-body">
+    <todo-list [todoList]="todoList"></todo-list>
+  </div>
+</div>

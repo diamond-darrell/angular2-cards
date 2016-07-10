@@ -1,0 +1,17 @@
+.title-input {
+  max-width: 95%;
+  display: inline-block;
+}
+i {
+  font-size: .7em;
+}
+span {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (min-width: 992px) {
+  span {
+      max-width: 210px;
+  }
+}

@@ -1,0 +1,15 @@
+li {
+  padding: .5em;
+  margin: 1em;
+  font-size: 1.2em;
+  border: none;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.close {
+  font-size: 1.5em;
+  color: #ff0000;
+}

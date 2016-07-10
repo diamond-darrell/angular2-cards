@@ -1,0 +1,12 @@
+<span *ngIf="title" (dblclick)="tmpTitle=title; title=''">
+  {{title}}
+  <i>Double click to edit</i>
+</span>
+<input class="form-control title-input"
+  placeholder="{{placeholder}}. Press Enter to save"
+  #tlTitle
+  *ngIf="!title"
+  [value]="tmpTitle"
+  (keyUp.enter)="setTitle(tlTitle.value)"
+  (keyUp.esc)="setTitle(tlTitle.value, true)" />
+<button class="close ligth" (click)="onRemove.emit()">&times;</button>
