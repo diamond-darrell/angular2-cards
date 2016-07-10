@@ -2,18 +2,29 @@ import { Component, Input, Output, EventEmitter } from 'angular2/core';
 
 @Component({
   selector: 'card-header',
-  styles: [`.title-input { max-width: 95%;  display: inline-block; }`],
-  template: `
-    <input class="form-control title-input" placeholder="{{placeholder}}"
-      #tlTitle
-      *ngIf="!title"
-      (keyUp.enter)="onSetTitle.emit(tlTitle.value)" />
-    <button class="close ligth" (click)="onRemove.emit()">&times;</button>
-  `
+  styles: [require('./card-header.component.css')],
+  template: require('./card-header.component.html')
 })
 export class CardHeaderComponent {
   @Input() title = '';
   @Input() placeholder = '';
   @Output() onSetTitle = new EventEmitter();
   @Output() onRemove = new EventEmitter();
+
+  tmpTitle = '';
+
+  setTitle(title, isCancel = false) {
+    const { tmpTitle } = this;
+
+    if (!title || isCancel && !tmpTitle) {
+      return;
+    }
+
+    if (tmpTitle === title) {
+      this.title = tmpTitle;
+
+    } else {
+      this.onSetTitle.emit(title);
+    }
+  }
 }

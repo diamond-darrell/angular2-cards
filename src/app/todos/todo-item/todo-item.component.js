@@ -5,7 +5,6 @@ import { Component, Input, Output, EventEmitter } from 'angular2/core';
   styles: [require('./todo-item.component.css')],
   template: `
   <li class="list-group-item" [ngClass]="todo.status">
-    <!--//FIXME fix close butto styles -->
     <button class="close" (click)="onRemoveTodo.emit(todo)">&times;</button>
     <span class="checkbox" (click)="onToggleTodo.emit(todo)">
       <input type="checkbox" [checked]="todo.isCompleted()"/>

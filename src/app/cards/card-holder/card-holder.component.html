@@ -1,6 +1,5 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <span *ngIf="cardHolder.title">{{cardHolder?.title}}</span>
     <card-header
       [placeholder]="'Card\'s title'"
       [title]="cardHolder.title"
@@ -15,7 +14,7 @@
       (onRemoveTodoList)="removeTodoList($event)"
       (onSetTodoListTitle)="setTodoListTitle($event)">
     </todo-list-holder>
-    
+
     <!-- FIXME remove hardcode -->
     <add-todo-list-btn
       *ngIf="cardHolder.todoLists.length < 3"
