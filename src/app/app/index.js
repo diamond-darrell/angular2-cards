@@ -10,16 +10,8 @@ import { CardsService } from '../cards/shared/cards.service';
     CardHolderComponent,
     AddHolderBtnComponent
   ],
-  template: `
-  <div class="container">
-    <card-holder
-      class="row"
-      *ngFor="let cardHolder of cardsService.cards"
-      [cardHolder]="cardHolder"
-      (onRemoveCardHolder)="removeCardHolder($event)"></card-holder>
-    <add-card-holder-btn (onAddCardHolder)="addCardHolder()"></add-card-holder-btn>
-  </div>
-  `
+  template: require('./app.component.html'),
+  styles: [require('./app.component.css')],
 })
 export class AppComponent {
   static get parameters() {
