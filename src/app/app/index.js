@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import { CardHolderComponent } from '../cards/card-holder/card-holder.component';
 import { AddHolderBtnComponent } from '../cards/add-card-holder-btn/add-card-holder-btn.component';
 import { CardsService } from '../cards/shared/cards.service';

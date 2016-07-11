@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from 'angular2/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'add-todo-list-btn',

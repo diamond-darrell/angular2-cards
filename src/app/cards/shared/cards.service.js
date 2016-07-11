@@ -1,4 +1,4 @@
-import { Injectable } from 'angular2/core';
+import { Injectable } from '@angular/core';
 import { CardHolder } from './card-holder.model';
 import { TodoList } from '../../todos/shared/todo-list.model';
 

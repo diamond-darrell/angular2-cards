@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from 'angular2/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToggleTodoBtnComponent } from '../toggle-todo-btn/toggle-todo-btn.component';
 
 @Component({
