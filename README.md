@@ -18,7 +18,7 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 * :white_check_mark: add todo;
 * :white_check_mark: remove todo;
 * :white_check_mark: toggle todo (mark as completed and and vice versa);
-* :white_medium_square: edit todo.
+* :white_check_mark: edit todo.
 
 ##### The project uses:
 * [Angular 2](https://angular.io/) (without TypeScript);
