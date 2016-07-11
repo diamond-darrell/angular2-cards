@@ -32,4 +32,8 @@ export class TodoListComponent {
   toggleTodo(todo) {
     this.todoService.toggleTodo(todo);
   }
+
+  updateTodo(params) {
+    this.todoService.updateTodo(params);
+  }
 }

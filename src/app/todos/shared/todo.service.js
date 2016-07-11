@@ -29,4 +29,16 @@ export class TodoService {
       ...this.todos.slice(position + 1)
     ];
   }
+
+  updateTodo({todo, description}) {
+    const position = this.todos.indexOf(todo);
+
+    todo.setDescription(description);
+
+    this.todos = [
+      ...this.todos.slice(0, position),
+      todo,
+      ...this.todos.slice(position + 1)
+    ];
+  }
 }

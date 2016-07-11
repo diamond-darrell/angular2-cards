@@ -13,3 +13,8 @@ li {
   font-size: 1.5em;
   color: #ff0000;
 }
+
+.edit-todo {
+  width: 70%;
+  display: inline-block;
+}
