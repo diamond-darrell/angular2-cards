@@ -37,4 +37,4 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 5. Open [http://localhost:8080/public](http://localhost:8080/public) to see application
 
 ### Demo
-[https://@angular-cards.herokuapp.com/](https://@angular-cards.herokuapp.com/)
+[https://angular2-cards.herokuapp.com/](https://angular2-cards.herokuapp.com/)

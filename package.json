@@ -7,7 +7,7 @@
     "server": "webpack-dev-server --inline --progress --profile --colors --hot --watch --display-error-details --display-cached --port 8080",
     "build.prod": "rimraf dist && ./node_modules/.bin/webpack --config config/webpack.prod.js --progress --profile --bail",
     "build.dev": "rimraf dist && ./node_modules/.bin/webpack --progress --profile --bail",
-    "postinstall": "npm run build.dev"
+    "postinstall": "npm run build.prod"
   },
   "license": "ISC",
   "dependencies": {
