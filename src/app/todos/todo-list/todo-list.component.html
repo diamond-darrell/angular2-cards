@@ -1,6 +1,6 @@
 <ul class="list-group">
   <todo-item
-    *ngFor="let todo of todoService.todos"
+    *ngFor="let todo of todoList.todos"
     [todo]=todo
     (onToggleTodo)="toggleTodo($event)"
     (onUpdateTodo)="updateTodo($event)"

@@ -22,6 +22,10 @@ export class AppComponent {
     this.cardsService = cardsService;
   }
 
+  ngOnInit() {
+    this.cardsService.getServerData();
+  }
+
   addCardHolder() {
     this.cardsService.addCardHolder();
   }

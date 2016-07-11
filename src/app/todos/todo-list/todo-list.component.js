@@ -22,18 +22,18 @@ export class TodoListComponent {
   }
 
   addTodo(description) {
-    this.todoService.addTodo(description);
+    this.todoService.addTodo(this.todoList, description);
   }
 
   removeTodo(todo) {
-    this.todoService.removeTodo(todo);
+    this.todoService.removeTodo(this.todoList, todo);
   }
 
   toggleTodo(todo) {
-    this.todoService.toggleTodo(todo);
+    this.todoService.toggleTodo(this.todoList, todo);
   }
 
   updateTodo(params) {
-    this.todoService.updateTodo(params);
+    this.todoService.updateTodo(this.todoList, params);
   }
 }

@@ -20,12 +20,6 @@ export class TodoListHolderComponent {
   @Output() onRemoveTodoList = new EventEmitter();
   @Output() onSetTodoListTitle = new EventEmitter();
 
-  todoLists = {
-    id: 1,
-    title: 'Todo1',
-    todos: [1, 2]
-  };
-
   setTodoListTitle(title) {
     const todoList = this.todoList;
     this.onSetTodoListTitle.emit({todoList, title});

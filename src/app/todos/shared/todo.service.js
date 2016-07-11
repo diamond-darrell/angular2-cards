@@ -3,42 +3,40 @@ import { Todo } from './todo.model';
 
 @Injectable()
 export class TodoService {
-  todos = [];
-
-  addTodo(description) {
-    this.todos = [...this.todos, new Todo(description)];
+  addTodo(todoList, description) {
+    todoList.todos = [...todoList.todos, new Todo(description)];
   }
 
-  removeTodo(todo) {
-    const position = this.todos.indexOf(todo);
+  removeTodo(todoList, todo) {
+    const position = todoList.todos.indexOf(todo);
 
-    this.todos = [
-      ...this.todos.slice(0, position),
-      ...this.todos.slice(position + 1)
+    todoList.todos = [
+      ...todoList.todos.slice(0, position),
+      ...todoList.todos.slice(position + 1)
     ];
   }
 
-  toggleTodo(todo) {
-    const position = this.todos.indexOf(todo);
+  toggleTodo(todoList, todo) {
+    const position = todoList.todos.indexOf(todo);
 
     todo.toggle();
 
-    this.todos = [
-      ...this.todos.slice(0, position),
+    todoList.todos = [
+      ...todoList.todos.slice(0, position),
       todo,
-      ...this.todos.slice(position + 1)
+      ...todoList.todos.slice(position + 1)
     ];
   }
 
-  updateTodo({todo, description}) {
-    const position = this.todos.indexOf(todo);
+  updateTodo(todoList, {todo, description}) {
+    const position = todoList.todos.indexOf(todo);
 
     todo.setDescription(description);
 
-    this.todos = [
-      ...this.todos.slice(0, position),
+    todoList.todos = [
+      ...todoList.todos.slice(0, position),
       todo,
-      ...this.todos.slice(position + 1)
+      ...todoList.todos.slice(position + 1)
     ];
   }
 }
