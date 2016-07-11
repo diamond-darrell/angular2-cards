@@ -2,6 +2,7 @@
   <button class="close" (click)="onRemoveTodo.emit(todo)">&times;</button>
 
   <toggle-todo-btn
+    [disabled]="isEditing"
     [isCompleted]="todo.isCompleted()"
     (onToggle)="onToggleTodo.emit(todo)"></toggle-todo-btn>
 
