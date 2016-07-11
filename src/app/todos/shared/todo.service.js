@@ -1,4 +1,4 @@
-import { Injectable } from 'angular2/core';
+import { Injectable } from '@angular/core';
 import { Todo } from './todo.model';
 
 @Injectable()
@@ -22,6 +22,18 @@ export class TodoService {
     const position = this.todos.indexOf(todo);
 
     todo.toggle();
+
+    this.todos = [
+      ...this.todos.slice(0, position),
+      todo,
+      ...this.todos.slice(position + 1)
+    ];
+  }
+
+  updateTodo({todo, description}) {
+    const position = this.todos.indexOf(todo);
+
+    todo.setDescription(description);
 
     this.todos = [
       ...this.todos.slice(0, position),

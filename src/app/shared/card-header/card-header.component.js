@@ -1,7 +1,9 @@
-import { Component, Input, Output, EventEmitter } from 'angular2/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FocusDirective } from '../element-focus/element-focus.directive';
 
 @Component({
   selector: 'card-header',
+  directives: [FocusDirective],
   styles: [require('./card-header.component.css')],
   template: require('./card-header.component.html')
 })

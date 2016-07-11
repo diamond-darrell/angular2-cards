@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from 'angular2/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoInputComponent } from '../todo-input/todo-input.component';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 import { TodoService } from '../shared/todo.service';
@@ -31,5 +31,9 @@ export class TodoListComponent {
 
   toggleTodo(todo) {
     this.todoService.toggleTodo(todo);
+  }
+
+  updateTodo(params) {
+    this.todoService.updateTodo(params);
   }
 }

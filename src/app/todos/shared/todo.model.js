@@ -11,6 +11,13 @@ export class Todo {
     this.status = 'active' === this.status ? 'completed' : 'active';
   }
 
+  setDescription(description) {
+    if (this.description !== description) {
+      this.description = description;
+      this.status = 'active';
+    }
+  }
+
   isCompleted() {
     return 'completed' === this.status;
   }

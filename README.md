@@ -18,11 +18,11 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 * :white_check_mark: add todo;
 * :white_check_mark: remove todo;
 * :white_check_mark: toggle todo (mark as completed and and vice versa);
-* :white_medium_square: edit todo.
+* :white_check_mark: edit todo.
 
 ##### The project uses:
 * [Angular 2](https://angular.io/) (without TypeScript);
-* [Webpack](https://webpack.github.io/) (instead of Angular2-CLI);
+* [Webpack](https://webpack.github.io/) (instead of @angular-CLI);
 * [Node.js](https://nodejs.org/) (as backend, in the plans).
 
 ### Prerequisite
@@ -30,11 +30,11 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 * [Node.js](https://nodejs.org/en/download/) (at least node v4.x.x and npm 3.x.x)
 
 ### Development
-1. `git clone https://github.com/diamond-darrell/angular2-cards.git`
-2. `cd angular2-cards`
+1. `git clone https://github.com/diamond-darrell/@angular-cards.git`
+2. `cd @angular-cards`
 3. `npm install`
 4. `npm run server`
 5. Open [http://localhost:8080/public](http://localhost:8080/public) to see application
 
 ### Demo
-[https://angular2-cards.herokuapp.com/](https://angular2-cards.herokuapp.com/)
+[https://@angular-cards.herokuapp.com/](https://@angular-cards.herokuapp.com/)

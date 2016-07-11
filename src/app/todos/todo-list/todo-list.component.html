@@ -3,6 +3,7 @@
     *ngFor="let todo of todoService.todos"
     [todo]=todo
     (onToggleTodo)="toggleTodo($event)"
+    (onUpdateTodo)="updateTodo($event)"
     (onRemoveTodo)="removeTodo($event)"></todo-item>
 </ul>
 

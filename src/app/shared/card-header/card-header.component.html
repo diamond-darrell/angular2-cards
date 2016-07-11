@@ -5,6 +5,7 @@
 <input class="form-control title-input"
   placeholder="{{placeholder}}. Press Enter to save"
   #tlTitle
+  [focus]="!title"
   *ngIf="!title"
   [value]="tmpTitle"
   (keyUp.enter)="setTitle(tlTitle.value)"

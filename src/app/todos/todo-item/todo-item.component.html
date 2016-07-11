@@ -1,0 +1,21 @@
+<li>
+  <button class="close" (click)="onRemoveTodo.emit(todo)">&times;</button>
+
+  <toggle-todo-btn
+    [disabled]="isEditing"
+    [isCompleted]="todo.isCompleted()"
+    (onToggle)="onToggleTodo.emit(todo)"></toggle-todo-btn>
+
+  <span *ngIf="!isEditing" [ngClass]="todo.status" (dblclick)="isEditing = true">
+    {{todo?.description}}
+  </span>
+
+  <input class="form-control edit-todo" required
+    placeholder="Press Enter to save"
+    #tdDesc
+    *ngIf="isEditing"
+    [focus]="isEditing"
+    [value]="todo?.description"
+    (keyUp.esc)="closeEditForm()"
+    (keyUp.enter)="editTodo(tdDesc.value)" />
+</li>
