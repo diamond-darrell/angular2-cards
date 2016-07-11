@@ -1,9 +1,9 @@
 import { UUID } from 'angular2-uuid';
 
 export class TodoList {
-    constructor(title) {
-      this.id = UUID.UUID();
+    constructor(title, id=UUID.UUID(), todos = []) {
+      this.id = id;
       this.title = title;
-      this.todos = [];
+      this.todos = todos;
     }
 }
