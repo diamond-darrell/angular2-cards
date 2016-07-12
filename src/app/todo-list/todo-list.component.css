@@ -1,0 +1,14 @@
+.list-group {
+  list-style: none;
+  padding: 0;
+}
+.ligth {
+  color: #fff;
+}
+.title-input {
+  max-width: 95%;
+  display: inline-block;
+}
+.panel-body {
+  background-color: #bdc3c7;
+}

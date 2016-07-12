@@ -1,15 +1,10 @@
-import { UUID } from 'angular2-uuid';
-import { TodoList } from '../../todos/shared/todo-list.model';
+import { TodoList } from './todo-list.model';
 
-export class CardHolder {
-  constructor(title) {
-    this.id = UUID.UUID();
+export class Card {
+  constructor(id, title = '', todoLists = []) {
+    this.id = id;
     this.title = title;
-    this.todoLists = [];
-  }
-
-  getTodoList(id) {
-    return this.todoLists.find(todoList => todoList.id === id);
+    this.todoLists = todoLists;
   }
 
   addTodoList(todoList) {
@@ -20,7 +15,7 @@ export class CardHolder {
       ];
     }
   }
-  //FIXME investigate immutable way
+
   updateTodoList(todoList, title) {
     const todoListIndex = this.todoLists.indexOf(todoList);
 

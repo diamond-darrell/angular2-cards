@@ -5,11 +5,11 @@ The user must be able to add a new card, delete a card, set a title to it, add t
 Also, the user must be able to add a new todo, mark them as completed, and remove them.
 ##### All features:
 ###### Board:
-* :white_check_mark: add card-holder;
-* :white_check_mark: remove card-holder.
+* :white_check_mark: add card;
+* :white_check_mark: remove card.
 
-###### Card-holder:
-* :white_check_mark: set card-holder's title (also edit after set);
+###### Card:
+* :white_check_mark: set card's title (also edit after set);
 * :white_check_mark: add todo-list;
 * :white_check_mark: remove todo-list.
 
@@ -37,4 +37,4 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 5. Open [http://localhost:8080/public](http://localhost:8080/public) to see application
 
 ### Demo
-[https://@angular-cards.herokuapp.com/](https://@angular-cards.herokuapp.com/)
+[https://angular2-cards.herokuapp.com/](https://angular2-cards.herokuapp.com/)
