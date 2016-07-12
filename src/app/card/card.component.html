@@ -4,13 +4,13 @@
       [placeholder]="'Card\'s title'"
       [title]="card.title"
       (onSetTitle)="setCardrTitle($event)"
-      (onRemove)="onRemoveCard.emit(card)"></card-header>
+      (onRemove)="onRemoveCard.emit(cardService.card)"></card-header>
   </div>
   <div class="panel-body">
     <todo-list
       class="col-md-4"
       *ngFor="let todoList of card.todoLists"
-      [todoListId]="todoList"
+      [todoList]="todoList"
       (onRemoveTodoList)="removeTodoList($event)"
       (onSetTodoListTitle)="setTodoListTitle($event)">
     </todo-list>

@@ -23,7 +23,7 @@ export class BoardComponent {
   }
 
   ngOnInit() {
-    this.boardService.getCards();
+    this.boardService.getServerData();
   }
 
   addCard() {

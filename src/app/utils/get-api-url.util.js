@@ -18,13 +18,13 @@ export function getApiUrl(url, param) {
       if (!param) {
         throw 'Param is required!';
       }
-      return `${base}/todoList/${param}`;
+      return `${base}/todoLists/${param}`;
 
     case 'todo-list-expanded':
       if (!param) {
         throw 'Param is required!';
       }
-      return `${base}/todoList/${param}?_embed=todos`;
+      return `${base}/todoLists/${param}?_embed=todos`;
 
     default:
       throw 'Invalid api url';

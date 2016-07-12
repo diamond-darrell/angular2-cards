@@ -1,7 +1,5 @@
-import { UUID } from 'angular2-uuid';
-
 export class Todo {
-  constructor(description, id = UUID.UUID(), status = 'active') {
+  constructor(id, description, status = 'active') {
     this.id = id;
     this.description = description;
     this.status = status;

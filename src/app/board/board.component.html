@@ -8,7 +8,7 @@
   <card-holder
     class="row"
     *ngFor="let card of boardService.cards"
-    [cardId]="card"
+    [card]="card"
     (onRemoveCard)="removeCard($event)">
   </card-holder>
 

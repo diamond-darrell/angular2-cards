@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../model/card.model';
+import { TodoList } from '../model/todo-list.model';
+import { Todo } from '../model/todo.model';
 import { ServerDataService } from './server-data.service';
 
 @Injectable()
@@ -11,16 +13,33 @@ export class BoardService {
     this.serverData = serverData;
   }
 
-  getCards() {
-    return this.serverData.get('cards')
+  getServerData() {
+    this.serverData.get('cards-expanded')
       .subscribe(
-        res => this.cards = this.normalizeCardsResponse(res),
+        res => this.loadTodos(res),
         err => this.cars = [] // TODO implement error handling
       );
   }
 
-  normalizeCardsResponse(cards = []) {
-    return cards.map(({id, title, todoLists}) => new Card(id, title, todoLists));
+  loadTodos(cards = []) {
+    this.serverData.get('todos')
+      .subscribe(
+        res => this.cards = this.normalizeResponse(cards, res),
+        err => this.cards = []
+      );
+  }
+
+  normalizeResponse(cards = [], todos = []) {
+    return cards.map(({id, title, todoLists}) => {
+      todoLists = todoLists.map(todoList => {
+        todos = todos.filter(({todoListId}) => todoListId === todoList.id)
+                    .map(todo => new Todo(todo.id, todo.description, todo.status));
+
+        return new TodoList(todoList.id, todoList.title, todos)
+      });
+
+      return new Card(id, title, todoLists);
+    });
   }
 
   addCard(title = '') {

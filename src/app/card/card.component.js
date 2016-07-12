@@ -20,14 +20,13 @@ import { CardService } from '../shared/service/card.service';
   `]
 })
 export class CardComponent {
-  @Input() cardId = null;
+  @Input() card = null;
   @Output() onRemoveCard = new EventEmitter();
 
   static get parameters() { return [[CardService]]; }
-  constructor(cardService) { this.cardService = cardService; }
 
-  ngOnInit() {
-
+  constructor(cardService) {
+    this.cardService = cardService;
   }
 
   addTodoList() {
