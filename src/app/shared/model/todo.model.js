@@ -1,5 +1,5 @@
 export class Todo {
-  constructor(id, description, status = 'active') {
+  constructor(id, description = '', status = 'active') {
     this.id = id;
     this.description = description;
     this.status = status;

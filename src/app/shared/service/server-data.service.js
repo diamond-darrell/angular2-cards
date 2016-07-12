@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { getApiUrl } from '../../utils/get-api-url.util';
 
 @Injectable()
@@ -11,17 +11,29 @@ export class ServerDataService {
   }
 
   get(url) {
-    return this.makeRequest('get', url);
+    return this.makeRequest('get', getApiUrl(url));
   }
 
-  makeRequest(type, url) {
+  post(url, data) {
+    const body = JSON.stringify(data);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers });
+
+    return this.makeRequest('post', getApiUrl(url), [body, options])
+  }
+
+  delete(url, param) {
+    return this.makeRequest('delete', getApiUrl('cards', param));
+  }
+
+  makeRequest(type, url, params = []) {
     const allowedTypes = ['get', 'post', 'put', 'delete'];
 
     if (!allowedTypes.includes(type)) {
       throw 'Disallowed request type';
     }
 
-    return this.http[type](getApiUrl(url))
+    return this.http[type](url, ...params)
       .map(res => res.json())
       .catch(err => err);
   }

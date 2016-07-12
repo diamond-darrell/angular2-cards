@@ -43,19 +43,30 @@ export class BoardService {
   }
 
   addCard(title = '') {
-    this.cards = [
-      ...this.cards,
-      new Card(title)
-    ];
+    this.serverData.post('cards', {
+      title,
+      todoLists: []
+    }).subscribe(({id, title, todoLists}) => {
+        const card = new Card(id, title, todoLists);
+        this.cards = [...this.cards, card];
+      },
+      err => {/* TODO handle erro*/}
+    );
   }
 
   removeCard(card) {
-    const cardIndex = this.cards.indexOf(card);
+    this.serverData.delete('cards', card.id)
+      .subscribe(
+        res => {
+          const cardIndex = this.cards.indexOf(card);
 
-    this.cards = [
-      ...this.cards.slice(0, cardIndex),
-      ...this.cards.slice(cardIndex + 1)
-    ];
+          this.cards = [
+            ...this.cards.slice(0, cardIndex),
+            ...this.cards.slice(cardIndex + 1)
+          ];
+        },
+        err => {/* TODO handle erro*/}
+    );
   }
 
   updateCardTitle(card, title) {

@@ -1,4 +1,4 @@
-export function getApiUrl(url, param) {
+export function getApiUrl(url, param = '') {
   const base = 'http://localhost:3000';
 
   switch (url) {
@@ -9,7 +9,7 @@ export function getApiUrl(url, param) {
       return `${base}/todoLists`;
 
     case 'cards':
-      return `${base}/cards`;
+      return `${base}/cards/${param}`;
 
     case 'cards-expanded':
       return `${base}/cards?_embed=todoLists`;

@@ -4,7 +4,7 @@
       [placeholder]="'Card\'s title'"
       [title]="card.title"
       (onSetTitle)="setCardrTitle($event)"
-      (onRemove)="onRemoveCard.emit(cardService.card)"></card-header>
+      (onRemove)="onRemoveCard.emit(card)"></card-header>
   </div>
   <div class="panel-body">
     <todo-list

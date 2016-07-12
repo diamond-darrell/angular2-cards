@@ -1,7 +1,7 @@
 import { TodoList } from './todo-list.model';
 
 export class Card {
-  constructor(id, title, todoLists = []) {
+  constructor(id, title = '', todoLists = []) {
     this.id = id;
     this.title = title;
     this.todoLists = todoLists;

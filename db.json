@@ -1,16 +1,29 @@
 {
-  "cards": [
-    { "id": 1, "title": "Card1", "todoLists": [1] },
-    { "id": 2, "title": "Card2", "todoLists": [2] }
-  ],
-
-  "todoLists": [
-    { "id": 1, "cardId": 1, "title": "TodoList1", "todos": [1, 2] },
-    { "id": 2, "cardId": 2, "title": "TodoList2", "todos": [] }
-  ],
-
-  "todos": [
-    { "id": 1, "todoListId": 1, "description": "Todo1", "status": "active" },
-    { "id": 2, "todoListId": 1, "description": "Todo2", "status": "completed" }
-  ]
+  "cards": [{
+    "id": 1,
+    "title": "Card1",
+    "todoLists": [
+      1
+    ]
+  }],
+  "todoLists": [{
+    "id": 1,
+    "cardId": 1,
+    "title": "TodoList1",
+    "todos": [
+      1,
+      2
+    ]
+  }],
+  "todos": [{
+    "id": 1,
+    "todoListId": 1,
+    "description": "Todo1",
+    "status": "active"
+  }, {
+    "id": 2,
+    "todoListId": 1,
+    "description": "Todo2",
+    "status": "completed"
+  }]
 }
