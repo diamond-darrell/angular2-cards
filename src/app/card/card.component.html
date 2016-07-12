@@ -2,22 +2,22 @@
   <div class="panel-heading">
     <card-header
       [placeholder]="'Card\'s title'"
-      [title]="cardHolder.title"
-      (onSetTitle)="setCardHolderTitle($event)"
-      (onRemove)="onRemoveCardHolder.emit(cardHolder)"></card-header>
+      [title]="card.title"
+      (onSetTitle)="setCardTitle($event)"
+      (onRemove)="onRemoveCard.emit(card)"></card-header>
   </div>
   <div class="panel-body">
-    <todo-list-holder
+    <todo-list
       class="col-md-4"
-      *ngFor="let todoList of cardHolder.todoLists"
+      *ngFor="let todoList of card.todoLists"
       [todoList]="todoList"
       (onRemoveTodoList)="removeTodoList($event)"
       (onSetTodoListTitle)="setTodoListTitle($event)">
-    </todo-list-holder>
+    </todo-list>
 
     <!-- FIXME remove hardcode -->
     <add-todo-list-btn
-      *ngIf="cardHolder.todoLists.length < 3"
+      *ngIf="card.todoLists.length < 3"
       (onAddTodoList)="addTodoList()">
     </add-todo-list-btn>
   </div>

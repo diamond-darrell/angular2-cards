@@ -34,3 +34,4 @@ node_modules
 
 # Do not include webpack bundled files
 dist
+db.json
