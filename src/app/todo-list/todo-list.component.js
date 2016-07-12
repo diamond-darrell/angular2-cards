@@ -1,17 +1,32 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoInputComponent } from '../todo-input/todo-input.component';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
-import { TodoService } from '../shared/todo.service';
+import { CardHeaderComponent } from '../card-header/card-header.component';
+import { TodoService } from '../shared/service/todo.service';
 
 @Component({
   selector: 'todo-list',
-  directives: [TodoInputComponent, TodoItemComponent],
+  directives: [
+    TodoInputComponent,
+    TodoItemComponent,
+    CardHeaderComponent
+  ],
   template: require('./todo-list.component.html'),
-  styles: [`ul { list-style: none; padding: 0; }`],
+  styles: [
+
+  ],
   providers: [TodoService]
 })
 export class TodoListComponent {
   @Input() todoList = null;
+  @Input() card = null;
+  @Output() onRemoveTodoList = new EventEmitter();
+  @Output() onSetTodoListTitle = new EventEmitter();
+
+  setTodoListTitle(title) {
+    const todoList = this.todoList;
+    this.onSetTodoListTitle.emit({todoList, title});
+  }
 
   static get parameters() {
     return [[TodoService]];

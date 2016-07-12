@@ -1,0 +1,22 @@
+<div class="card-item panel panel-primary">
+  <div class="panel-heading">
+    <card-header
+      [placeholder]="'Todo-list\'s title'"
+      [title]="todoList.title"
+      (onSetTitle)="setTodoListTitle($event)"
+      (onRemove)="onRemoveTodoList.emit(todoList)"></card-header>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <todo-item
+        *ngFor="let todo of todoList.todos"
+        [todo]=todo
+        (onToggleTodo)="toggleTodo($event)"
+        (onUpdateTodo)="updateTodo($event)"
+        (onRemoveTodo)="removeTodo($event)"></todo-item>
+    </ul>
+
+    <todo-input (onAddTodo)="addTodo($event)"></todo-input>
+  </div>
+</div>
+

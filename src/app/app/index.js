@@ -1,36 +1,9 @@
 import { Component } from '@angular/core';
-import { CardHolderComponent } from '../cards/card-holder/card-holder.component';
-import { AddHolderBtnComponent } from '../cards/add-card-holder-btn/add-card-holder-btn.component';
-import { CardsService } from '../cards/shared/cards.service';
+import { BoardComponent } from '../board/board.component';
 
 @Component({
   selector: 'my-app',
-  providers: [CardsService],
-  directives: [
-    CardHolderComponent,
-    AddHolderBtnComponent
-  ],
-  template: require('./app.component.html'),
-  styles: [require('./app.component.css')],
+  directives: [BoardComponent],
+  template: '<cards-board></cards-board>'
 })
-export class AppComponent {
-  static get parameters() {
-    return [[CardsService]]
-  }
-
-  constructor(cardsService) {
-    this.cardsService = cardsService;
-  }
-
-  ngOnInit() {
-    this.cardsService.getServerData();
-  }
-
-  addCardHolder() {
-    this.cardsService.addCardHolder();
-  }
-
-  removeCardHolder(cardsHolder) {
-    this.cardsService.removeCardHolder(cardsHolder);
-  }
-}
+export class AppComponent {}

@@ -1,7 +1,7 @@
 import { UUID } from 'angular2-uuid';
-import { TodoList } from '../../todos/shared/todo-list.model';
+import { TodoList } from './todo-list.model';
 
-export class CardHolder {
+export class Card {
   constructor(title, id = UUID.UUID(), todoLists = []) {
     this.id = id;
     this.title = title;
