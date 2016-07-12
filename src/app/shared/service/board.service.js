@@ -70,15 +70,20 @@ export class BoardService {
   }
 
   updateCardTitle(card, title) {
-    const cardIndex = this.cards.indexOf(card);
+    this.serverData.put('cards', card.id, { title })
+      .subscribe(({id, title, todoLists}) => {
+        const cardIndex = this.cards.indexOf(card);
 
-    if (card) {
-      card.title = title;
-      this.cards = [
-        ...this.cards.slice(0, cardIndex),
-        card,
-        ...this.cards.slice(cardIndex + 1)
-      ];
-    }
+        if (card) {
+          card.title = title;
+          this.cards = [
+            ...this.cards.slice(0, cardIndex),
+            card,
+            ...this.cards.slice(cardIndex + 1)
+          ];
+        }
+      },
+      err => {/* TODO handle erro*/}
+    );
   }
 }

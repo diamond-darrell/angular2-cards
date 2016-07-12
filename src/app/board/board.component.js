@@ -34,7 +34,7 @@ export class BoardComponent {
     this.boardService.removeCard(card);
   }
 
-  setCardTitle(title) {
-    this.boardService.updateCardTitle(this.card, title);
+  updateCardTitle({card, title}) {
+    this.boardService.updateCardTitle(card, title);
   }
 }

@@ -22,6 +22,7 @@ import { CardService } from '../shared/service/card.service';
 export class CardComponent {
   @Input() card = null;
   @Output() onRemoveCard = new EventEmitter();
+  @Output() onUpdateCardTitle = new EventEmitter();
 
   static get parameters() { return [[CardService]]; }
 
@@ -39,5 +40,10 @@ export class CardComponent {
 
   setTodoListTitle(params) {
     this.cardService.updateTodoListTitle(this.card, params);
+  }
+
+  setCardTitle(title) {
+    const { card } = this;
+    this.onUpdateCardTitle.emit({card, title});
   }
 }

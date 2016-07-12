@@ -9,7 +9,8 @@
     class="row"
     *ngFor="let card of boardService.cards"
     [card]="card"
-    (onRemoveCard)="removeCard($event)">
+    (onRemoveCard)="removeCard($event)"
+    (onUpdateCardTitle)="updateCardTitle($event)">
   </card-holder>
 
   <add-card-btn (onAddCard)="addCard()"></add-card-btn>

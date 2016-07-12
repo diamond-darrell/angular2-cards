@@ -26,6 +26,14 @@ export class ServerDataService {
     return this.makeRequest('delete', getApiUrl('cards', param));
   }
 
+  put(url, param, data) {
+    const body = JSON.stringify(data);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers });
+
+    return this.makeRequest('put', getApiUrl(url, param), [body, options])
+  }
+
   makeRequest(type, url, params = []) {
     const allowedTypes = ['get', 'post', 'put', 'delete'];
 
