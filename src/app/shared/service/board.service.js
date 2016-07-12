@@ -43,10 +43,10 @@ export class BoardService {
   }
 
   addCard(title = '') {
-    this.serverData.post('cards', {
-      title,
-      todoLists: []
-    }).subscribe(({id, title, todoLists}) => {
+    const data = { title, todoLists: []};
+
+    this.serverData.post('cards', data)
+      .subscribe(({id, title, todoLists}) => {
         const card = new Card(id, title, todoLists);
         this.cards = [...this.cards, card];
       },
