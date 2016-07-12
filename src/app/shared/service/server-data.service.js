@@ -10,12 +10,8 @@ export class ServerDataService {
     this.http = http;
   }
 
-  getCards() {
-    return this.makeRequest('get', 'card-expanded');
-  }
-
-  getTodos() {
-    return this.makeRequest('get', 'todos');
+  get(url) {
+    return this.makeRequest('get', url);
   }
 
   makeRequest(type, url) {

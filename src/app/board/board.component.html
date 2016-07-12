@@ -1,13 +1,13 @@
 <header></header>
 <main class="container">
   <h1>Angular 2 Cards App</h1>
-  <h4 *ngIf="!cardsService.cards.length">
+  <h4 *ngIf="!boardService.cards.length">
     Press "Add card" button in bottom right corner to start
   </h4>
 
   <card-holder
     class="row"
-    *ngFor="let card of cardsService.cards"
+    *ngFor="let card of boardService.cards"
     [cardId]="card"
     (onRemoveCard)="removeCard($event)">
   </card-holder>

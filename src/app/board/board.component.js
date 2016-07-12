@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { AddCardBtnComponent } from '../add-card-btn/add-card-btn.component';
-import { CardsService } from '../shared/service/cards.service';
+import { BoardService } from '../shared/service/board.service';
 
 @Component({
   selector: 'cards-board',
-  providers: [CardsService],
+  providers: [BoardService],
   directives: [
     CardComponent,
     AddCardBtnComponent
@@ -15,22 +15,26 @@ import { CardsService } from '../shared/service/cards.service';
 })
 export class BoardComponent {
   static get parameters() {
-    return [[CardsService]]
+    return [[BoardService]]
   }
 
-  constructor(cardsService) {
-    this.cardsService = cardsService;
+  constructor(boardService) {
+    this.boardService = boardService;
   }
 
   ngOnInit() {
-    this.cardsService.getCards();
+    this.boardService.getCards();
   }
 
   addCard() {
-    this.cardsService.addCard();
+    this.boardService.addCard();
   }
 
   removeCard(card) {
-    this.cardsService.removeCard(card);
+    this.boardService.removeCard(card);
+  }
+
+  setCardTitle(title) {
+    this.boardService.updateCardTitle(this.card, title);
   }
 }

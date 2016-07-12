@@ -1,4 +1,4 @@
-export function getApiUrl(url) {
+export function getApiUrl(url, param) {
   const base = 'http://localhost:3000';
 
   switch (url) {
@@ -11,8 +11,20 @@ export function getApiUrl(url) {
     case 'cards':
       return `${base}/cards`;
 
-    case 'card-expanded':
+    case 'cards-expanded':
       return `${base}/cards?_embed=todoLists`;
+
+    case 'todo-list':
+      if (!param) {
+        throw 'Param is required!';
+      }
+      return `${base}/todoList/${param}`;
+
+    case 'todo-list-expanded':
+      if (!param) {
+        throw 'Param is required!';
+      }
+      return `${base}/todoList/${param}?_embed=todos`;
 
     default:
       throw 'Invalid api url';
