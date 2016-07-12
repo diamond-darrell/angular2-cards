@@ -3,28 +3,16 @@ export function getApiUrl(url, param = '') {
 
   switch (url) {
     case 'todos':
-      return `${base}/todos`;
-
-    case 'todo-lists':
-      return `${base}/todoLists`;
+      return `${base}/todos/${param}`;
 
     case 'cards':
       return `${base}/cards/${param}`;
 
-    case 'cards-expanded':
-      return `${base}/cards?_embed=todoLists`;
-
-    case 'todo-list':
-      if (!param) {
-        throw 'Param is required!';
-      }
+    case 'todo-lists':
       return `${base}/todoLists/${param}`;
 
-    case 'todo-list-expanded':
-      if (!param) {
-        throw 'Param is required!';
-      }
-      return `${base}/todoLists/${param}?_embed=todos`;
+    case 'cards-expanded':
+      return `${base}/cards?_embed=todoLists`;
 
     default:
       throw 'Invalid api url';

@@ -30,12 +30,19 @@ export class BoardService {
   }
 
   normalizeResponse(cards = [], todos = []) {
-    return cards.map(({id, title, todoLists}) => {
-      todoLists = todoLists.map(todoList => {
-        todos = todos.filter(({todoListId}) => todoListId === todoList.id)
-                    .map(todo => new Todo(todo.id, todo.description, todo.status));
+    const createTodo = ({id, todoListId, description, status}) =>
+      new Todo(id, todoListId, description, status);
 
-        return new TodoList(todoList.id, todoList.title, todos)
+    const createTodoList = ({id, cardId, title}, todos) =>
+      new TodoList(id, cardId, title, todos)
+
+    return cards.map(({id, title, todoLists}) => { // create instances of Card model
+      todoLists = todoLists.map(todoList => { // create instances of TodoList model
+        const normalizedTodos = todos
+          .filter(({todoListId}) => todoListId === todoList.id) // find todos for current todoList
+          .map(todo => createTodo(todo)); // create instances of Todo model
+
+        return createTodoList(todoList, normalizedTodos);
       });
 
       return new Card(id, title, todoLists);
@@ -50,7 +57,7 @@ export class BoardService {
         const card = new Card(id, title, todoLists);
         this.cards = [...this.cards, card];
       },
-      err => {/* TODO handle erro*/}
+      err => {/* TODO handle error*/}
     );
   }
 
@@ -70,7 +77,12 @@ export class BoardService {
   }
 
   updateCardTitle(card, title) {
-    this.serverData.put('cards', card.id, { title })
+    const data = {
+      title,
+      todoLists: card.todoLists.map(({id}) => id)
+    };
+
+    this.serverData.put('cards', card.id, data)
       .subscribe(({id, title, todoLists}) => {
         const cardIndex = this.cards.indexOf(card);
 

@@ -1,6 +1,7 @@
 export class TodoList {
-    constructor(id, title = '', todos = []) {
+    constructor(id, cardId, title = '', todos = []) {
       this.id = id;
+      this.cardId = cardId;
       this.title = title;
       this.todos = todos;
     }

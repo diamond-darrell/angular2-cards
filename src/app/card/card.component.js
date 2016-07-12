@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { AddTodoListBtnComponent } from '../add-todo-list-btn/add-todo-list-btn.component';
 import { CardHeaderComponent } from '../card-header/card-header.component';
-import { CardService } from '../shared/service/card.service';
+import { TodoListService } from '../shared/service/todo-list.service';
 
 @Component({
   selector: 'card-holder',
-  providers: [CardService],
+  providers: [TodoListService],
   directives: [
     TodoListComponent,
     AddTodoListBtnComponent,
@@ -24,22 +24,22 @@ export class CardComponent {
   @Output() onRemoveCard = new EventEmitter();
   @Output() onUpdateCardTitle = new EventEmitter();
 
-  static get parameters() { return [[CardService]]; }
+  static get parameters() { return [[TodoListService]]; }
 
-  constructor(cardService) {
-    this.cardService = cardService;
+  constructor(todoListService) {
+    this.todoListService = todoListService;
   }
 
   addTodoList() {
-    this.cardService.addTodoList(this.card);
+    this.todoListService.addTodoList(this.card);
   }
 
   removeTodoList(todoList) {
-    this.cardService.removeTodoList(this.card, todoList);
+    this.todoListService.removeTodoList(this.card, todoList);
   }
 
   setTodoListTitle(params) {
-    this.cardService.updateTodoListTitle(this.card, params);
+    this.todoListService.updateTodoListTitle(this.card, params);
   }
 
   setCardTitle(title) {

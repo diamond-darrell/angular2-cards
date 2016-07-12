@@ -24,7 +24,7 @@ export class TodoListComponent {
   @Output() onSetTodoListTitle = new EventEmitter();
 
   setTodoListTitle(title) {
-    const todoList = this.todoList;
+    const { todoList } = this;
     this.onSetTodoListTitle.emit({todoList, title});
   }
 
@@ -49,6 +49,6 @@ export class TodoListComponent {
   }
 
   updateTodo(params) {
-    this.todoService.updateTodo(this.todoList, params);
+    this.todoService.updateTodoDescription(this.todoList, params);
   }
 }

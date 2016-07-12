@@ -23,7 +23,7 @@ export class ServerDataService {
   }
 
   delete(url, param) {
-    return this.makeRequest('delete', getApiUrl('cards', param));
+    return this.makeRequest('delete', getApiUrl(url, param));
   }
 
   put(url, param, data) {
