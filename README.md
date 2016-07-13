@@ -38,3 +38,6 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 
 ### Demo
 [https://angular2-cards.herokuapp.com/](https://angular2-cards.herokuapp.com/)
+
+It uses [json-server's](https://github.com/typicode/json-server) fake API with in-memory-db.
+So data can disappear after restarting node.
