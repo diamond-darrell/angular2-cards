@@ -1,5 +1,7 @@
 export function getApiUrl(url, param = '') {
-  const base = 'http://localhost:3000';
+  const origin = location.origin;
+  const [,,port] = origin.split(':');
+  const base = origin.replace(port, '3000');
 
   switch (url) {
     case 'todos':
