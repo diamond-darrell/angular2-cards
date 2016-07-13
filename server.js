@@ -1,6 +1,15 @@
 var express = require('express');
 var app = express();
 
+var jsonServer = require('json-server');
+var server = jsonServer.create();
+var router = jsonServer.router({
+  "cards": [],
+  "todoLists": [],
+  "todos": []
+});
+var middlewares = jsonServer.defaults();
+
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8080;
@@ -19,5 +28,13 @@ app.get('/', function(req, res) {
 });
 
 app.listen(port, function() {
-    console.log('Our app is running on http://localhost:' + port);
+    console.log('App is running on http://localhost:' + port);
 });
+
+server.use(middlewares);
+
+server.use(router);
+
+server.listen(3000, function () {
+  console.log('JSON Server is running on http://localhost:3000');
+})
