@@ -1,5 +1,5 @@
 export function getApiUrl(url, param = '') {
-  const base = 'http://localhost:3000';
+  const base = location.origin;
 
   switch (url) {
     case 'todos':
