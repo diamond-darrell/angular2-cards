@@ -34,7 +34,7 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 2. `cd @angular-cards`
 3. `npm install`
 4. `npm run server`
-5. Open [http://localhost:8080/public](http://localhost:8080/public) to see application
+5. Open [http://localhost:8080](http://localhost:8080) to see application
 
 ### Demo
 [https://angular2-cards.herokuapp.com/](https://angular2-cards.herokuapp.com/)
