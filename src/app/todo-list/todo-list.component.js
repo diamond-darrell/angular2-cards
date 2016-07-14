@@ -12,9 +12,7 @@ import { TodoService } from '../shared/service/todo.service';
     CardHeaderComponent
   ],
   template: require('./todo-list.component.html'),
-  styles: [
-
-  ],
+  styles: [require('./todo-list.component.css')],
   providers: [TodoService]
 })
 export class TodoListComponent {
