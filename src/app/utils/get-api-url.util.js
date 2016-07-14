@@ -1,5 +1,11 @@
 export function getApiUrl(url, param = '') {
-  const base = location.origin;
+  const origin = location.origin;
+  let base = origin;
+
+  if (ENV === 'dev') {
+    const [,,port] = origin.split(':');
+    base = origin.replace(port, '3000');
+  }
 
   switch (url) {
     case 'todos':

@@ -10,4 +10,4 @@ import '@angular/router';
 import 'rxjs';
 
 // Other
-require('bootstrap-loader');
+import 'bootstrap-loader';
