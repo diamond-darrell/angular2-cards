@@ -5,20 +5,20 @@ The user must be able to add a new card, delete a card, set a title to it, add t
 Also, the user must be able to add a new todo, mark them as completed, and remove them.
 ##### All features:
 ###### Board:
-* :white_check_mark: add card;
-* :white_check_mark: remove card.
+- [x] add card;
+- [x] remove card.
 
 ###### Card:
-* :white_check_mark: set card's title (also edit after set);
-* :white_check_mark: add todo-list;
-* :white_check_mark: remove todo-list.
+- [x] set card's title (also edit after set);
+- [x] add todo-list;
+- [x] remove todo-list.
 
 ###### Todo-list:
-* :white_check_mark: set todo-list's title (also edit after set);
-* :white_check_mark: add todo;
-* :white_check_mark: remove todo;
-* :white_check_mark: toggle todo (mark as completed and and vice versa);
-* :white_check_mark: edit todo.
+- [x] set todo-list's title (also edit after set);
+- [x] add todo;
+- [x] remove todo;
+- [x] toggle todo (mark as completed and and vice versa);
+- [x] edit todo.
 
 ##### The project uses:
 * [Angular 2](https://angular.io/) (without TypeScript);
@@ -30,7 +30,7 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 * [Node.js](https://nodejs.org/en/download/) (at least node v4.x.x and npm 3.x.x)
 
 ### Development
-1. `git clone https://github.com/diamond-darrell/@angular-cards.git`
+1. `git clone https://github.com/diamond-darrell/angular2-cards.git`
 2. `cd angular2-cards`
 3. `npm install`
 4. `npm run server`
@@ -41,3 +41,57 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 
 It uses [json-server's](https://github.com/typicode/json-server) fake API with in-memory-db.
 So data can disappear after restarting node.
+
+### Components structure
+```
+AppComponent->BoardComponent
++---------------------------------------------------------------------------------------------------------+
+|                                                                                                         |
+|  RowComponent                                                                                           |
+|  +---------------------------------------------------------------------------------------------------+  |
+|  |                                                                                                   |  |
+|  |  CardHeaderComponent                                                                              |  |
+|  |  +---------------------------------------------------------------------------------------------+  |  |
+|  |  |                                                                                             |  |  |
+|  |  |                                                                                             |  |  |
+|  |  +---------------------------------------------------------------------------------------------+  |  |
+|  |                                                                                                   |  |
+|  |                                                                                                   |  |
+|  |  +--------------------------------------------------+                                             |  |
+|  |  |                                                  |                                             |  |
+|  |  |  CardHeaderComponent                             |                                             |  |
+|  |  |  +--------------------------------------------+  |                                             |  |
+|  |  |  |                                            |  |                                             |  |
+|  |  |  +--------------------------------------------+  |                                             |  |
+|  |  |                                                  |                                             |  |
+|  |  |  TodoListComponent                               |                                             |  |
+|  |  |  +--------------------------------------------+  |    AddCardBtnComponent                      |  |
+|  |  |  |                                            |  |    +------------------------------+         |  |
+|  |  |  |          TodoItemComponent                 |  |    |                              |         |  |
+|  |  |  |  +---+   +------------------------------+  |  |    |                              |         |  |
+|  |  |  |  |   |   |                              |  |  |    |                              |         |  |
+|  |  |  |  ++--+   +------------------------------+  |  |    |                              |         |  |
+|  |  |  |   |                                        |  |    +------------------------------+         |  |
+|  |  |  |   v                                        |  |                                             |  |
+|  |  |  |  ToggleTogoBtnComponent                    |  |                                             |  |
+|  |  |  |                                            |  |                                             |  |
+|  |  |  +--------------------------------------------+  |                                             |  |
+|  |  |                                                  |                                             |  |
+|  |  |  TodoInputCompoenent                             |                                             |  |
+|  |  |  +--------------------------------------------+  |                                             |  |
+|  |  |  |                                            |  |                                             |  |
+|  |  |  |                                            |  |                                             |  |
+|  |  |  +--------------------------------------------+  |                                             |  |
+|  |  +--------------------------------------------------+                                             |  |
+|  |                                                                                                   |  |
+|  +---------------------------------------------------------------------------------------------------+  |
+|                                                                                                         |
+|                                                                             AddRowBtnComponent          |
+|                                                                             +------------------------+  |
+|                                                                             |                        |  |
+|                                                                             |                        |  |
+|                                                                             |                        |  |
+|                                                                             +------------------------+  |
+|                                                                                                         |
++---------------------------------------------------------------------------------------------------------+
+```
