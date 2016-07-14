@@ -35,6 +35,7 @@ module.exports = {
     },{
         test: /\.js$/,
         loader: 'babel-loader',
+        include: helpers.root('src'),
         query: {
           cacheDirectory: true,
           plugins: ['transform-decorators-legacy'],

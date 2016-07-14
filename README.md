@@ -22,7 +22,7 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 
 ##### The project uses:
 * [Angular 2](https://angular.io/) (without TypeScript);
-* [Webpack](https://webpack.github.io/) (instead of @angular-CLI);
+* [Webpack](https://webpack.github.io/) (instead of Angular2-CLI);
 * [Node.js](https://nodejs.org/) (as backend, in the plans).
 
 ### Prerequisite
@@ -34,7 +34,10 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 2. `cd @angular-cards`
 3. `npm install`
 4. `npm run server`
-5. Open [http://localhost:8080/public](http://localhost:8080/public) to see application
+5. Open [http://localhost:8080](http://localhost:8080) to see application
 
 ### Demo
 [https://angular2-cards.herokuapp.com/](https://angular2-cards.herokuapp.com/)
+
+It uses [json-server's](https://github.com/typicode/json-server) fake API with in-memory-db.
+So data can disappear after restarting node.

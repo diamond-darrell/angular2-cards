@@ -21,6 +21,7 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
+    new webpack.DefinePlugin({ ENV: '"prod"' }),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
