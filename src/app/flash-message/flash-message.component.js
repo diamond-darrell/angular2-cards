@@ -10,7 +10,7 @@ import { FlashMessageService } from 'service/flash-message.service';
     </div>
   `,
   styles: [`
-    .error {
+    .flash-message {
       position: fixed;
       top: 10px;
       right: 10px;
