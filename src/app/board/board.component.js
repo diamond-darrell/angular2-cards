@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RowComponent } from 'app/row/row.component';
 import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
+import { FlashMessageComponent } from 'app/flash-message/flash-message.component';
 import { RowService } from 'service/row.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { RowService } from 'service/row.service';
   providers: [RowService],
   directives: [
     RowComponent,
-    AddRowBtnComponent
+    AddRowBtnComponent,
+    FlashMessageComponent
   ],
   template: require('./board.component.html'),
   styles: [require('./board.component.css')],

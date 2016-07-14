@@ -24,18 +24,14 @@ export class CardService {
       .subscribe(
         ({ id, title, todos }) => {
           row.addCard(new Card(id, row.id, title, todos));
-        },
-        err => {}
+        }
       );
   }
 
   removeCard(row, card) {
     this.serverData.delete(this.dataUrl, card.id)
       .subscribe(
-        res => {
-          row.removeCard(card);
-        },
-        err => {}
+        res => row.removeCard(card)
       );
   }
 
@@ -48,8 +44,7 @@ export class CardService {
 
     this.serverData.put(this.dataUrl, card.id, data)
       .subscribe(
-        res => row.updateCard(card, title),
-        err => {}
+        res => row.updateCard(card, title)
       );
   }
 }

@@ -4,6 +4,7 @@ import { Card } from 'model/card.model';
 import { Row } from 'model/row.model';
 import { Todo } from 'model/todo.model';
 import { ServerDataService } from './server-data.service';
+import { FlashMessageService } from 'service/flash-message.service';
 
 @Injectable()
 export class RowService {
@@ -11,17 +12,22 @@ export class RowService {
 
   dataUrl = 'rows';
 
-  static get parameters() { return [[ServerDataService]]; }
-  constructor(serverData) {
+  static get parameters() { return [[ServerDataService], [FlashMessageService]]; }
+  constructor(serverData, flashMessageService) {
     this.serverData = serverData;
+    this.flashMessageService = flashMessageService;
   }
 
   getServerData() {
-    this.serverData.get('rows-expanded')
-      .subscribe(
-        res => this.rows = this.normalizeResponse(res),
-        err => this.rows = [] // TODO implement error handling
-      );
+    const request = this.serverData.get('rows-expanded');
+
+    request.subscribe(
+      res => this.rows = this.normalizeResponse(res),
+      err => {
+        this.rows = [];
+        this.flashMessageService.showMessage('error', err);
+      }
+    );
   }
 
   normalizeResponse(rows = []) {
@@ -46,17 +52,15 @@ export class RowService {
       .subscribe(
         ({id, title}) => {
           this.rows = collection.addItem(this.rows, new Row(id, title));
-        },
-        err => {/* TODO handle error*/}
+        }
     );
   }
 
   removeRow(row) {
     this.serverData.delete(this.dataUrl, row.id)
       .subscribe(
-        res => this.rows = collection.removeItem(this.rows, row),
-        err => {/* TODO handle erro*/}
-    );
+        res => this.rows = collection.removeItem(this.rows, row)
+      );
   }
 
   updateRowTitle(row, title) {
@@ -67,8 +71,7 @@ export class RowService {
         ({title}) => {
           row.title = title;
           this.rows = collection.updateItem(this.rows, row);
-        },
-        err => {/* TODO handle erro*/}
+        }
     );
   }
 }

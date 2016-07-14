@@ -9,6 +9,7 @@ export class Row {
   }
 
   addCard(card) {
+    // FIXME hardcode
     if (this.cards.length < 3) {
       this.cards = collection.addItem(this.cards, card);
     }
