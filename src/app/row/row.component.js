@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { AddCardBtnComponent } from '../add-card-btn/add-card-btn.component';
 import { CardHeaderComponent } from '../card-header/card-header.component';
-import { RowService } from '../shared/service/row.service';
+import { CardService } from '../shared/service/card.service';
 
 @Component({
   selector: 'row-holder',
-  providers: [RowService],
+  providers: [CardService],
   directives: [
     TodoListComponent,
     AddCardBtnComponent,
@@ -24,7 +24,7 @@ export class RowComponent {
   @Output() onRemoveRow = new EventEmitter();
   @Output() onUpdateRowTitle = new EventEmitter();
 
-  static get parameters() { return [[RowService]]; }
+  static get parameters() { return [[CardService]]; }
 
   constructor(cardService) {
     this.cardService = cardService;

@@ -1,3 +1,9 @@
+export default {
+  addItem,
+  removeItem,
+  updateItem
+}
+
 export function addItem(collection, item) {
   return [...collection, item];
 }

@@ -1,4 +1,5 @@
 import { Card } from './card.model';
+import collection from '../../utils/collection.util'
 
 export class Row {
   constructor(id, title = '', cards = []) {
@@ -7,33 +8,19 @@ export class Row {
     this.cards = cards;
   }
 
-  addTodoList(card) {
+  addCard(card) {
     if (this.cards.length < 3) {
-      this.cards = [
-        ...this.cards,
-        card
-      ];
+      this.cards = collection.addItem(this.cards, card);
     }
   }
 
-  updateTodoList(card, title) {
-    const cardIndex = this.cards.indexOf(card);
-
+  updateCard(card, title) {
     card.title = title;
 
-    this.cards = [
-      ...this.cards.slice(0, cardIndex),
-      card,
-      ...this.cards.slice(cardIndex + 1)
-    ];
+    this.cards = collection.updateItem(this.cards, card);
   }
 
-  removeTodoList(card) {
-    const cardIndex = this.cards.indexOf(card);
-
-    this.cards = [
-      ...this.cards.slice(0, cardIndex),
-      ...this.cards.slice(cardIndex + 1)
-    ];
+  removeCard(card) {
+    this.cards = collection.removeItem(this.cards, card);
   }
 }

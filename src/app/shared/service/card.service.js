@@ -5,59 +5,50 @@ import { ServerDataService } from './server-data.service';
 
 @Injectable()
 export class CardService {
+  dataUrl = 'cards';
+
   static get parameters() { return [[ServerDataService]]}
 
   constructor(serverData) {
     this.serverData = serverData;
   }
 
-  addTodoList(card, title = '') {
+  addCard(row, title = '') {
     const data = {
       title,
-      cardId: card.id,
+      rowId: row.id,
       todos: []
     };
 
-    this.serverData.post('todo-lists', data)
+    this.serverData.post(this.dataUrl, data)
       .subscribe(
         ({ id, title, todos }) => {
-          card.addTodoList(new TodoList(id, card.id, title, todos));
-          this._updateCardsTodoLists(card);
+          row.addCard(new Card(id, row.id, title, todos));
         },
         err => {}
       );
   }
 
-  removeTodoList(card, todoList) {
-    this.serverData.delete('todo-lists', todoList.id)
+  removeCard(row, card) {
+    this.serverData.delete(this.dataUrl, card.id)
       .subscribe(
         res => {
-          card.removeTodoList(todoList);
-          this._updateCardsTodoLists(card);
+          row.removeCard(card);
         },
         err => {}
       );
   }
 
-  _updateCardsTodoLists(card) {
-    const data = {
-      title: card.title,
-      todoLists: card.todoLists.map(({id}) => id)
-    };
-
-    this.serverData.put('cards', card.id, data).subscribe();
-  }
-
-  updateTodoListTitle(card, {todoList, title = ''}) {
+  setCardTitle(row, {card, title = ''}) {
     const data = {
       title,
-      cardId: todoList.cardId,
-      todos: todoList.todos.map(({id}) => id)
+      rowId: card.rowId,
+      todos: card.todos.map(todo => todo.toJSON())
     };
 
-    this.serverData.put('todo-lists', todoList.id, data)
+    this.serverData.put(this.dataUrl, card.id, data)
       .subscribe(
-        res => card.updateTodoList(todoList, title),
+        res => row.updateCard(card, title),
         err => {}
       );
   }
