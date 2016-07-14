@@ -9,4 +9,11 @@ export class Card {
     setTodos(todos) {
       this.todos = todos;
     }
+
+    toPOJO() {
+      let { rowId, title, todos } = this;
+      todos = todos.map(todo => todo.toPOJO())
+
+      return { rowId, title, todos }
+    }
 }

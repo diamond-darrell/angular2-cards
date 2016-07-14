@@ -25,7 +25,7 @@ export class RowService {
   }
 
   normalizeResponse(rows = []) {
-    const createTodo = ({id, description, status}) => new Todo(id, description, status);
+    const createTodo = ({description, status}) => new Todo(description, status);
 
     const createCard = ({id, rowId, title, todos}) => {
       todos = todos.map(todo => createTodo(todo))

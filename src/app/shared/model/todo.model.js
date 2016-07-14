@@ -1,15 +1,13 @@
 export class Todo {
-  constructor(id, description = '', status = 'active') {
-    this.id = id;
+  constructor(description = '', status = 'active') {
     this.description = description;
     this.status = status;
   }
 
-  toJSON() {
-    return {
-      description: this.description,
-      status: this.status
-    }
+  toPOJO() {
+    const { description, status } = this;
+    
+    return { description, status };
   }
 
   toggle() {

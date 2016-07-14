@@ -43,7 +43,7 @@ export class CardService {
     const data = {
       title,
       rowId: card.rowId,
-      todos: card.todos.map(todo => todo.toJSON())
+      todos: card.todos.map(todo => todo.toPOJO())
     };
 
     this.serverData.put(this.dataUrl, card.id, data)

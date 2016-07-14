@@ -1,87 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../model/todo.model';
+import collection from '../../utils/collection.util';
 import { ServerDataService } from './server-data.service';
 
 @Injectable()
 export class TodoService {
-  static get parameters() { return [[ServerDataService]]}
+  dataUrl = 'cards';
 
+  static get parameters() { return [[ServerDataService]]}
   constructor(serverData) {
     this.serverData = serverData;
   }
 
-  _updateTodoList(todoList) {
-    const data = {
-      cardId: todoList.cardId,
-      title: todoList.title,
-      todos: todoList.todos.map(({id}) => id)
-    };
+  addTodo(card, description) {
+    card.todos = collection.addItem(card.todos, new Todo(description, 'active'));
+    const data = card.toPOJO();
 
-    this.serverData.put('todo-lists', todoList.id, data).subscribe();
+    this.serverData.put(this.dataUrl, card.id, data).subscribe();
   }
 
-  addTodo(todoList, description) {
-    const data = {
-      description,
-      status: 'active',
-      todoListId: todoList.id
-    };
+  removeTodo(card, todo) {
+    card.todos = collection.removeItem(card.todos, todo);
+    const data = card.toPOJO();
 
-    this.serverData.post('todos', data)
-      .subscribe(
-        ({id, todoListId, description, status}) => {
-          todoList.todos = [...todoList.todos, new Todo(id, todoListId, description, status)];
-
-          this._updateTodoList(todoList);
-        },
-        err => { /* */ }
-      );
+    this.serverData.put(this.dataUrl, card.id, data).subscribe();
   }
 
-  removeTodo(todoList, todo) {
-    this.serverData.delete('todos', todo.id)
-      .subscribe(
-        res => {
-          const position = todoList.todos.indexOf(todo);
+  editTodo(card, todo) {
+    card.todos = collection.updateItem(card.todos, todo);
+    const data = card.toPOJO();
 
-          todoList.todos = [
-            ...todoList.todos.slice(0, position),
-            ...todoList.todos.slice(position + 1)
-          ];
-
-          this._updateTodoList(todoList);
-        },
-        err => { /* */ }
-      );
+    this.serverData.put(this.dataUrl, card.id, data).subscribe();
   }
 
-  editTodo(todoList, todo, callback) {
-    const data = todo.toJSON();
-
-    this.serverData.put('todos', todo.id, data)
-      .subscribe(
-        res => {
-          const position = todoList.todos.indexOf(todo);
-
-          todoList.todos = [
-            ...todoList.todos.slice(0, position),
-            todo,
-            ...todoList.todos.slice(position + 1)
-          ];
-        },
-        err => { /* */ }
-      )
-  }
-
-  toggleTodo(todoList, todo) {
+  toggleTodo(card, todo) {
     todo.toggle();
 
-    this.editTodo(todoList, todo);
+    this.editTodo(card, todo);
   }
 
-  updateTodoDescription(todoList, {todo, description}) {
+  updateTodoDescription(card, {todo, description}) {
     todo.setDescription(description);
 
-    this.editTodo(todoList, todo);
+    this.editTodo(card, todo);
   }
 }
