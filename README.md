@@ -31,7 +31,7 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 
 ### Development
 1. `git clone https://github.com/diamond-darrell/@angular-cards.git`
-2. `cd @angular-cards`
+2. `cd angular2-cards`
 3. `npm install`
 4. `npm run server`
 5. Open [http://localhost:8080](http://localhost:8080) to see application
