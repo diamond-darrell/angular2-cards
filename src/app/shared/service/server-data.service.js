@@ -10,16 +10,21 @@ export class ServerDataService {
     this.http = http;
   }
 
+  _getRequestData(data) {
+    const body = JSON.stringify(data);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers });
+
+    return [body, options];
+  }
   get(url) {
     return this.makeRequest('get', getApiUrl(url));
   }
 
   post(url, data) {
-    const body = JSON.stringify(data);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers });
+    const requestData = this._getRequestData(data);
 
-    return this.makeRequest('post', getApiUrl(url), [body, options])
+    return this.makeRequest('post', getApiUrl(url), requestData);
   }
 
   delete(url, param) {
@@ -27,11 +32,9 @@ export class ServerDataService {
   }
 
   put(url, param, data) {
-    const body = JSON.stringify(data);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers });
+    const requestData = this._getRequestData(data);
 
-    return this.makeRequest('put', getApiUrl(url, param), [body, options])
+    return this.makeRequest('put', getApiUrl(url, param), requestData);
   }
 
   makeRequest(type, url, params = []) {

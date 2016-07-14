@@ -1,0 +1,24 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <card-header
+      [placeholder]="'Row\'s title'"
+      [title]="row.title"
+      (onSetTitle)="setRowTitle($event)"
+      (onRemove)="onRemoveRow.emit(row)"></card-header>
+  </div>
+  <div class="panel-body">
+    <todo-list
+      class="col-md-4"
+      *ngFor="let card of row.cards"
+      [todoList]="card"
+      (onRemoveTodoList)="removeCard($event)"
+      (onSetTodoListTitle)="setCardTitle($event)">
+    </todo-list>
+
+    <!-- FIXME remove hardcode -->
+    <add-card-btn
+      *ngIf="row.cards.length < 3"
+      (onAddCard)="addCard()">
+    </add-card-btn>
+  </div>
+</div>

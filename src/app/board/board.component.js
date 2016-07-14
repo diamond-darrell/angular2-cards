@@ -1,40 +1,40 @@
 import { Component } from '@angular/core';
-import { CardComponent } from '../card/card.component';
-import { AddCardBtnComponent } from '../add-card-btn/add-card-btn.component';
-import { BoardService } from '../shared/service/board.service';
+import { RowComponent } from '../row/row.component';
+import { AddRowBtnComponent } from '../add-row-btn/add-row-btn.component';
+import { RowService } from '../shared/service/row.service';
 
 @Component({
   selector: 'cards-board',
-  providers: [BoardService],
+  providers: [RowService],
   directives: [
-    CardComponent,
-    AddCardBtnComponent
+    RowComponent,
+    AddRowBtnComponent
   ],
   template: require('./board.component.html'),
   styles: [require('./board.component.css')],
 })
 export class BoardComponent {
   static get parameters() {
-    return [[BoardService]]
+    return [[RowService]]
   }
 
-  constructor(boardService) {
-    this.boardService = boardService;
+  constructor(rowService) {
+    this.rowService = rowService;
   }
 
   ngOnInit() {
-    this.boardService.getServerData();
+    this.rowService.getServerData();
   }
 
-  addCard() {
-    this.boardService.addCard();
+  addRow() {
+    this.rowService.addRow();
   }
 
-  removeCard(card) {
-    this.boardService.removeCard(card);
+  removeRow(row) {
+    this.rowService.removeRow(row);
   }
 
-  updateCardTitle({card, title}) {
-    this.boardService.updateCardTitle(card, title);
+  updateRowTitle({row, title}) {
+    this.rowService.updateRowTitle(row, title);
   }
 }
