@@ -2,10 +2,18 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'add-card-btn',
-  styles: [`button { position: fixed; bottom: 5px; right: 5px; max-width: 100px; }`],
+  styles: [`
+    @media (min-width: 992px) {
+      button {
+        max-width: 110px;
+        margin-top: 40px;
+      }
+    }
+  `],
   template: `
-  <button class="form-control btn-primary"
-    (click)="onAddCard.emit()">Add card</button>`
+  <button class="form-control btn-info"
+    (click)="onAddCard.emit()">Add todo list</button>
+  `
 })
 export class AddCardBtnComponent {
   @Output() onAddCard = new EventEmitter();
