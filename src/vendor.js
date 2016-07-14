@@ -7,7 +7,7 @@ import '@angular/http';
 import '@angular/router';
 
 // RxJS;
-import 'rxjs';
+import 'rxjs/Rx';
 
 // Other
 import 'bootstrap-loader';
