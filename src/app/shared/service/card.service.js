@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../model/todo.model';
-import { TodoList } from '../model/todo-list.model';
+import { Card } from '../model/card.model';
 import { ServerDataService } from './server-data.service';
 
 @Injectable()
-export class TodoListService {
+export class CardService {
   static get parameters() { return [[ServerDataService]]}
 
   constructor(serverData) {
