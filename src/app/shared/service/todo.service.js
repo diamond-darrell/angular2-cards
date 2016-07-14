@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../model/todo.model';
-import collection from '../../utils/collection.util';
-import { ServerDataService } from './server-data.service';
+import { Todo } from 'model/todo.model';
+import collection from 'utils/collection.util';
+import { ServerDataService } from 'service/server-data.service';
 
 @Injectable()
 export class TodoService {

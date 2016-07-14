@@ -1,5 +1,5 @@
-import { Card } from './card.model';
-import collection from '../../utils/collection.util'
+import { Card } from 'model/card.model';
+import collection from 'utils/collection.util'
 
 export class Row {
   constructor(id, title = '', cards = []) {

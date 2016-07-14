@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RowComponent } from '../row/row.component';
-import { AddRowBtnComponent } from '../add-row-btn/add-row-btn.component';
-import { RowService } from '../shared/service/row.service';
+import { RowComponent } from 'app/row/row.component';
+import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
+import { RowService } from 'service/row.service';
 
 @Component({
   selector: 'cards-board',

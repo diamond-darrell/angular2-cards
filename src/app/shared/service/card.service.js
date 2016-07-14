@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../model/todo.model';
-import { Card } from '../model/card.model';
-import { ServerDataService } from './server-data.service';
+import { Todo } from 'model/todo.model';
+import { Card } from 'model/card.model';
+import { ServerDataService } from 'service/server-data.service';
 
 @Injectable()
 export class CardService {
