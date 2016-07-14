@@ -22,7 +22,7 @@ Also, the user must be able to add a new todo, mark them as completed, and remov
 
 ##### The project uses:
 * [Angular 2](https://angular.io/) (without TypeScript);
-* [Webpack](https://webpack.github.io/) (instead of @angular-CLI);
+* [Webpack](https://webpack.github.io/) (instead of Angular2-CLI);
 * [Node.js](https://nodejs.org/) (as backend, in the plans).
 
 ### Prerequisite
