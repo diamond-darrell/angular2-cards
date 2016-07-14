@@ -1,9 +1,8 @@
 var jsonServer = require('json-server');
 var server = jsonServer.create();
 var router = jsonServer.router({
-  "cards": [],
-  "todoLists": [],
-  "todos": []
+  "rows": [],
+  "cards": []
 });
 var middlewares = jsonServer.defaults({
   static: __dirname + '/dist'
