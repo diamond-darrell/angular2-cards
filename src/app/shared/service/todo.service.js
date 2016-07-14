@@ -13,24 +13,40 @@ export class TodoService {
   }
 
   addTodo(card, description) {
-    card.todos = collection.addItem(card.todos, new Todo(description, 'active'));
     const data = card.toPOJO();
+    const todo = new Todo(description, 'active');
 
-    this.serverData.put(this.dataUrl, card.id, data).subscribe();
+    data.todos = collection.addItem(data.todos, todo.toPOJO());
+
+    this.serverData.put(this.dataUrl, card.id, data).subscribe(
+      () => {
+        card.todos = collection.addItem(card.todos, todo);
+      }
+    );
   }
 
   removeTodo(card, todo) {
-    card.todos = collection.removeItem(card.todos, todo);
     const data = card.toPOJO();
 
-    this.serverData.put(this.dataUrl, card.id, data).subscribe();
+    data.todos = collection.removeItem(data.todos, todo.toPOJO());
+
+    this.serverData.put(this.dataUrl, card.id, data).subscribe(
+      () => {
+        card.todos = collection.removeItem(card.todos, todo);
+      }
+    );
   }
 
   editTodo(card, todo) {
-    card.todos = collection.updateItem(card.todos, todo);
     const data = card.toPOJO();
 
-    this.serverData.put(this.dataUrl, card.id, data).subscribe();
+    data.todos = collection.updateItem(data.todos, todo.toPOJO());
+
+    this.serverData.put(this.dataUrl, card.id, data).subscribe(
+      () => {
+        card.todos = collection.updateItem(card.todos, todo);
+      }
+    );
   }
 
   toggleTodo(card, todo) {
