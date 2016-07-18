@@ -3,11 +3,9 @@ import { TodoInputComponent } from 'app/todo-input/todo-input.component';
 import { TodoItemComponent } from 'app/todo-item/todo-item.component';
 import { CardHeaderComponent } from 'app/card-header/card-header.component';
 import { TodoService } from 'service/todo.service';
-import { FilterTodoPipe } from 'pipe/filter-todo.pipe';
 
 @Component({
   selector: 'todo-list',
-  pipes: [FilterTodoPipe],
   directives: [
     TodoInputComponent,
     TodoItemComponent,
