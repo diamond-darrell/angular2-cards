@@ -14,49 +14,58 @@ export class TodoService {
     this.flashMessageService = flashMessageService;
   }
 
-  addTodo(card, description) {
+  addTodo(card, description, callback) {
     const data = card.toPOJO();
     const todo = new Todo(description, 'active');
 
     data.todos = collection.addItem(data.todos, todo.toPOJO());
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
-      () => card.todos = collection.addItem(card.todos, todo),
+      () => {
+        card.todos = collection.addItem(card.todos, todo);
+        callback();
+      },
       err => this.flashMessageService.showMessage('error', `Cannot add todo. ${err}`)
     );
   }
 
-  removeTodo(card, todo) {
+  removeTodo(card, todo, callback) {
     const data = card.toPOJO();
 
     data.todos = collection.removeItem(data.todos, todo.toPOJO());
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
-      () => card.todos = collection.removeItem(card.todos, todo),
+      () => {
+        card.todos = collection.removeItem(card.todos, todo),
+        callback();
+      },
       err => this.flashMessageService.showMessage('error', `Cannot remove todo. ${err}`)
     );
   }
 
-  editTodo(card, todo) {
+  editTodo(card, todo, callback) {
     const data = card.toPOJO();
 
     data.todos = collection.updateItem(data.todos, todo.toPOJO());
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
-      () => card.todos = collection.updateItem(card.todos, todo),
+      () => {
+        card.todos = collection.updateItem(card.todos, todo);
+        callback();
+      },
       err => this.flashMessageService.showMessage('error', `Cannot update todo. ${err}`)
     );
   }
 
-  toggleTodo(card, todo) {
+  toggleTodo(card, todo, callback) {
     todo.toggle();
 
-    this.editTodo(card, todo);
+    this.editTodo(card, todo, callback);
   }
 
-  updateTodoDescription(card, {todo, description}) {
+  updateTodoDescription(card, {todo, description}, callback) {
     todo.setDescription(description);
 
-    this.editTodo(card, todo);
+    this.editTodo(card, todo, callback);
   }
 }
