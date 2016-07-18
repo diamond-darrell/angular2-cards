@@ -25,7 +25,7 @@ export class RowService {
       res => this.rows = this.normalizeResponse(res),
       err => {
         this.rows = [];
-        this.flashMessageService.showMessage('error', err);
+        this.flashMessageService.showMessage('error', `Cannot load data. ${err}`);
       }
     );
   }
@@ -52,14 +52,16 @@ export class RowService {
       .subscribe(
         ({id, title}) => {
           this.rows = collection.addItem(this.rows, new Row(id, title));
-        }
+        },
+        err => this.flashMessageService.showMessage('error', `Cannot add new row. ${err}`)
     );
   }
 
   removeRow(row) {
     this.serverData.delete(this.dataUrl, row.id)
       .subscribe(
-        res => this.rows = collection.removeItem(this.rows, row)
+        res => this.rows = collection.removeItem(this.rows, row),
+        err => this.flashMessageService.showMessage('error', `Cannot remove row. ${err}`)
       );
   }
 
@@ -71,7 +73,8 @@ export class RowService {
         ({title}) => {
           row.title = title;
           this.rows = collection.updateItem(this.rows, row);
-        }
+        },
+        err => this.flashMessageService.showMessage('error', `Cannot set row's title. ${err}`)
     );
   }
 }

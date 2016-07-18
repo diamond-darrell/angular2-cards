@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { Todo } from 'model/todo.model';
 import collection from 'utils/collection.util';
 import { ServerDataService } from 'service/server-data.service';
+import { FlashMessageService } from 'service/flash-message.service';
 
 @Injectable()
 export class TodoService {
   dataUrl = 'cards';
 
-  static get parameters() { return [[ServerDataService]]}
-  constructor(serverData) {
+  static get parameters() { return [[ServerDataService], [FlashMessageService]]}
+  constructor(serverData, flashMessageService) {
     this.serverData = serverData;
+    this.flashMessageService = flashMessageService;
   }
 
   addTodo(card, description) {
@@ -19,9 +21,8 @@ export class TodoService {
     data.todos = collection.addItem(data.todos, todo.toPOJO());
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
-      () => {
-        card.todos = collection.addItem(card.todos, todo);
-      }
+      () => card.todos = collection.addItem(card.todos, todo),
+      err => this.flashMessageService.showMessage('error', `Cannot add todo. ${err}`)
     );
   }
 
@@ -31,9 +32,8 @@ export class TodoService {
     data.todos = collection.removeItem(data.todos, todo.toPOJO());
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
-      () => {
-        card.todos = collection.removeItem(card.todos, todo);
-      }
+      () => card.todos = collection.removeItem(card.todos, todo),
+      err => this.flashMessageService.showMessage('error', `Cannot remove todo. ${err}`)
     );
   }
 
@@ -43,9 +43,8 @@ export class TodoService {
     data.todos = collection.updateItem(data.todos, todo.toPOJO());
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
-      () => {
-        card.todos = collection.updateItem(card.todos, todo);
-      }
+      () => card.todos = collection.updateItem(card.todos, todo),
+      err => this.flashMessageService.showMessage('error', `Cannot update todo. ${err}`)
     );
   }
 
