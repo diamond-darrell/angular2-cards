@@ -7,9 +7,23 @@
       (onRemove)="onRemoveTodoList.emit(todoList)"></card-header>
   </div>
   <div class="panel-body">
+    <div class="text-center clickable">
+      <span class="label label-primary"
+        [ngClass]="{active: 'all' === currentFilter}"
+        (click)="filterTodos('all')">All</span>
+
+      <span class="label label-info"
+        [ngClass]="{active: 'active' === currentFilter}"
+        (click)="filterTodos('active')">Active</span>
+
+      <span class="label label-success"
+        [ngClass]="{active: 'completed' === currentFilter}"
+        (click)="filterTodos('completed')">Completed</span>
+    </div>
+
     <ul class="list-group">
       <todo-item
-        *ngFor="let todo of todoList.todos"
+        *ngFor="let todo of filteredTodos"
         [todo]=todo
         (onToggleTodo)="toggleTodo($event)"
         (onUpdateTodo)="updateTodo($event)"
