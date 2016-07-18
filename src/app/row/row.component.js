@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TodoListComponent } from '../todo-list/todo-list.component';
-import { AddCardBtnComponent } from '../add-card-btn/add-card-btn.component';
-import { CardHeaderComponent } from '../card-header/card-header.component';
-import { CardService } from '../shared/service/card.service';
+import { TodoListComponent } from 'app/todo-list/todo-list.component';
+import { AddCardBtnComponent } from 'app/add-card-btn/add-card-btn.component';
+import { CardHeaderComponent } from 'app/card-header/card-header.component';
+import { CardService } from 'service/card.service';
 
 @Component({
   selector: 'row-holder',

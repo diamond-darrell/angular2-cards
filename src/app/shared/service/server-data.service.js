@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { getApiUrl } from '../../utils/get-api-url.util';
+import { Observable } from 'rxjs/Observable';
+import { getApiUrl } from 'utils/get-api-url.util';
 
 @Injectable()
 export class ServerDataService {
@@ -17,6 +18,7 @@ export class ServerDataService {
 
     return [body, options];
   }
+
   get(url) {
     return this.makeRequest('get', getApiUrl(url));
   }
@@ -46,7 +48,16 @@ export class ServerDataService {
 
     return this.http[type](url, ...params)
       .map(res => res.json())
-      .catch(err => err);
+      .catch(this.handleError);
+  }
+
+  handleError (error) {
+    const errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+
+    console.error(errMsg);
+
+    return Observable.throw(errMsg);
   }
 }
 

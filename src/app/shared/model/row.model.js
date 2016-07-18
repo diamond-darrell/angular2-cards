@@ -1,5 +1,5 @@
-import { Card } from './card.model';
-import collection from '../../utils/collection.util'
+import { Card } from 'model/card.model';
+import collection from 'utils/collection.util'
 
 export class Row {
   constructor(id, title = '', cards = []) {
@@ -9,6 +9,7 @@ export class Row {
   }
 
   addCard(card) {
+    // FIXME hardcode
     if (this.cards.length < 3) {
       this.cards = collection.addItem(this.cards, card);
     }

@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../model/todo.model';
-import { Card } from '../model/card.model';
-import { ServerDataService } from './server-data.service';
+import { Todo } from 'model/todo.model';
+import { Card } from 'model/card.model';
+import { ServerDataService } from 'service/server-data.service';
+import { FlashMessageService } from 'service/flash-message.service';
 
 @Injectable()
 export class CardService {
   dataUrl = 'cards';
 
-  static get parameters() { return [[ServerDataService]]}
+  static get parameters() { return [[ServerDataService], [FlashMessageService]]}
 
-  constructor(serverData) {
+  constructor(serverData, flashMessageService) {
     this.serverData = serverData;
+    this.flashMessageService = flashMessageService;
   }
 
   addCard(row, title = '') {
@@ -25,17 +27,15 @@ export class CardService {
         ({ id, title, todos }) => {
           row.addCard(new Card(id, row.id, title, todos));
         },
-        err => {}
+        err => this.flashMessageService.showMessage('error', `Cannot add card. ${err}`)
       );
   }
 
   removeCard(row, card) {
     this.serverData.delete(this.dataUrl, card.id)
       .subscribe(
-        res => {
-          row.removeCard(card);
-        },
-        err => {}
+        res => row.removeCard(card),
+        err => this.flashMessageService.showMessage('error', `Cannot remove card. ${err}`)
       );
   }
 
@@ -49,7 +49,7 @@ export class CardService {
     this.serverData.put(this.dataUrl, card.id, data)
       .subscribe(
         res => row.updateCard(card, title),
-        err => {}
+        err => this.flashMessageService.showMessage('error', `Cannot set card's title. ${err}`)
       );
   }
 }

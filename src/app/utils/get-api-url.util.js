@@ -2,6 +2,7 @@ export function getApiUrl(url, param = '') {
   const origin = location.origin;
   let base = origin;
 
+  // ENV provided through webpack config
   if (ENV === 'dev') {
     const [,,port] = origin.split(':');
     base = origin.replace(port, '3000');

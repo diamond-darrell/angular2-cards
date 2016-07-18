@@ -11,7 +11,14 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js'],
+    alias: {
+      app: helpers.root('src/app'),
+      utils: helpers.root('src/app/utils'),
+      directive: helpers.root('src/app/shared/directive'),
+      model: helpers.root('src/app/shared/model'),
+      service: helpers.root('src/app/shared/service')
+    }
   },
 
   module: {
