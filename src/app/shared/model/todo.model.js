@@ -6,7 +6,6 @@ export class Todo {
 
   toPOJO() {
     const { description, status } = this;
-    
     return { description, status };
   }
 

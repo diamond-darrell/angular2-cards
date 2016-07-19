@@ -22,7 +22,9 @@ export class RowService {
     const request = this.serverData.get('rows-expanded');
 
     request.subscribe(
-      res => this.rows = this.normalizeResponse(res),
+      res => {
+        this.rows = this.normalizeResponse(res);
+      },
       err => {
         this.rows = [];
         this.flashMessageService.showMessage('error', `Cannot load data. ${err}`);
@@ -31,26 +33,26 @@ export class RowService {
   }
 
   normalizeResponse(rows = []) {
-    const createTodo = ({description, status}) => new Todo(description, status);
+    const createTodo = ({ description, status }) => new Todo(description, status);
 
-    const createCard = ({id, rowId, title, todos}) => {
-      todos = todos.map(todo => createTodo(todo))
-      return new Card(id, rowId, title, todos);
-    }
+    const createCard = ({ id, rowId, title, todos }) => {
+      const todoInstances = todos.map(todo => createTodo(todo));
+      return new Card(id, rowId, title, todoInstances);
+    };
 
-    return rows.map(({id, title, cards}) => {
-      cards = cards.map(card => createCard(card));
+    return rows.map(({ id, title, cards }) => {
+      const cardInstances = cards.map(card => createCard(card));
 
-      return new Row(id, title, cards);
+      return new Row(id, title, cardInstances);
     });
   }
 
-  addRow(title = '') {
-    const data = { title };
+  addRow(rowTitle = '') {
+    const data = { title: rowTitle };
 
     this.serverData.post(this.dataUrl, data)
       .subscribe(
-        ({id, title}) => {
+        ({ id, title }) => {
           this.rows = collection.addItem(this.rows, new Row(id, title));
         },
         err => this.flashMessageService.showMessage('error', `Cannot add new row. ${err}`)
@@ -60,18 +62,20 @@ export class RowService {
   removeRow(row) {
     this.serverData.delete(this.dataUrl, row.id)
       .subscribe(
-        res => this.rows = collection.removeItem(this.rows, row),
+        () => {
+          this.rows = collection.removeItem(this.rows, row);
+        },
         err => this.flashMessageService.showMessage('error', `Cannot remove row. ${err}`)
       );
   }
 
-  updateRowTitle(row, title) {
-    const data = { title };
+  updateRowTitle(row, rowTitle) {
+    const data = { title: rowTitle };
 
     this.serverData.put(this.dataUrl, row.id, data)
       .subscribe(
-        ({title}) => {
-          row.title = title;
+        ({ title }) => {
+          row.setTitle(title);
           this.rows = collection.updateItem(this.rows, row);
         },
         err => this.flashMessageService.showMessage('error', `Cannot set row's title. ${err}`)

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Todo } from 'model/todo.model';
 import { Card } from 'model/card.model';
 import { ServerDataService } from 'service/server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
@@ -8,18 +7,20 @@ import { FlashMessageService } from 'service/flash-message.service';
 export class CardService {
   dataUrl = 'cards';
 
-  static get parameters() { return [[ServerDataService], [FlashMessageService]]}
+  static get parameters() {
+    return [[ServerDataService], [FlashMessageService]];
+  }
 
   constructor(serverData, flashMessageService) {
     this.serverData = serverData;
     this.flashMessageService = flashMessageService;
   }
 
-  addCard(row, title = '') {
+  addCard(row, cardTitle = '') {
     const data = {
-      title,
+      title: cardTitle,
       rowId: row.id,
-      todos: []
+      todos: [],
     };
 
     this.serverData.post(this.dataUrl, data)
@@ -34,21 +35,21 @@ export class CardService {
   removeCard(row, card) {
     this.serverData.delete(this.dataUrl, card.id)
       .subscribe(
-        res => row.removeCard(card),
+        () => row.removeCard(card),
         err => this.flashMessageService.showMessage('error', `Cannot remove card. ${err}`)
       );
   }
 
-  setCardTitle(row, {card, title = ''}) {
+  setCardTitle(row, { card, title = '' }) {
     const data = {
       title,
       rowId: card.rowId,
-      todos: card.todos.map(todo => todo.toPOJO())
+      todos: card.todos.map(todo => todo.toPOJO()),
     };
 
     this.serverData.put(this.dataUrl, card.id, data)
       .subscribe(
-        res => row.updateCard(card, title),
+        () => row.updateCard(card, title),
         err => this.flashMessageService.showMessage('error', `Cannot set card's title. ${err}`)
       );
   }

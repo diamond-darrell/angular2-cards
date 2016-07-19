@@ -8,7 +8,7 @@ import { FlashMessageService } from 'service/flash-message.service';
 export class TodoService {
   dataUrl = 'cards';
 
-  static get parameters() { return [[ServerDataService], [FlashMessageService]]}
+  static get parameters() { return [[ServerDataService], [FlashMessageService]]; }
   constructor(serverData, flashMessageService) {
     this.serverData = serverData;
     this.flashMessageService = flashMessageService;
@@ -22,7 +22,7 @@ export class TodoService {
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
       () => {
-        card.todos = collection.addItem(card.todos, todo);
+        card.setTodos(collection.addItem(card.todos, todo));
         callback();
       },
       err => this.flashMessageService.showMessage('error', `Cannot add todo. ${err}`)
@@ -36,7 +36,7 @@ export class TodoService {
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
       () => {
-        card.todos = collection.removeItem(card.todos, todo),
+        card.setTodos(collection.removeItem(card.todos, todo));
         callback();
       },
       err => this.flashMessageService.showMessage('error', `Cannot remove todo. ${err}`)
@@ -50,7 +50,7 @@ export class TodoService {
 
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
       () => {
-        card.todos = collection.updateItem(card.todos, todo);
+        card.setTodos(collection.updateItem(card.todos, todo));
         callback();
       },
       err => this.flashMessageService.showMessage('error', `Cannot update todo. ${err}`)
@@ -63,7 +63,7 @@ export class TodoService {
     this.editTodo(card, todo, callback);
   }
 
-  updateTodoDescription(card, {todo, description}, callback) {
+  updateTodoDescription(card, { todo, description }, callback) {
     todo.setDescription(description);
 
     this.editTodo(card, todo, callback);

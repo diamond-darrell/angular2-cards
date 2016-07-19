@@ -1,7 +1,7 @@
 import { Directive, Input, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[focus]'
+  selector: '[focus]',
 })
 export class FocusDirective {
   @Input() focus = false;

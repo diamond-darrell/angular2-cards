@@ -6,15 +6,17 @@ export class FlashMessageService {
   showFleshMessageSource = new Subject();
   showFleshMessage$ = this.showFleshMessageSource.asObservable();
 
-  showMessage(type, message) {
+  showMessage(alertType, message) {
     const allowedTypes = ['success', 'error', 'info', 'warning'];
 
-    if (!allowedTypes.includes(type)) {
+    if (!allowedTypes.includes(alertType)) {
+      /* eslint-disable */
       console.warn('Cannot show message: wrong message type!');
+      /* eslint-enable */
       return;
     }
 
-    type = 'error' === type ? 'danger' : type;
-    this.showFleshMessageSource.next({type, message});
+    const type = 'error' === alertType ? 'danger' : alertType;
+    this.showFleshMessageSource.next({ type, message });
   }
 }

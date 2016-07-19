@@ -19,7 +19,7 @@ import { FlashMessageService } from 'service/flash-message.service';
         right: -5px;
       }
     }
-  `]
+  `],
 })
 export class FlashMessageComponent {
   @Input() data = {};
@@ -35,8 +35,7 @@ export class FlashMessageComponent {
       if (this.messages.length > this.maxStackCount) {
         this.messages.shift();
       }
-      
-      this.messages.push({alertType, message});
+      this.messages.push({ alertType, message });
 
       setTimeout(() => {
         this.messages.shift();
