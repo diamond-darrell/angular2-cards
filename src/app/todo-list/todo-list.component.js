@@ -9,11 +9,11 @@ import { TodoService } from 'service/todo.service';
   directives: [
     TodoInputComponent,
     TodoItemComponent,
-    CardHeaderComponent
+    CardHeaderComponent,
   ],
   template: require('./todo-list.component.html'),
   styles: [require('./todo-list.component.css')],
-  providers: [TodoService]
+  providers: [TodoService],
 })
 export class TodoListComponent {
   @Input() todoList = {};
@@ -23,7 +23,7 @@ export class TodoListComponent {
   filteredTodos = [];
   currentFilter = 'all'
 
-  static get parameters() { return [[TodoService]] }
+  static get parameters() { return [[TodoService]]; }
   constructor(todoService) {
     this.todoService = todoService;
   }
@@ -39,16 +39,15 @@ export class TodoListComponent {
 
     if ('all' === todoStatus) {
       this.filteredTodos = todoList.todos;
-
     } else {
-      this.filteredTodos = todoList.todos.filter(({status}) => status === todoStatus);
+      this.filteredTodos = todoList.todos.filter(({ status }) => status === todoStatus);
     }
   }
 
   setTodoListTitle(title) {
     const card = this.todoList;
 
-    this.onSetTodoListTitle.emit({title, card});
+    this.onSetTodoListTitle.emit({ title, card });
   }
 
   addTodo(description) {

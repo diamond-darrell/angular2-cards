@@ -6,10 +6,10 @@ import { FocusDirective } from 'directive/element-focus.directive';
   selector: 'todo-item',
   directives: [
     ToggleTodoBtnComponent,
-    FocusDirective
+    FocusDirective,
   ],
   styles: [require('./todo-item.component.css')],
-  template: require('./todo-item.component.html')
+  template: require('./todo-item.component.html'),
 })
 export class TodoItemComponent {
   @Output() onToggleTodo = new EventEmitter();

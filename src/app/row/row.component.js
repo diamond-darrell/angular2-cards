@@ -10,14 +10,14 @@ import { CardService } from 'service/card.service';
   directives: [
     TodoListComponent,
     AddCardBtnComponent,
-    CardHeaderComponent
+    CardHeaderComponent,
   ],
   template: require('./row.component.html'),
   styles: [`
     .panel-body {
       min-height: 165px;
     }
-  `]
+  `],
 })
 export class RowComponent {
   @Input() row = null;
@@ -44,6 +44,6 @@ export class RowComponent {
 
   setRowTitle(title) {
     const { row } = this;
-    this.onUpdateRowTitle.emit({row, title});
+    this.onUpdateRowTitle.emit({ row, title });
   }
 }

@@ -11,7 +11,7 @@ export class ServerDataService {
     this.http = http;
   }
 
-  _getRequestData(data) {
+  getRequestData(data) {
     const body = JSON.stringify(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers });
@@ -24,7 +24,7 @@ export class ServerDataService {
   }
 
   post(url, data) {
-    const requestData = this._getRequestData(data);
+    const requestData = this.getRequestData(data);
 
     return this.makeRequest('post', getApiUrl(url), requestData);
   }
@@ -34,7 +34,7 @@ export class ServerDataService {
   }
 
   put(url, param, data) {
-    const requestData = this._getRequestData(data);
+    const requestData = this.getRequestData(data);
 
     return this.makeRequest('put', getApiUrl(url, param), requestData);
   }
@@ -43,7 +43,7 @@ export class ServerDataService {
     const allowedTypes = ['get', 'post', 'put', 'delete'];
 
     if (!allowedTypes.includes(type)) {
-      throw 'Disallowed request type';
+      throw Error('Disallowed request type');
     }
 
     return this.http[type](url, ...params)
@@ -51,13 +51,17 @@ export class ServerDataService {
       .catch(this.handleError);
   }
 
-  handleError (error) {
-    const errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-
+  handleError(error) {
+    let errMsg = '';
+    if (error.message) {
+      errMsg = error.message;
+    } else if (error.status) {
+      errMsg = `${error.status} - ${error.statusText}`;
+    } else {
+      errMsg = 'Server error';
+    }
     console.error(errMsg);
 
     return Observable.throw(errMsg);
   }
 }
-

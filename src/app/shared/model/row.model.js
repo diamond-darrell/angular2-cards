@@ -1,11 +1,14 @@
-import { Card } from 'model/card.model';
-import collection from 'utils/collection.util'
+import collection from 'utils/collection.util';
 
 export class Row {
   constructor(id, title = '', cards = []) {
     this.id = id;
     this.title = title;
     this.cards = cards;
+  }
+
+  setTitle(title) {
+    this.title = title;
   }
 
   addCard(card) {
@@ -16,7 +19,7 @@ export class Row {
   }
 
   updateCard(card, title) {
-    card.title = title;
+    card.setTitle(title);
 
     this.cards = collection.updateItem(this.cards, card);
   }

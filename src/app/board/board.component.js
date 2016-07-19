@@ -11,7 +11,7 @@ import { FlashMessageService } from 'service/flash-message.service';
   directives: [
     RowComponent,
     AddRowBtnComponent,
-    FlashMessageComponent
+    FlashMessageComponent,
   ],
   template: require('./board.component.html'),
   styles: [require('./board.component.css')],
@@ -22,7 +22,7 @@ export class BoardComponent {
   static get parameters() {
     return [
       [RowService],
-      [FlashMessageService]
+      [FlashMessageService],
     ];
   }
 
@@ -30,7 +30,9 @@ export class BoardComponent {
     this.rowService = rowService;
 
     this.subscription = fmService.showFleshMessage$.subscribe(
-      params => this.fmData = params
+      params => {
+        this.fmData = params;
+      }
     );
   }
 
@@ -50,7 +52,7 @@ export class BoardComponent {
     this.rowService.removeRow(row);
   }
 
-  updateRowTitle({row, title}) {
+  updateRowTitle({ row, title }) {
     this.rowService.updateRowTitle(row, title);
   }
 }

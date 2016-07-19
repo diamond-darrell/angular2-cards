@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     [disabled]="disabled"
     [checked]="isCompleted"
     (click)="onToggle.emit()">
-  `
+  `,
 })
 export class ToggleTodoBtnComponent {
   @Input() isCompleted = false;
