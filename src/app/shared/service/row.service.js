@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import collection from 'utils/collection.util.js';
+import collection from 'utils/collection/collection.util.js';
 import { Card } from 'model/card/card.model';
 import { Row } from 'model/row/row.model';
 import { Todo } from 'model/todo/todo.model';

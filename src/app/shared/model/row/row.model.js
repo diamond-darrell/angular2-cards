@@ -1,4 +1,4 @@
-import collection from 'utils/collection.util';
+import collection from 'utils/collection/collection.util';
 
 export class Row {
   constructor(id, title = '', cards = []) {
