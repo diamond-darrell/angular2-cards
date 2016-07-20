@@ -1,16 +1,25 @@
 {
-    "extends": "airbnb",
-    "plugins": [
-        "import"
-    ],
-    "parser": "babel-eslint",
-    "settings": {
-      "import/resolver": "webpack"
-    },
-    "rules": {
-      "new-cap": "off",
-      "global-require": "off",
-      "yoda": "off",
-      "no-trailing-spaces": "off"
-    }
+  "extends": [
+    "airbnb",
+    "plugin:jasmine/recommended"
+  ],
+  "plugins": [
+    "import",
+    "jasmine"
+  ],
+  "env": {
+    "browser": true,
+    "jasmine": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "rules": {
+    "new-cap": "off",
+    "global-require": "off",
+    "yoda": "off",
+    "no-trailing-spaces": "off"
+  }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 var jsonServer = require('json-server');
 var server = jsonServer.create();
 var router = jsonServer.router({
@@ -16,10 +17,10 @@ server.use(middlewares);
 server.use(router);
 
 // set the home page route
-server.get('/', function(req, res) {
-    res.render('dist/index');
+server.get('/', function (req, res) {
+  res.render('dist/index');
 });
 
-server.listen(port, function() {
-    console.log('App is running on http://localhost:' + port);
+server.listen(port, function () {
+  console.log('App is running on http://localhost:' + port);
 });
