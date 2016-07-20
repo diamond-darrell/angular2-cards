@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Tue Jul 19 2016 18:14:09 GMT+0300 (EEST)
-/* eslint-disable */
+var helpers = require('./helpers');
+var webpack = require('./webpack.test');
+
 module.exports = function(config) {
   config.set({
 
@@ -20,16 +22,16 @@ module.exports = function(config) {
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '**/*.js': ['es6']
+      'src/**/*.js': ['webpack']
     },
 
+    webpack,
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
