@@ -6,9 +6,9 @@ describe('Row model test', () => {
   const row = new Row(1, 'Row1', [card]);
 
   it('Should has properties', () => {
-    expect(typeof(row.id)).not.toBe(undefined);
-    expect(typeof(row.title)).not.toBe(undefined);
-    expect(typeof(card.cards)).not.toBe(undefined);
+    expect(row.id).toBeDefined();
+    expect(row.title).toBeDefined();
+    expect(row.cards).toBeDefined();
   });
 
   it('Should has functions', () => {
@@ -21,7 +21,7 @@ describe('Row model test', () => {
   it('cards should be array of Card instances', () => {
     const [cardInstance] = row.cards;
 
-    expect(row.cards).toEqual(jasmine.arrayContaining([card]));
+    expect(row.cards).toContain(card);
     expect(cardInstance instanceof Card).toBe(true);
   });
 
@@ -38,7 +38,7 @@ describe('Row model test', () => {
     localRow.addCard(localCard);
 
     expect(localRow.cards.length).toBe(1);
-    expect(row.cards).toEqual(jasmine.arrayContaining([localCard]));
+    expect(row.cards).toContain(localCard);
   });
 
   it('Function addCard can throw error when push more than limit cards', () => {

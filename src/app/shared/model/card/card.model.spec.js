@@ -6,11 +6,11 @@ describe('Card model test', () => {
   const card = new Card(1, 1, 'Test1', [todo]);
 
   it('Should has properties', () => {
-    expect(typeof(card.id)).not.toBe(undefined);
-    expect(typeof(card.rowId)).not.toBe(undefined);
-    expect(typeof(card.title)).not.toBe(undefined);
-    expect(typeof(card.title)).not.toBe(undefined);
-    expect(typeof(card.todos)).not.toBe(undefined);
+    expect(card.id).toBeDefined();
+    expect(card.rowId).toBeDefined();
+    expect(card.title).toBeDefined();
+    expect(card.title).toBeDefined();
+    expect(card.todos).toBeDefined();
   });
 
   it('Should has functions', () => {
@@ -22,7 +22,7 @@ describe('Card model test', () => {
   it('todos should be array of Todo instances', () => {
     const [todoInstance] = card.todos;
 
-    expect(card.todos).toEqual(jasmine.arrayContaining([todo]));
+    expect(card.todos).toContain(todo);
     expect(todoInstance instanceof Todo).toBe(true);
   });
 

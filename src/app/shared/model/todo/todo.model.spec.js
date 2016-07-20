@@ -4,8 +4,8 @@ describe('Todo model test', () => {
   const todo = new Todo('Todo1');
 
   it('Should has properties', () => {
-    expect(typeof(todo.description)).not.toBe(undefined);
-    expect(typeof(todo.status)).not.toBe(undefined);
+    expect(todo.description).toBeDefined();
+    expect(todo.status).toBeDefined();
   });
 
   it('Should has functions', () => {
