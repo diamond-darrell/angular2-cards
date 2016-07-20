@@ -15,6 +15,8 @@ export class Row {
     // FIXME hardcode
     if (this.cards.length < 3) {
       this.cards = collection.addItem(this.cards, card);
+    } else {
+      throw Error('It allows only 3 card in a row.');
     }
   }
 
