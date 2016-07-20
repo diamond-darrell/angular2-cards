@@ -1,7 +1,7 @@
 function getIndex(collection, item) {
   let index = collection.indexOf(item);
-
-  if (-1 !== index) {
+  
+  if (-1 === index) {
     const itemById = collection.filter(({ id } = {}) => id === item.id);
 
     if (itemById) {
