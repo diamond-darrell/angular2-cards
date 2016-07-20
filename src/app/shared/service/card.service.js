@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Card } from 'model/card.model';
+import { Card } from 'model/card/card.model';
 import { ServerDataService } from 'service/server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
 

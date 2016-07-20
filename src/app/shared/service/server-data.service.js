@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { getApiUrl } from 'utils/get-api-url.util';
+import { getApiUrl } from 'utils/get-api-url/get-api-url.util';
 
 @Injectable()
 export class ServerDataService {

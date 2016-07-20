@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import collection from 'utils/collection.util.js';
-import { Card } from 'model/card.model';
-import { Row } from 'model/row.model';
-import { Todo } from 'model/todo.model';
+import collection from 'utils/collection/collection.util.js';
+import { Card } from 'model/card/card.model';
+import { Row } from 'model/row/row.model';
+import { Todo } from 'model/todo/todo.model';
 import { ServerDataService } from './server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
 
