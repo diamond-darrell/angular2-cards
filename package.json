@@ -8,6 +8,7 @@
     "build.prod": "rimraf dist && ./node_modules/.bin/webpack --config config/webpack.prod.js --progress --profile --bail",
     "build.dev": "rimraf dist && ./node_modules/.bin/webpack --progress --profile --bail",
     "json-server": "node ./node_modules/json-server/bin --watch db.json",
+    "test": "node ./node_modules/karma/bin/karma start config/karma.conf.js",
     "postinstall": "npm run build.prod"
   },
   "license": "ISC",
