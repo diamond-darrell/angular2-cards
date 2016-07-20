@@ -12,17 +12,18 @@ describe('Row model test', () => {
   });
 
   it('Should has functions', () => {
-    expect(typeof(row.setTitle)).toBe('function');
-    expect(typeof(row.addCard)).toBe('function');
-    expect(typeof(row.updateCard)).toBe('function');
-    expect(typeof(row.removeCard)).toBe('function');
+    expect(row.setTitle).toBeFunction();
+    expect(row.addCard).toBeFunction();
+    expect(row.updateCard).toBeFunction();
+    expect(row.removeCard).toBeFunction();
   });
 
   it('cards should be array of Card instances', () => {
     const [cardInstance] = row.cards;
 
+    expect(row.cards).toBeArray();
     expect(row.cards).toContain(card);
-    expect(cardInstance instanceof Card).toBe(true);
+    expect(cardInstance instanceof Card).toBeTrue();
   });
 
   it('Function setTitle should set title', () => {

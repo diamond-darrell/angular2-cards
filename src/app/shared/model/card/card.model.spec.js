@@ -14,16 +14,16 @@ describe('Card model test', () => {
   });
 
   it('Should has functions', () => {
-    expect(typeof(card.setTitle)).toBe('function');
-    expect(typeof(card.setTodos)).toBe('function');
-    expect(typeof(card.toPOJO)).toBe('function');
+    expect(card.setTitle).toBeFunction();
+    expect(card.setTodos).toBeFunction();
+    expect(card.toPOJO).toBeFunction();
   });
 
   it('todos should be array of Todo instances', () => {
     const [todoInstance] = card.todos;
 
     expect(card.todos).toContain(todo);
-    expect(todoInstance instanceof Todo).toBe(true);
+    expect(todoInstance instanceof Todo).toBeTrue();
   });
 
   it('Function setTitle should set title', () => {

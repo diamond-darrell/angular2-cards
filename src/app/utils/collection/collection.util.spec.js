@@ -2,9 +2,9 @@ import collection from 'utils/collection/collection.util';
 
 describe('Collection util test', () => {
   it('Should has functions', () => {
-    expect(typeof(collection.addItem)).toBe('function');
-    expect(typeof(collection.updateItem)).toBe('function');
-    expect(typeof(collection.removeItem)).toBe('function');
+    expect(collection.addItem).toBeFunction();
+    expect(collection.updateItem).toBeFunction();
+    expect(collection.removeItem).toBeFunction();
   });
 
   it('Function addItem should add item into array', () => {
