@@ -57,6 +57,11 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+
+    // app conf vars
+    new webpack.DefinePlugin({
+      maxCardsCount: 3
     })
   ]
 };

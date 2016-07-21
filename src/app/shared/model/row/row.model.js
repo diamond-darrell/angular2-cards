@@ -1,3 +1,4 @@
+/* eslint no-undef: "off" */
 import collection from 'utils/collection/collection.util';
 import { Card } from 'model/card/card.model';
 
@@ -13,8 +14,8 @@ export class Row {
   }
 
   addCard(card: Card): void {
-    // FIXME hardcode
-    if (this.cards.length < 3) {
+    // maxCardsCount defined in webpack.common config
+    if (this.cards.length < maxCardsCount) {
       this.cards = collection.addItem(this.cards, card);
     } else {
       throw Error('It allows only 3 card in a row.');

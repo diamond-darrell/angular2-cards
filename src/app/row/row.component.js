@@ -1,3 +1,4 @@
+/* eslint no-undef: "off" */
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoListComponent } from 'app/todo-list/todo-list.component';
 import { AddCardBtnComponent } from 'app/add-card-btn/add-card-btn.component';
@@ -25,6 +26,9 @@ export class RowComponent {
   @Input() row: Row = null;
   @Output() onRemoveRow: EventEmitter = new EventEmitter();
   @Output() onUpdateRowTitle: EventEmitter = new EventEmitter();
+
+  // defined in webpack.common config
+  maxCards: number = maxCardsCount;
 
   constructor(cardService: CardService): void {
     this.cardService = cardService;
