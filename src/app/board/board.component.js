@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RowComponent } from 'app/row/row.component';
 import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
 import { FlashMessageComponent } from 'app/flash-message/flash-message.component';
-import { RowService } from 'service/row.service';
+import { RowService } from 'service/row/row.service';
 import { FlashMessageService } from 'service/flash-message.service';
 import { Row } from 'model/row/row.model';
 
