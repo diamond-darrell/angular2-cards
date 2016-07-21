@@ -24,9 +24,7 @@ export class RowComponent {
   @Output() onRemoveRow = new EventEmitter();
   @Output() onUpdateRowTitle = new EventEmitter();
 
-  static get parameters() { return [[CardService]]; }
-
-  constructor(cardService) {
+  constructor(cardService: CardService) {
     this.cardService = cardService;
   }
 

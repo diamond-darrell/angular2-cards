@@ -5,9 +5,7 @@ import { getApiUrl } from 'utils/get-api-url/get-api-url.util';
 
 @Injectable()
 export class ServerDataService {
-  static get parameters() { return [[Http]]; }
-
-  constructor(http) {
+  constructor(http: Http) {
     this.http = http;
   }
 

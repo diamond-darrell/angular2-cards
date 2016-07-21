@@ -23,8 +23,7 @@ export class TodoListComponent {
   filteredTodos = [];
   currentFilter = 'all'
 
-  static get parameters() { return [[TodoService]]; }
-  constructor(todoService) {
+  constructor(todoService: TodoService) {
     this.todoService = todoService;
   }
 

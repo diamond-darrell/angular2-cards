@@ -19,14 +19,7 @@ import { FlashMessageService } from 'service/flash-message.service';
 export class BoardComponent {
   fmData = {};
 
-  static get parameters() {
-    return [
-      [RowService],
-      [FlashMessageService],
-    ];
-  }
-
-  constructor(rowService, fmService) {
+  constructor(rowService: RowService, fmService: FlashMessageService) {
     this.rowService = rowService;
 
     this.subscription = fmService.showFleshMessage$.subscribe(

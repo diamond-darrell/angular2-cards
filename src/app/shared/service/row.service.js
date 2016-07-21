@@ -10,10 +10,9 @@ import { FlashMessageService } from 'service/flash-message.service';
 export class RowService {
   rows = [];
 
-  dataUrl = 'rows';
+  dataUrl: string = 'rows';
 
-  static get parameters() { return [[ServerDataService], [FlashMessageService]]; }
-  constructor(serverData, flashMessageService) {
+  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService) {
     this.serverData = serverData;
     this.flashMessageService = flashMessageService;
   }
