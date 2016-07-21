@@ -1,6 +1,6 @@
 /* eslint no-undef: "off" */
 
-export function getApiUrl(url, param = '') {
+export function getApiUrl(url: string, param: string = ''): string {
   const origin = location.origin;
   let base = origin;
 

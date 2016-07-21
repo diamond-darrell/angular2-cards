@@ -12,12 +12,15 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: [
+      'jasmine',
+      'jasmine-matchers'
+    ],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'src/app/**/*.spec.js'
+      'src/app/**/*.spec.js',
     ],
 
 
@@ -28,8 +31,15 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.js': ['webpack']
+      'src/**/*.js': ['webpack'],
     },
+
+    plugins: [
+      'karma-jasmine',
+      'karma-jasmine-matchers',
+      'karma-webpack',
+      'karma-chrome-launcher',
+    ],
 
     webpack,
 
@@ -58,7 +68,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

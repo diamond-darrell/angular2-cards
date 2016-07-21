@@ -16,5 +16,5 @@ import { Component, Output, EventEmitter } from '@angular/core';
   `,
 })
 export class AddCardBtnComponent {
-  @Output() onAddCard = new EventEmitter();
+  @Output() onAddCard: EventEmitter = new EventEmitter();
 }

@@ -9,10 +9,10 @@ describe('Todo model test', () => {
   });
 
   it('Should has functions', () => {
-    expect(typeof(todo.toPOJO)).toBe('function');
-    expect(typeof(todo.toggle)).toBe('function');
-    expect(typeof(todo.setDescription)).toBe('function');
-    expect(typeof(todo.isCompleted)).toBe('function');
+    expect(todo.toPOJO).toBeFunction();
+    expect(todo.toggle).toBeFunction();
+    expect(todo.setDescription).toBeFunction();
+    expect(todo.isCompleted).toBeFunction();
   });
 
   it('Function toPOJO should return POJO of Todo instance', () => {
@@ -43,9 +43,9 @@ describe('Todo model test', () => {
 
   it('Function isCompleted should return true if todo is completed', () => {
     todo.toggle();
-    expect(todo.isCompleted()).toBe(true);
+    expect(todo.isCompleted()).toBeTrue();
 
     todo.toggle();
-    expect(todo.isCompleted()).toBe(false);
+    expect(todo.isCompleted()).toBeFalse();
   });
 });

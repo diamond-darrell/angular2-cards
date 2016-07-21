@@ -1,26 +1,26 @@
 export class Todo {
-  constructor(description = '', status = 'active') {
+  constructor(description: string = '', status: string = 'active'): void {
     this.description = description;
     this.status = status;
   }
 
-  toPOJO() {
+  toPOJO(): void {
     const { description, status } = this;
     return { description, status };
   }
 
-  toggle() {
+  toggle(): void {
     this.status = 'active' === this.status ? 'completed' : 'active';
   }
 
-  setDescription(description) {
+  setDescription(description: string): void {
     if (this.description !== description) {
       this.description = description;
       this.status = 'active';
     }
   }
 
-  isCompleted() {
+  isCompleted(): boolean {
     return 'completed' === this.status;
   }
 }

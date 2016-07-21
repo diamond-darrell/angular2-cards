@@ -3,6 +3,8 @@ import { TodoInputComponent } from 'app/todo-input/todo-input.component';
 import { TodoItemComponent } from 'app/todo-item/todo-item.component';
 import { CardHeaderComponent } from 'app/card-header/card-header.component';
 import { TodoService } from 'service/todo.service';
+import { Row } from 'model/row/row.model';
+import { Todo } from 'model/todo/todo.model';
 
 @Component({
   selector: 'todo-list',
@@ -16,23 +18,22 @@ import { TodoService } from 'service/todo.service';
   providers: [TodoService],
 })
 export class TodoListComponent {
-  @Input() todoList = {};
-  @Output() onRemoveTodoList = new EventEmitter();
-  @Output() onSetTodoListTitle = new EventEmitter();
+  @Input() todoList: Row = {};
+  @Output() onRemoveTodoList: EventEmitter = new EventEmitter();
+  @Output() onSetTodoListTitle: EventEmitter = new EventEmitter();
 
-  filteredTodos = [];
+  filteredTodos: Array<Todo> = [];
   currentFilter = 'all'
 
-  static get parameters() { return [[TodoService]]; }
-  constructor(todoService) {
+  constructor(todoService: TodoService): void {
     this.todoService = todoService;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.filteredTodos = this.todoList.todos;
   }
 
-  filterTodos(todoStatus = 'all') {
+  filterTodos(todoStatus: string = 'all'): void {
     const { todoList } = this;
 
     this.currentFilter = todoStatus;
@@ -44,31 +45,31 @@ export class TodoListComponent {
     }
   }
 
-  setTodoListTitle(title) {
+  setTodoListTitle(title: string): void {
     const card = this.todoList;
 
     this.onSetTodoListTitle.emit({ title, card });
   }
 
-  addTodo(description) {
+  addTodo(description: string): void {
     this.todoService.addTodo(this.todoList, description, () => {
       this.filterTodos(this.currentFilter);
     });
   }
 
-  removeTodo(todo) {
+  removeTodo(todo: Todo): void {
     this.todoService.removeTodo(this.todoList, todo, () => {
       this.filterTodos(this.currentFilter);
     });
   }
 
-  toggleTodo(todo) {
+  toggleTodo(todo: Todo): void {
     this.todoService.toggleTodo(this.todoList, todo, () => {
       this.filterTodos(this.currentFilter);
     });
   }
 
-  updateTodo(params) {
+  updateTodo(params: { todo: Todo, decsription: string }): void {
     this.todoService.updateTodoDescription(this.todoList, params, () => {
       this.filterTodos(this.currentFilter);
     });

@@ -2,7 +2,7 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { AppComponent } from 'app/app';
-import { ServerDataService } from 'service/server-data.service';
+import { ServerDataService } from 'service/server-data/server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
 
 if (process.env.ENV === 'production') {

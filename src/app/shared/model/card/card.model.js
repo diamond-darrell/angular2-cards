@@ -1,20 +1,22 @@
+import { Todo } from 'model/todo/todo.model';
+
 export class Card {
-  constructor(id, rowId, title = '', todos = []) {
+  constructor(id: number, rowId: number, title: string = '', todos: Array<Todo> = []): void {
     this.id = id;
     this.rowId = rowId;
     this.title = title;
     this.todos = todos;
   }
 
-  setTodos(todos) {
+  setTodos(todos: Array<Todo>): void {
     this.todos = todos;
   }
 
-  setTitle(title) {
+  setTitle(title: string): void {
     this.title = title;
   }
 
-  toPOJO() {
+  toPOJO(): { rowId: string, title: string, todos: Array<Todo> } {
     const { rowId, title } = this;
     const todos = this.todos.map(todo => todo.toPOJO());
 

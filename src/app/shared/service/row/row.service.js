@@ -3,22 +3,21 @@ import collection from 'utils/collection/collection.util.js';
 import { Card } from 'model/card/card.model';
 import { Row } from 'model/row/row.model';
 import { Todo } from 'model/todo/todo.model';
-import { ServerDataService } from './server-data.service';
+import { ServerDataService } from 'service/server-data/server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
 
 @Injectable()
 export class RowService {
-  rows = [];
+  rows: Array<Row> = [];
 
-  dataUrl = 'rows';
+  dataUrl: string = 'rows';
 
-  static get parameters() { return [[ServerDataService], [FlashMessageService]]; }
-  constructor(serverData, flashMessageService) {
+  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService): void {
     this.serverData = serverData;
     this.flashMessageService = flashMessageService;
   }
 
-  getServerData() {
+  getServerData(): void {
     const request = this.serverData.get('rows-expanded');
 
     request.subscribe(
@@ -32,7 +31,7 @@ export class RowService {
     );
   }
 
-  normalizeResponse(rows = []) {
+  normalizeResponse(rows: Array<Object> = []): Array<Row> {
     const createTodo = ({ description, status }) => new Todo(description, status);
 
     const createCard = ({ id, rowId, title, todos }) => {
@@ -47,7 +46,7 @@ export class RowService {
     });
   }
 
-  addRow(rowTitle = '') {
+  addRow(rowTitle: string = ''): void {
     const data = { title: rowTitle };
 
     this.serverData.post(this.dataUrl, data)
@@ -59,7 +58,7 @@ export class RowService {
     );
   }
 
-  removeRow(row) {
+  removeRow(row: Row): void {
     this.serverData.delete(this.dataUrl, row.id)
       .subscribe(
         () => {
@@ -69,7 +68,7 @@ export class RowService {
       );
   }
 
-  updateRowTitle(row, rowTitle) {
+  updateRowTitle(row: Row, rowTitle: string): void {
     const data = { title: rowTitle };
 
     this.serverData.put(this.dataUrl, row.id, data)

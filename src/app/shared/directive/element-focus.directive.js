@@ -4,17 +4,13 @@ import { Directive, Input, ElementRef } from '@angular/core';
   selector: '[focus]',
 })
 export class FocusDirective {
-  @Input() focus = false;
+  @Input() focus: boolean = false;
 
-  static get parameters() {
-    return [[ElementRef]];
-  }
-
-  constructor(element) {
+  constructor(element: ElementRef): void {
     this.element = element;
   }
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     this.element.nativeElement.focus();
   }
 }
