@@ -44,9 +44,7 @@ module.exports = {
         loader: 'babel-loader',
         include: helpers.root('src'),
         query: {
-          cacheDirectory: true,
-          plugins: ['transform-decorators-legacy'],
-          presets: ['es2015', 'stage-0']
+          presets: ['es2015', 'angular2']
         }
       }
     ]
