@@ -3,7 +3,7 @@ import collection from 'utils/collection/collection.util.js';
 import { Card } from 'model/card/card.model';
 import { Row } from 'model/row/row.model';
 import { Todo } from 'model/todo/todo.model';
-import { ServerDataService } from './server-data.service';
+import { ServerDataService } from 'service/server-data/server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
 
 @Injectable()
