@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from 'model/card/card.model';
+import { Row } from 'model/row/row.model';
 import { ServerDataService } from 'service/server-data/server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
 
@@ -7,12 +8,12 @@ import { FlashMessageService } from 'service/flash-message.service';
 export class CardService {
   dataUrl: string = 'cards';
 
-  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService) {
+  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService): void {
     this.serverData = serverData;
     this.flashMessageService = flashMessageService;
   }
 
-  addCard(row, cardTitle = '') {
+  addCard(row: Row, cardTitle: string = ''): void {
     const data = {
       title: cardTitle,
       rowId: row.id,
@@ -28,7 +29,7 @@ export class CardService {
       );
   }
 
-  removeCard(row, card) {
+  removeCard(row: Row, card: Card): void {
     this.serverData.delete(this.dataUrl, card.id)
       .subscribe(
         () => row.removeCard(card),
@@ -36,7 +37,7 @@ export class CardService {
       );
   }
 
-  setCardTitle(row, { card, title = '' }) {
+  setCardTitle(row: Row, { card, title = '' }: { card: Card, title: string }): void {
     const data = {
       title,
       rowId: card.rowId,

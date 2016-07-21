@@ -8,14 +8,14 @@ import { FocusDirective } from 'directive/element-focus.directive';
   template: require('./card-header.component.html')
 })
 export class CardHeaderComponent {
-  @Input() title = '';
-  @Input() placeholder = '';
-  @Output() onSetTitle = new EventEmitter();
-  @Output() onRemove = new EventEmitter();
+  @Input() title: string = '';
+  @Input() placeholder: string = '';
+  @Output() onSetTitle:EventEmitter = new EventEmitter();
+  @Output() onRemove:EventEmitter = new EventEmitter();
 
-  tmpTitle = '';
+  tmpTitle: string = '';
 
-  setTitle(title, isCancel = false) {
+  setTitle(title: string, isCancel: boolean = false): void {
     const { tmpTitle } = this;
 
     if (!title || isCancel && !tmpTitle) {
@@ -24,7 +24,6 @@ export class CardHeaderComponent {
 
     if (tmpTitle === title) {
       this.title = tmpTitle;
-
     } else {
       this.onSetTitle.emit(title);
     }

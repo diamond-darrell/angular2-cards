@@ -11,9 +11,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
   `,
 })
 export class TodoInputComponent {
-  @Output() onAddTodo = new EventEmitter();
+  @Output() onAddTodo: EventEmitter = new EventEmitter();
 
-  addTodo(description) {
+  addTodo(description: string): void {
     if (description) {
       this.onAddTodo.emit(description);
     }

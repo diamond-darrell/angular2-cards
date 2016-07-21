@@ -8,5 +8,5 @@ import { Component, Output, EventEmitter } from '@angular/core';
     (click)="onAddRow.emit()">Add row</button>`,
 })
 export class AddRowBtnComponent {
-  @Output() onAddRow = new EventEmitter();
+  @Output() onAddRow:EventEmitter = new EventEmitter();
 }

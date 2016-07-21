@@ -5,11 +5,11 @@ import { getApiUrl } from 'utils/get-api-url/get-api-url.util';
 
 @Injectable()
 export class ServerDataService {
-  constructor(http: Http) {
+  constructor(http: Http): void {
     this.http = http;
   }
 
-  getRequestData(data) {
+  getRequestData(data: any): Array<any> {
     const body = JSON.stringify(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers });
@@ -17,27 +17,27 @@ export class ServerDataService {
     return [body, options];
   }
 
-  get(url) {
+  get(url: string): void {
     return this.makeRequest('get', getApiUrl(url));
   }
 
-  post(url, data) {
+  post(url: string, data: any): Observable {
     const requestData = this.getRequestData(data);
 
     return this.makeRequest('post', getApiUrl(url), requestData);
   }
 
-  delete(url, param) {
+  delete(url: string, param: Array<any>): Observable {
     return this.makeRequest('delete', getApiUrl(url, param));
   }
 
-  put(url, param, data) {
+  put(url: string, param: Array<any>, data: any): Observable {
     const requestData = this.getRequestData(data);
 
     return this.makeRequest('put', getApiUrl(url, param), requestData);
   }
 
-  makeRequest(type, url, params = []) {
+  makeRequest(type: string, url: string, params: Array<any> = []): Observable {
     const allowedTypes = ['get', 'post', 'put', 'delete'];
 
     if (!allowedTypes.includes(type)) {
@@ -49,7 +49,7 @@ export class ServerDataService {
       .catch(this.handleError);
   }
 
-  handleError(error) {
+  handleError(error: string): Observable {
     let errMsg = '';
     if (error.message) {
       errMsg = error.message;

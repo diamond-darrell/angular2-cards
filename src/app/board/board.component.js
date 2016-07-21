@@ -4,6 +4,7 @@ import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
 import { FlashMessageComponent } from 'app/flash-message/flash-message.component';
 import { RowService } from 'service/row.service';
 import { FlashMessageService } from 'service/flash-message.service';
+import { Row } from 'model/row/row.model';
 
 @Component({
   selector: 'cards-board',
@@ -17,35 +18,35 @@ import { FlashMessageService } from 'service/flash-message.service';
   styles: [require('./board.component.css')],
 })
 export class BoardComponent {
-  fmData = {};
+  fmData: {type: string, message: string} = {};
 
-  constructor(rowService: RowService, fmService: FlashMessageService) {
+  constructor(rowService: RowService, fmService: FlashMessageService): void {
     this.rowService = rowService;
 
     this.subscription = fmService.showFleshMessage$.subscribe(
-      params => {
+      (params: {type: string, message: string}) => {
         this.fmData = params;
       }
     );
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.rowService.getServerData();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  addRow() {
+  addRow(): void {
     this.rowService.addRow();
   }
 
-  removeRow(row) {
+  removeRow(row: Row): void {
     this.rowService.removeRow(row);
   }
 
-  updateRowTitle({ row, title }) {
+  updateRowTitle({ row, title }: { row: Row, title: string }): void {
     this.rowService.updateRowTitle(row, title);
   }
 }

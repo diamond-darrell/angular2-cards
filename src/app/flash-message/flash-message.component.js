@@ -22,12 +22,12 @@ import { FlashMessageService } from 'service/flash-message.service';
   `],
 })
 export class FlashMessageComponent {
-  @Input() data = {};
+  @Input() data: { type: string, message: string } = {};
 
-  messages = [];
-  maxStackCount = 5;
+  messages: Array<{ type: string, message: string }> = [];
+  maxStackCount: number = 5;
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     const { type, message } = this.data;
     if (!!type) {
       const alertType = `alert-${type}`;

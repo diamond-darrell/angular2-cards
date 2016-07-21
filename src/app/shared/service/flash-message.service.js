@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class FlashMessageService {
-  showFleshMessageSource = new Subject();
-  showFleshMessage$ = this.showFleshMessageSource.asObservable();
+  showFleshMessageSource: Subject = new Subject();
+  showFleshMessage$: Observable = this.showFleshMessageSource.asObservable();
 
-  showMessage(alertType, message) {
-    const allowedTypes = ['success', 'error', 'info', 'warning'];
+  showMessage(alertType: string, message: string): void {
+    const allowedTypes: Array<string> = ['success', 'error', 'info', 'warning'];
 
     if (!allowedTypes.includes(alertType)) {
       /* eslint-disable */

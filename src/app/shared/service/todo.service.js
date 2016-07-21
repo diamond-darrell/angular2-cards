@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Todo } from 'model/todo/todo.model';
+import { Card } from 'model/card/card.model';
 import collection from 'utils/collection/collection.util';
 import { ServerDataService } from 'service/server-data/server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
@@ -8,12 +9,12 @@ import { FlashMessageService } from 'service/flash-message.service';
 export class TodoService {
   dataUrl: string = 'cards';
 
-  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService) {
+  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService): void {
     this.serverData = serverData;
     this.flashMessageService = flashMessageService;
   }
 
-  addTodo(card, description, callback) {
+  addTodo(card: Card, description: string, callback: Function): void {
     const data = card.toPOJO();
     const todo = new Todo(description, 'active');
 
@@ -28,7 +29,7 @@ export class TodoService {
     );
   }
 
-  removeTodo(card, todo, callback) {
+  removeTodo(card: Card, todo: Todo, callback: Function): void {
     const data = card.toPOJO();
 
     data.todos = collection.removeItem(data.todos, todo.toPOJO());
@@ -42,7 +43,7 @@ export class TodoService {
     );
   }
 
-  editTodo(card, todo, callback) {
+  editTodo(card: Card, todo: Todo, callback: Function): void {
     const data = card.toPOJO();
 
     data.todos = collection.updateItem(data.todos, todo.toPOJO());
@@ -56,13 +57,17 @@ export class TodoService {
     );
   }
 
-  toggleTodo(card, todo, callback) {
+  toggleTodo(card: Card, todo: Todo, callback: Function): void {
     todo.toggle();
 
     this.editTodo(card, todo, callback);
   }
 
-  updateTodoDescription(card, { todo, description }, callback) {
+  updateTodoDescription(
+    card: Card,
+    { todo, description } : { todo: Todo, description: string },
+    callback: Function
+  ): void {
     todo.setDescription(description);
 
     this.editTodo(card, todo, callback);

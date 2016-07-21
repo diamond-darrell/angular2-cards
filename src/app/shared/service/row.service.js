@@ -8,16 +8,16 @@ import { FlashMessageService } from 'service/flash-message.service';
 
 @Injectable()
 export class RowService {
-  rows = [];
+  rows: Array<Row> = [];
 
   dataUrl: string = 'rows';
 
-  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService) {
+  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService): void {
     this.serverData = serverData;
     this.flashMessageService = flashMessageService;
   }
 
-  getServerData() {
+  getServerData(): void {
     const request = this.serverData.get('rows-expanded');
 
     request.subscribe(
@@ -31,7 +31,7 @@ export class RowService {
     );
   }
 
-  normalizeResponse(rows = []) {
+  normalizeResponse(rows: Array<Object> = []): Array<Row> {
     const createTodo = ({ description, status }) => new Todo(description, status);
 
     const createCard = ({ id, rowId, title, todos }) => {
@@ -46,7 +46,7 @@ export class RowService {
     });
   }
 
-  addRow(rowTitle = '') {
+  addRow(rowTitle: string = ''): void {
     const data = { title: rowTitle };
 
     this.serverData.post(this.dataUrl, data)
@@ -58,7 +58,7 @@ export class RowService {
     );
   }
 
-  removeRow(row) {
+  removeRow(row: Row): void {
     this.serverData.delete(this.dataUrl, row.id)
       .subscribe(
         () => {
@@ -68,7 +68,7 @@ export class RowService {
       );
   }
 
-  updateRowTitle(row, rowTitle) {
+  updateRowTitle(row: Row, rowTitle: string): void {
     const data = { title: rowTitle };
 
     this.serverData.put(this.dataUrl, row.id, data)

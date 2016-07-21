@@ -11,7 +11,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   `,
 })
 export class ToggleTodoBtnComponent {
-  @Input() isCompleted = false;
-  @Input() disabled = false;
-  @Output() onToggle = new EventEmitter();
+  @Input() isCompleted: boolean = false;
+  @Input() disabled: boolean = false;
+  @Output() onToggle: EventEmitter = new EventEmitter();
 }
