@@ -19,10 +19,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-      'src/app/**/*.spec.js',
-    ],
-
+    files: [ { pattern: './config/spec-bundle.js', watched: false } ],
 
     // list of files to exclude
     exclude: [],
@@ -30,9 +27,7 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-      'src/**/*.js': ['webpack'],
-    },
+    preprocessors: { './config/spec-bundle.js': ['webpack'] },
 
     plugins: [
       'karma-jasmine',
@@ -42,6 +37,8 @@ module.exports = function(config) {
     ],
 
     webpack,
+
+    webpackServer: { noInfo: true },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
