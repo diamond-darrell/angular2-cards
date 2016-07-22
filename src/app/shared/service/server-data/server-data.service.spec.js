@@ -1,8 +1,3 @@
-import 'zone.js';
-import 'reflect-metadata';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
 import { ServerDataService } from 'service/server-data/server-data.service';
 import { RequestOptions, BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
