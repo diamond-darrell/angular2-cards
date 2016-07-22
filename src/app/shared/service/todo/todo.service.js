@@ -23,7 +23,10 @@ export class TodoService {
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
       () => {
         card.setTodos(collection.addItem(card.todos, todo));
-        callback();
+
+        if ('function' === typeof callback) {
+          callback();
+        }
       },
       err => this.flashMessageService.showMessage('error', `Cannot add todo. ${err}`)
     );
@@ -37,7 +40,10 @@ export class TodoService {
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
       () => {
         card.setTodos(collection.removeItem(card.todos, todo));
-        callback();
+
+        if ('function' === typeof callback) {
+          callback();
+        }
       },
       err => this.flashMessageService.showMessage('error', `Cannot remove todo. ${err}`)
     );
@@ -51,7 +57,10 @@ export class TodoService {
     this.serverData.put(this.dataUrl, card.id, data).subscribe(
       () => {
         card.setTodos(collection.updateItem(card.todos, todo));
-        callback();
+
+        if ('function' === typeof callback) {
+          callback();
+        }
       },
       err => this.flashMessageService.showMessage('error', `Cannot update todo. ${err}`)
     );
