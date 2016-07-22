@@ -1,13 +1,12 @@
 import { provide } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { RowService } from 'service/row/row.service';
+import { CardService } from 'service/card/card.service';
 import { ServerDataService } from 'service/server-data/server-data.service';
 import { FlashMessageService } from 'service/flash-message.service';
 
 import { Row } from 'model/row/row.model';
 import { Card } from 'model/card/card.model';
-import { Todo } from 'model/todo/todo.model';
 
 import {
   beforeEach,
@@ -19,35 +18,12 @@ import {
 } from '@angular/core/testing';
 
 class MockServerDataService {
-  get() {
-    return Observable.create(observer => {
-      observer.next([
-        {
-          title: 'Row1',
-          id: 1,
-          cards: [
-            {
-              rowId: 1,
-              title: 'Card1',
-              todos: [
-                {
-                  description: 'Todo1',
-                  status: 'active',
-                },
-              ],
-              id: 1,
-            },
-          ],
-        },
-      ]);
-    });
-  }
-
   post(dataUrl, { title }) {
     return Observable.create(observer => {
       observer.next({
         id: 1,
         title,
+        todos: [],
       });
     });
   }
@@ -56,73 +32,71 @@ class MockServerDataService {
     return Observable.create(observer => observer.next());
   }
 
-  put(dataUrl, id, { title }) {
-    return Observable.create(observer => {
-      observer.next({ title });
-    });
+  put() {
+    return Observable.create(observer => observer.next());
   }
 }
 
 describe('Row service test', () => {
-  let service: RowService;
+  let service: CardService;
+  let maxCardsCount: number;
 
   beforeEachProviders(() => [
-    RowService,
+    CardService,
     FlashMessageService,
     provide(ServerDataService, { useClass: MockServerDataService }),
   ]);
 
-  beforeEach(inject([RowService], (rowService: RowService) => {
-    service = rowService;
+  beforeEach(inject([CardService], (cardService: CardService) => {
+    service = cardService;
+
+    maxCardsCount = window.maxCardsCount;
+    window.maxCardsCount = 3;
   }));
 
-  it('should has properties', () => {
-    expect(service.rows).toBeDefined();
-    expect(service.dataUrl).toBeDefined();
+  afterEach(() => {
+    window.maxCardsCount = maxCardsCount;
+  });
 
-    expect(service.rows).toBeEmptyArray();
+  it('should has properties', () => {
+    expect(service.dataUrl).toBeDefined();
     expect(service.dataUrl).toBeString();
   });
 
-  it('getServerData should set request result to rows property', () => {
-    const expected = [
-      new Row(1, 'Row1', [
-        new Card(1, 1, 'Card1', [
-          new Todo('Todo1', 'active'),
-        ]),
-      ]),
-    ];
+  it('addCard should add new card in row.cards collection', () => {
+    const row = new Row(1, 'Row1', []);
+    const card = new Card(1, 1, 'Card1');
 
-    service.getServerData();
+    service.addCard(row, 'Card1');
 
-    expect(service.rows).toEqual(expected);
+    expect(row.cards).toContain(card);
   });
 
-  it('addRow should add new row in rows collection', () => {
-    const expected = new Row(1, 'Test');
-    service.rows = [];
-    service.addRow('Test');
+  it('addCard should throw an error if there are pushing more cards than specified', () => {
+    const row = new Row(1, 'Row1', []);
 
-    expect(service.rows).toContain(expected);
+    service.addCard(row, 'Card1');
+    service.addCard(row, 'Card2');
+    service.addCard(row, 'Card3');
+
+    expect(() => service.addCard(row, 'Card4')).toThrow();
   });
 
-  it('removeRow should remove row from rows collection', () => {
-    const expected = new Row(1, 'Test');
+  it('removeCard should remove card from row.cards collection', () => {
+    const card = new Card(1, 1, 'Card1');
+    const row = new Row(1, 'Row1', [card]);
 
-    service.rows = [expected];
+    service.removeCard(row, card);
 
-    service.removeRow(expected);
-
-    expect(service.rows).not.toContain(expected);
+    expect(row.cards).not.toContain(card);
   });
 
   it('updateRowTitle should update of received row in collection', () => {
-    const expected = new Row(1, 'Test');
+    const card = new Card(1, 1, 'Card1');
+    const row = new Row(1, 'Row1', [card]);
 
-    service.rows = [expected];
+    service.setCardTitle(row, { card, title: 'Test' });
 
-    service.updateRowTitle(expected, 'Test1');
-
-    expect(service.rows[0].title).toBe('Test1');
+    expect(row.cards[0].title).toBe('Test');
   });
 });
