@@ -4,6 +4,16 @@ import { Card } from 'model/card/card.model';
 describe('Row model test', () => {
   const card = new Card(1, 1, 'Card1');
   const row = new Row(1, 'Row1', [card]);
+  let maxCardsCount;
+
+  beforeEach(() => {
+    maxCardsCount = window.maxCardsCount;
+    window.maxCardsCount = 3;
+  });
+
+  afterEach(() => {
+    window.maxCardsCount = maxCardsCount;
+  });
 
   it('Should has properties', () => {
     expect(row.id).toBeDefined();
