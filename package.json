@@ -11,6 +11,10 @@
     "test": "node ./node_modules/karma/bin/karma start config/karma.conf.js",
     "postinstall": "npm run build.prod"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diamond-darrell/angular2-cards.git"
+  },
   "license": "ISC",
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
@@ -57,6 +61,7 @@
     "json-server": "^0.8.16",
     "karma": "^1.1.1",
     "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.1.0",
     "karma-jasmine": "^1.0.2",
     "karma-jasmine-matchers": "^2.0.2",
     "karma-webpack": "^1.7.0",
