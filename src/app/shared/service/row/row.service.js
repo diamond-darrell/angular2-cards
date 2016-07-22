@@ -4,7 +4,7 @@ import { Card } from 'model/card/card.model';
 import { Row } from 'model/row/row.model';
 import { Todo } from 'model/todo/todo.model';
 import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message.service';
+import { FlashMessageService } from 'service/flash-message/flash-message.service';
 
 @Injectable()
 export class RowService {

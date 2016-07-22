@@ -1,3 +1,4 @@
+/* eslint no-console: "off" */
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
@@ -11,10 +12,7 @@ export class FlashMessageService {
     const allowedTypes: Array<string> = ['success', 'error', 'info', 'warning'];
 
     if (!allowedTypes.includes(alertType)) {
-      /* eslint-disable */
-      console.warn('Cannot show message: wrong message type!');
-      /* eslint-enable */
-      return;
+      throw Error('Cannot show message: wrong message type!');
     }
 
     const type = 'error' === alertType ? 'danger' : alertType;
