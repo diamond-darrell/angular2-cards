@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Card } from 'model/card/card.model';
 import { Row } from 'model/row/row.model';
 import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message.service';
+import { FlashMessageService } from 'service/flash-message/flash-message.service';
 
 @Injectable()
 export class CardService {

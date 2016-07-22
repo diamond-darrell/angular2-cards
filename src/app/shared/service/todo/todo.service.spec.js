@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { TodoService } from 'service/todo/todo.service';
 import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message.service';
+import { FlashMessageService } from 'service/flash-message/flash-message.service';
 
 import { Todo } from 'model/todo/todo.model';
 import { Card } from 'model/card/card.model';

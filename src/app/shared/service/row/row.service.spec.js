@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { CardService } from 'service/card/card.service';
 import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message.service';
+import { FlashMessageService } from 'service/flash-message/flash-message.service';
 
 import { Row } from 'model/row/row.model';
 import { Card } from 'model/card/card.model';
