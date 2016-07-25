@@ -4,7 +4,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   selector: 'add-row-btn',
   styles: ['button { position: fixed; bottom: 5px; right: 5px; max-width: 100px; }'],
   template: `
-  <button class="form-control btn-primary"
+  <button class="form-control btn-primary add-row"
     (click)="onAddRow.emit()">Add row</button>`,
 })
 export class AddRowBtnComponent {

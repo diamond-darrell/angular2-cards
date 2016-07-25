@@ -5,7 +5,7 @@ import { FocusDirective } from 'directive/element-focus.directive';
   selector: 'card-header',
   directives: [FocusDirective],
   styles: [require('./card-header.component.css')],
-  template: require('./card-header.component.html')
+  template: require('./card-header.component.html'),
 })
 export class CardHeaderComponent {
   @Input() title: string = '';
