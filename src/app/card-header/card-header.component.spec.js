@@ -23,7 +23,7 @@ describe('Card-header component', () => {
     tcb = _tcb;
   }));
 
-  it('should render placeholder', done => {
+  it('should render placeholder', (done) => {
     tcb.createAsync(CardHeaderComponent).then(fixture => {
       const component = fixture.componentInstance;
       const element = fixture.nativeElement;
@@ -43,7 +43,7 @@ describe('Card-header component', () => {
     }).catch(e => done.fail(e));
   });
 
-  it('should render title', done => {
+  it('should render title', (done) => {
     tcb.createAsync(CardHeaderComponent).then(fixture => {
       const component = fixture.componentInstance;
       const element = fixture.nativeElement;
@@ -88,7 +88,7 @@ describe('Card-header component', () => {
     }).catch(e => done.fail(e));
   });
 
-  it('should emit onRemove event', done => {
+  it('should emit onRemove event', (done) => {
     tcb.createAsync(CardHeaderComponent).then(fixture => {
       const component = fixture.componentInstance;
       const $closeBtn = fixture.nativeElement.querySelector('.close');
