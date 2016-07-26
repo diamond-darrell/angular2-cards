@@ -11,7 +11,7 @@ import {
 } from '@angular/core/testing';
 
 
-describe('Card-header component', () => {
+describe('CardHeaderComponent test', () => {
   let tcb;
 
   beforeEachProviders(() => [

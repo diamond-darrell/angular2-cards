@@ -10,7 +10,7 @@ import {
   TestComponentBuilder,
 } from '@angular/core/testing';
 
-describe('BoardComponent test', () => {
+describe('AddRowBtnComponent test', () => {
   let tcb;
 
   beforeEachProviders(() => [
