@@ -1,4 +1,4 @@
-import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
+import { AddCardBtnComponent } from 'app/add-card-btn/add-card-btn.component';
 
 import {
   beforeEach,
@@ -10,12 +10,12 @@ import {
   TestComponentBuilder,
 } from '@angular/core/testing';
 
-describe('AddRowBtnComponent test', () => {
+describe('AddCardBtnComponent test', () => {
   let tcb;
 
   beforeEachProviders(() => [
     TestComponentBuilder,
-    AddRowBtnComponent,
+    AddCardBtnComponent,
   ]);
 
   beforeEach(inject([TestComponentBuilder], _tcb => {
@@ -23,7 +23,7 @@ describe('AddRowBtnComponent test', () => {
   }));
 
   it('emit onAddRow event', (done) => {
-    tcb.createAsync(AddRowBtnComponent).then(fixture => {
+    tcb.createAsync(AddCardBtnComponent).then(fixture => {
       const component = fixture.componentInstance;
       const element = fixture.nativeElement;
       const test = {
@@ -31,9 +31,9 @@ describe('AddRowBtnComponent test', () => {
       };
 
       spyOn(test, 'expectCalled');
-      component.onAddRow.subscribe(() => test.expectCalled());
+      component.onAddCard.subscribe(() => test.expectCalled());
 
-      element.querySelector('.add-row').click();
+      element.querySelector('.add-card').click();
 
       expect(test.expectCalled).toHaveBeenCalled();
 

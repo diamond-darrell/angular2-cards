@@ -6,7 +6,7 @@
     [isCompleted]="todo.isCompleted()"
     (onToggle)="onToggleTodo.emit(todo)"></toggle-todo-btn>
 
-  <span *ngIf="!isEditing" [ngClass]="todo.status" (dblclick)="isEditing = true">
+  <span *ngIf="!isEditing" [ngClass]="todo.status" (dblclick)="isEditing=true">
     {{todo?.description}}
   </span>
 

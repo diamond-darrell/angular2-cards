@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
 
 @Component({
   selector: 'flash-message',
-  providers: [FlashMessageService],
   template: `
     <div class="col-md-4 col-md-offset-8 flash-messages">
       <div *ngFor="let message of messages" class="fade in alert" [ngClass]="message.alertType">
@@ -32,7 +30,7 @@ export class FlashMessageComponent {
     if (!!type) {
       const alertType = `alert-${type}`;
 
-      if (this.messages.length > this.maxStackCount) {
+      if (this.messages.length >= this.maxStackCount) {
         this.messages.shift();
       }
       this.messages.push({ alertType, message });

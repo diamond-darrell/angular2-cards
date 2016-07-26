@@ -1,4 +1,4 @@
-import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
+import { ToggleTodoBtnComponent } from 'app/toggle-todo-btn/toggle-todo-btn.component';
 
 import {
   beforeEach,
@@ -10,32 +10,32 @@ import {
   TestComponentBuilder,
 } from '@angular/core/testing';
 
-describe('AddRowBtnComponent test', () => {
+describe('ToggleTodoBtnComponent test', () => {
   let tcb;
 
   beforeEachProviders(() => [
     TestComponentBuilder,
-    AddRowBtnComponent,
+    ToggleTodoBtnComponent,
   ]);
 
   beforeEach(inject([TestComponentBuilder], _tcb => {
     tcb = _tcb;
   }));
 
-  it('emit onAddRow event', (done) => {
-    tcb.createAsync(AddRowBtnComponent).then(fixture => {
+  it('should emit onToggle event', (done) => {
+    tcb.createAsync(ToggleTodoBtnComponent).then(fixture => {
       const component = fixture.componentInstance;
       const element = fixture.nativeElement;
-      const test = {
-        expectCalled() { },
-      };
+      const $checkbox = element.querySelector('.checkbox');
+      const test = { expectCalled() { } };
 
       spyOn(test, 'expectCalled');
-      component.onAddRow.subscribe(() => test.expectCalled());
 
-      element.querySelector('.add-row').click();
+      component.onToggle.subscribe(() => test.expectCalled());
+      $checkbox.click();
 
       expect(test.expectCalled).toHaveBeenCalled();
+      expect($checkbox.checked).toBeTrue();
 
       done();
     }).catch(e => done.fail(e));
