@@ -1,0 +1,21 @@
+<header>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="angular2-logo" src="/assets/logo-nav.png">
+        </a>
+      </div>
+      <div class="nav-right">
+        <a routerLink="/home" routerLinkActive="active">Home</a>
+        <a routerLink="/board" routerLinkActive="active">Board</a>
+      </div>
+    </div>
+  </nav>
+
+  <flash-message [data]="fmData"></flash-message>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

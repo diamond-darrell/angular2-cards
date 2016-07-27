@@ -15,7 +15,6 @@ import { Row } from 'model/row';
     FlashMessageComponent,
   ],
   template: require('./board.component.html'),
-  styles: [require('./board.component.css')],
 })
 export class BoardComponent {
   fmData: {type: string, message: string} = {};
