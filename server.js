@@ -16,10 +16,10 @@ server.use(middlewares);
 server.use(router);
 
 // set the home page route
-server.get('/', function(req, res) {
-    res.render('dist/index');
+server.get('/', function (req, res) {
+  res.render('dist/index');
 });
 
-server.listen(port, function() {
-    console.log('App is running on http://localhost:' + port);
+server.listen(port, function () {
+  console.log('App is running on http://localhost:' + port);
 });

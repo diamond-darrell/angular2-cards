@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { RowComponent } from 'app/row/row.component';
 import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
 import { FlashMessageComponent } from 'app/flash-message/flash-message.component';
-import { RowService } from 'service/row.service';
-import { FlashMessageService } from 'service/flash-message.service';
+import { RowService } from 'service/row/row.service';
+import { FlashMessageService } from 'service/flash-message/flash-message.service';
+import { Row } from 'model/row/row.model';
 
 @Component({
   selector: 'cards-board',
@@ -11,46 +12,41 @@ import { FlashMessageService } from 'service/flash-message.service';
   directives: [
     RowComponent,
     AddRowBtnComponent,
-    FlashMessageComponent
+    FlashMessageComponent,
   ],
   template: require('./board.component.html'),
   styles: [require('./board.component.css')],
 })
 export class BoardComponent {
-  fmData = {};
+  fmData: {type: string, message: string} = {};
 
-  static get parameters() {
-    return [
-      [RowService],
-      [FlashMessageService]
-    ];
-  }
-
-  constructor(rowService, fmService) {
+  constructor(rowService: RowService, fmService: FlashMessageService): void {
     this.rowService = rowService;
 
     this.subscription = fmService.showFleshMessage$.subscribe(
-      params => this.fmData = params
+      (params: {type: string, message: string}) => {
+        this.fmData = params;
+      }
     );
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.rowService.getServerData();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  addRow() {
+  addRow(): void {
     this.rowService.addRow();
   }
 
-  removeRow(row) {
+  removeRow(row: Row): void {
     this.rowService.removeRow(row);
   }
 
-  updateRowTitle({row, title}) {
+  updateRowTitle({ row, title }: { row: Row, title: string }): void {
     this.rowService.updateRowTitle(row, title);
   }
 }

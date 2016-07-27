@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FlashMessageService } from 'service/flash-message.service';
 
 @Component({
   selector: 'flash-message',
-  providers: [FlashMessageService],
   template: `
     <div class="col-md-4 col-md-offset-8 flash-messages">
       <div *ngFor="let message of messages" class="fade in alert" [ngClass]="message.alertType">
@@ -19,24 +17,23 @@ import { FlashMessageService } from 'service/flash-message.service';
         right: -5px;
       }
     }
-  `]
+  `],
 })
 export class FlashMessageComponent {
-  @Input() data = {};
+  @Input() data: { type: string, message: string } = {};
 
-  messages = [];
-  maxStackCount = 5;
+  messages: Array<{ type: string, message: string }> = [];
+  maxStackCount: number = 5;
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     const { type, message } = this.data;
     if (!!type) {
       const alertType = `alert-${type}`;
 
-      if (this.messages.length > this.maxStackCount) {
+      if (this.messages.length >= this.maxStackCount) {
         this.messages.shift();
       }
-      
-      this.messages.push({alertType, message});
+      this.messages.push({ alertType, message });
 
       setTimeout(() => {
         this.messages.shift();

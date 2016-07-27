@@ -15,9 +15,8 @@
       (onSetTodoListTitle)="setCardTitle($event)">
     </todo-list>
 
-    <!-- FIXME remove hardcode -->
     <add-card-btn
-      *ngIf="row.cards.length < 3"
+      *ngIf="row.cards.length < maxCards"
       (onAddCard)="addCard()">
     </add-card-btn>
   </div>

@@ -11,10 +11,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
     }
   `],
   template: `
-  <button class="form-control btn-info"
+  <button class="form-control btn-info add-card"
     (click)="onAddCard.emit()">Add todo list</button>
-  `
+  `,
 })
 export class AddCardBtnComponent {
-  @Output() onAddCard = new EventEmitter();
+  @Output() onAddCard: EventEmitter = new EventEmitter();
 }

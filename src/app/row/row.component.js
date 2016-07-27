@@ -1,8 +1,11 @@
+/* eslint no-undef: "off" */
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoListComponent } from 'app/todo-list/todo-list.component';
 import { AddCardBtnComponent } from 'app/add-card-btn/add-card-btn.component';
 import { CardHeaderComponent } from 'app/card-header/card-header.component';
-import { CardService } from 'service/card.service';
+import { CardService } from 'service/card/card.service';
+import { Row } from 'model/row/row.model';
+import { Card } from 'model/card/card.model';
 
 @Component({
   selector: 'row-holder',
@@ -10,40 +13,41 @@ import { CardService } from 'service/card.service';
   directives: [
     TodoListComponent,
     AddCardBtnComponent,
-    CardHeaderComponent
+    CardHeaderComponent,
   ],
   template: require('./row.component.html'),
   styles: [`
     .panel-body {
       min-height: 165px;
     }
-  `]
+  `],
 })
 export class RowComponent {
-  @Input() row = null;
-  @Output() onRemoveRow = new EventEmitter();
-  @Output() onUpdateRowTitle = new EventEmitter();
+  @Input() row: Row = null;
+  @Output() onRemoveRow: EventEmitter = new EventEmitter();
+  @Output() onUpdateRowTitle: EventEmitter = new EventEmitter();
 
-  static get parameters() { return [[CardService]]; }
+  // defined in webpack.common config
+  maxCards: number = maxCardsCount;
 
-  constructor(cardService) {
+  constructor(cardService: CardService): void {
     this.cardService = cardService;
   }
 
-  addCard() {
+  addCard(): void {
     this.cardService.addCard(this.row);
   }
 
-  removeCard(card) {
+  removeCard(card: Card): void {
     this.cardService.removeCard(this.row, card);
   }
 
-  setCardTitle(params) {
+  setCardTitle(params: { card: Card, title: string }): void {
     this.cardService.setCardTitle(this.row, params);
   }
 
-  setRowTitle(title) {
+  setRowTitle(title: string) {
     const { row } = this;
-    this.onUpdateRowTitle.emit({row, title});
+    this.onUpdateRowTitle.emit({ row, title });
   }
 }

@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Todo } from 'model/todo.model';
-import { Card } from 'model/card.model';
-import { ServerDataService } from 'service/server-data.service';
-import { FlashMessageService } from 'service/flash-message.service';
+import { Card } from 'model/card/card.model';
+import { Row } from 'model/row/row.model';
+import { ServerDataService } from 'service/server-data/server-data.service';
+import { FlashMessageService } from 'service/flash-message/flash-message.service';
 
 @Injectable()
 export class CardService {
-  dataUrl = 'cards';
+  dataUrl: string = 'cards';
 
-  static get parameters() { return [[ServerDataService], [FlashMessageService]]}
-
-  constructor(serverData, flashMessageService) {
+  constructor(serverData: ServerDataService, flashMessageService: FlashMessageService): void {
     this.serverData = serverData;
     this.flashMessageService = flashMessageService;
   }
 
-  addCard(row, title = '') {
+  addCard(row: Row, cardTitle: string = ''): void {
     const data = {
-      title,
+      title: cardTitle,
       rowId: row.id,
-      todos: []
+      todos: [],
     };
 
     this.serverData.post(this.dataUrl, data)
@@ -31,24 +29,24 @@ export class CardService {
       );
   }
 
-  removeCard(row, card) {
+  removeCard(row: Row, card: Card): void {
     this.serverData.delete(this.dataUrl, card.id)
       .subscribe(
-        res => row.removeCard(card),
+        () => row.removeCard(card),
         err => this.flashMessageService.showMessage('error', `Cannot remove card. ${err}`)
       );
   }
 
-  setCardTitle(row, {card, title = ''}) {
+  setCardTitle(row: Row, { card, title = '' }: { card: Card, title: string }): void {
     const data = {
       title,
       rowId: card.rowId,
-      todos: card.todos.map(todo => todo.toPOJO())
+      todos: card.todos.map(todo => todo.toPOJO()),
     };
 
     this.serverData.put(this.dataUrl, card.id, data)
       .subscribe(
-        res => row.updateCard(card, title),
+        () => row.updateCard(card, title),
         err => this.flashMessageService.showMessage('error', `Cannot set card's title. ${err}`)
       );
   }
