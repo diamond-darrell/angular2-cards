@@ -1,4 +1,4 @@
-import { ServerDataService } from 'service/server-data/server-data.service';
+import { ServerDataService } from 'service/server-data';
 import { RequestOptions, BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { provide } from '@angular/core';

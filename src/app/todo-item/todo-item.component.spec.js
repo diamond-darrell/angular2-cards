@@ -1,5 +1,5 @@
-import { TodoItemComponent } from 'app/todo-item/todo-item.component';
-import { Todo } from 'model/todo/todo.model';
+import { TodoItemComponent } from 'app/todo-item';
+import { Todo } from 'model/todo';
 
 import {
   beforeEach,

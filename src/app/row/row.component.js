@@ -1,11 +1,14 @@
 /* eslint no-undef: "off" */
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TodoListComponent } from 'app/todo-list/todo-list.component';
-import { AddCardBtnComponent } from 'app/add-card-btn/add-card-btn.component';
-import { CardHeaderComponent } from 'app/card-header/card-header.component';
-import { CardService } from 'service/card/card.service';
-import { Row } from 'model/row/row.model';
-import { Card } from 'model/card/card.model';
+
+import { TodoListComponent } from 'app/todo-list';
+import { AddCardBtnComponent } from 'app/add-card-btn';
+import { CardHeaderComponent } from 'app/card-header';
+
+import { CardService } from 'service/card';
+
+import { Row } from 'model/row';
+import { Card } from 'model/card';
 
 @Component({
   selector: 'row-holder',

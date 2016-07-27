@@ -1,9 +1,11 @@
-import { TodoListComponent } from 'app/todo-list/todo-list.component';
-import { TodoService } from 'service/todo/todo.service';
-import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
-import { Card } from 'model/card/card.model';
-import { Todo } from 'model/todo/todo.model';
+import { TodoListComponent } from 'app/todo-list';
+
+import { TodoService } from 'service/todo';
+import { ServerDataService } from 'service/server-data';
+import { FlashMessageService } from 'service/flash-message';
+
+import { Card } from 'model/card';
+import { Todo } from 'model/todo';
 
 import { provide } from '@angular/core';
 

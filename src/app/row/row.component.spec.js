@@ -1,7 +1,7 @@
-import { RowComponent } from 'app/row/row.component';
-import { CardService } from 'service/card/card.service';
-import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
+import { RowComponent } from 'app/row';
+import { CardService } from 'service/card';
+import { ServerDataService } from 'service/server-data';
+import { FlashMessageService } from 'service/flash-message';
 
 import { provide } from '@angular/core';
 

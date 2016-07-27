@@ -1,4 +1,4 @@
-import { FlashMessageComponent } from 'app/flash-message/flash-message.component';
+import { FlashMessageComponent } from 'app/flash-message';
 
 import {
   beforeEach,

@@ -1,4 +1,4 @@
-import { getApiUrl } from 'utils/get-api-url/get-api-url.util';
+import { getApiUrl } from 'utils/get-api-url';
 
 describe('GetApiUrl util test', () => {
   let ENV;

@@ -1,4 +1,4 @@
-import { Todo } from 'model/todo/todo.model';
+import { Todo } from 'model/todo';
 
 export class Card {
   constructor(id: number, rowId: number, title: string = '', todos: Array<Todo> = []): void {
