@@ -1,4 +1,4 @@
-import { ToggleTodoBtnComponent } from 'app/toggle-todo-btn/toggle-todo-btn.component';
+import { ToggleTodoBtnComponent } from 'app/toggle-todo-btn';
 
 import {
   beforeEach,

@@ -1,4 +1,4 @@
-import { AddCardBtnComponent } from 'app/add-card-btn/add-card-btn.component';
+import { AddCardBtnComponent } from 'app/add-card-btn';
 
 import {
   beforeEach,

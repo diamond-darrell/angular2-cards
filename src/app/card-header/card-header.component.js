@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FocusDirective } from 'directive/element-focus.directive';
+import { FocusDirective } from 'directive/element-focus';
 
 @Component({
   selector: 'card-header',

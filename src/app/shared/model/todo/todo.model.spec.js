@@ -1,4 +1,4 @@
-import { Todo } from 'model/todo/todo.model';
+import { Todo } from 'model/todo';
 
 describe('Todo model test', () => {
   const todo = new Todo('Todo1');

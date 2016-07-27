@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BoardComponent } from 'app/board/board.component';
+import { BoardComponent } from 'app/board';
 
 @Component({
   selector: 'my-app',

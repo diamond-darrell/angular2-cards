@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
+import { FlashMessageService } from 'service/flash-message';
 
 import {
   beforeEach,

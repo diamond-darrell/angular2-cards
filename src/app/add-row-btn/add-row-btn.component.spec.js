@@ -1,4 +1,4 @@
-import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
+import { AddRowBtnComponent } from 'app/add-row-btn';
 
 import {
   beforeEach,

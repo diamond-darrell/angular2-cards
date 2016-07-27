@@ -1,6 +1,6 @@
 /* eslint no-undef: "off" */
-import collection from 'utils/collection/collection.util';
-import { Card } from 'model/card/card.model';
+import { collection } from 'utils/collection';
+import { Card } from 'model/card';
 
 export class Row {
   constructor(id: number, title: string = '', cards: Array<Card> = []): void {

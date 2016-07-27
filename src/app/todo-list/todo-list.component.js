@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TodoInputComponent } from 'app/todo-input/todo-input.component';
-import { TodoItemComponent } from 'app/todo-item/todo-item.component';
-import { CardHeaderComponent } from 'app/card-header/card-header.component';
-import { TodoService } from 'service/todo/todo.service';
-import { Row } from 'model/row/row.model';
-import { Todo } from 'model/todo/todo.model';
+import { TodoInputComponent } from 'app/todo-input';
+import { TodoItemComponent } from 'app/todo-item';
+import { CardHeaderComponent } from 'app/card-header';
+import { TodoService } from 'service/todo';
+import { Row } from 'model/row';
+import { Todo } from 'model/todo';
 
 @Component({
   selector: 'todo-list',

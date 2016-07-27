@@ -43,7 +43,7 @@ export function updateItem(collection: Array<any>, item: any): Array<any> {
   return collection;
 }
 
-export default {
+export const collection = {
   addItem,
   removeItem,
   updateItem,

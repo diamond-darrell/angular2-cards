@@ -1,5 +1,5 @@
-import { Card } from 'model/card/card.model';
-import { Todo } from 'model/todo/todo.model';
+import { Card } from 'model/card';
+import { Todo } from 'model/todo';
 
 describe('Card model test', () => {
   const todo = new Todo('Todo1');

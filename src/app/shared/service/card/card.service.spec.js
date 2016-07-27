@@ -1,13 +1,13 @@
 import { provide } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { RowService } from 'service/row/row.service';
-import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
+import { RowService } from 'service/row';
+import { ServerDataService } from 'service/server-data';
+import { FlashMessageService } from 'service/flash-message';
 
-import { Row } from 'model/row/row.model';
-import { Card } from 'model/card/card.model';
-import { Todo } from 'model/todo/todo.model';
+import { Row } from 'model/row';
+import { Card } from 'model/card';
+import { Todo } from 'model/todo';
 
 import {
   beforeEach,

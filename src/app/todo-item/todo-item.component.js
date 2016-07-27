@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ToggleTodoBtnComponent } from 'app/toggle-todo-btn/toggle-todo-btn.component';
-import { FocusDirective } from 'directive/element-focus.directive';
-import { Todo } from 'model/todo/todo.model';
+import { ToggleTodoBtnComponent } from 'app/toggle-todo-btn';
+import { FocusDirective } from 'directive/element-focus';
+import { Todo } from 'model/todo';
 
 @Component({
   selector: 'todo-item',

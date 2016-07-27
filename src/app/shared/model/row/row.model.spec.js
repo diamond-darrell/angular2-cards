@@ -1,5 +1,5 @@
-import { Row } from 'model/row/row.model';
-import { Card } from 'model/card/card.model';
+import { Row } from 'model/row';
+import { Card } from 'model/card';
 
 describe('Row model test', () => {
   const card = new Card(1, 1, 'Card1');

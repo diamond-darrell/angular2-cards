@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RowComponent } from 'app/row/row.component';
-import { AddRowBtnComponent } from 'app/add-row-btn/add-row-btn.component';
-import { FlashMessageComponent } from 'app/flash-message/flash-message.component';
-import { RowService } from 'service/row/row.service';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
-import { Row } from 'model/row/row.model';
+import { RowComponent } from 'app/row';
+import { AddRowBtnComponent } from 'app/add-row-btn';
+import { FlashMessageComponent } from 'app/flash-message';
+import { RowService } from 'service/row';
+import { FlashMessageService } from 'service/flash-message';
+import { Row } from 'model/row';
 
 @Component({
   selector: 'cards-board',
