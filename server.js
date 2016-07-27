@@ -13,11 +13,11 @@ var middlewares = jsonServer.defaults({
 var port = process.env.PORT || 8080;
 
 server.use(middlewares);
-server.use(router);
+server.use('/api', router);
 
 // set the home page route
-server.get('/', function (req, res) {
-  res.render('dist/index');
+server.get('/*', function (req, res) {
+  res.sendFile(__dirname + '/dist/index.html');
 });
 
 server.listen(port, function () {
