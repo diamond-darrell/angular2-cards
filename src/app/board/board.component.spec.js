@@ -1,7 +1,7 @@
-import { BoardComponent } from 'app/board/board.component';
-import { RowService } from 'service/row/row.service';
-import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
+import { BoardComponent } from 'app/board';
+import { RowService } from 'service/row';
+import { ServerDataService } from 'service/server-data';
+import { FlashMessageService } from 'service/flash-message';
 
 import { provide } from '@angular/core';
 import { Observable } from 'rxjs/Observable';

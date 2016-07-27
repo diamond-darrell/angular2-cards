@@ -1,4 +1,4 @@
-import collection from 'utils/collection/collection.util';
+import { collection } from 'utils/collection';
 
 describe('Collection util test', () => {
   it('Should has functions', () => {

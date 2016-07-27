@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import collection from 'utils/collection/collection.util.js';
-import { Card } from 'model/card/card.model';
-import { Row } from 'model/row/row.model';
-import { Todo } from 'model/todo/todo.model';
-import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
+
+import { collection } from 'utils/collection';
+
+import { Card } from 'model/card';
+import { Row } from 'model/row';
+import { Todo } from 'model/todo';
+
+import { ServerDataService } from 'service/server-data';
+import { FlashMessageService } from 'service/flash-message';
 
 @Injectable()
 export class RowService {

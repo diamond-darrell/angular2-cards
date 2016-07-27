@@ -1,4 +1,4 @@
-import { TodoInputComponent } from 'app/todo-input/todo-input.component';
+import { TodoInputComponent } from 'app/todo-input';
 
 import {
   beforeEach,

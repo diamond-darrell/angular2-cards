@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Todo } from 'model/todo/todo.model';
-import { Card } from 'model/card/card.model';
-import collection from 'utils/collection/collection.util';
-import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
+
+import { Todo } from 'model/todo';
+import { Card } from 'model/card';
+
+import { collection } from 'utils/collection';
+
+import { ServerDataService } from 'service/server-data';
+import { FlashMessageService } from 'service/flash-message';
 
 @Injectable()
 export class TodoService {

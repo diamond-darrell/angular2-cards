@@ -1,12 +1,12 @@
 import { provide } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { CardService } from 'service/card/card.service';
-import { ServerDataService } from 'service/server-data/server-data.service';
-import { FlashMessageService } from 'service/flash-message/flash-message.service';
+import { CardService } from 'service/card';
+import { ServerDataService } from 'service/server-data';
+import { FlashMessageService } from 'service/flash-message';
 
-import { Row } from 'model/row/row.model';
-import { Card } from 'model/card/card.model';
+import { Row } from 'model/row';
+import { Card } from 'model/card';
 
 import {
   beforeEach,

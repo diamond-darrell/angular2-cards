@@ -1,4 +1,4 @@
-import { CardHeaderComponent } from 'app/card-header/card-header.component';
+import { CardHeaderComponent } from 'app/card-header';
 
 import {
   beforeEach,
