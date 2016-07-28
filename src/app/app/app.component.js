@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { BoardComponent } from 'app/board';
 import { HomeComponent } from 'app/home';
+import { PageNotFoundComponent } from 'app/page-not-found';
 
 @Component({
   selector: 'my-app',
@@ -11,6 +12,7 @@ import { HomeComponent } from 'app/home';
   precompile: [
     BoardComponent,
     HomeComponent,
+    PageNotFoundComponent,
   ],
 })
 export class AppComponent {
