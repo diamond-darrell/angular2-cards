@@ -8,7 +8,8 @@
       </div>
       <div class="nav-right">
         <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Home</a>
-        <a routerLink="/board" routerLinkActive="active">Board</a>
+        <a *ngIf="auth.isLogged" routerLink="/board" routerLinkActive="active">Board</a>
+        <a *ngIf="!auth.isLogged" routerLink="/signin" routerLinkActive="active">Sign In</a>
       </div>
     </div>
   </nav>
