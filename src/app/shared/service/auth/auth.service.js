@@ -31,7 +31,7 @@ export class AuthService {
   isAlreadyLogged() {
     const token = localStorage.getItem('user-token');
 
-    if (this.tokenGenerator.isValid(token)) {
+    if (token) {
       this.token = token;
       this.isLoggedIn = true;
     }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { BoardComponent } from 'app/board';
 import { HomeComponent } from 'app/home';
 import { PageNotFoundComponent } from 'app/page-not-found';
@@ -20,8 +20,7 @@ import { AuthService } from 'service/auth';
   ],
 })
 export class AppComponent {
-  constructor(_router: Router, _auth: AuthService) {
-    this.router = _router;
+  constructor(_auth: AuthService) {
     this.auth = _auth;
   }
 
