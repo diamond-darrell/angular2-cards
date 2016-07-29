@@ -1,33 +1,5 @@
 <header>
-  <nav class="navbar">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand">
-          <img alt="angular2-logo" src="/assets/logo-nav.png">
-        </a>
-      </div>
-      <div class="nav-right">
-        <span>
-          <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Home</a>
-          <i class="separator"></i>
-        </span>
-
-        <span *ngIf="auth.isLoggedIn" >
-          <a routerLink="/board" routerLinkActive="active">Board</a>
-          <i class="separator"></i>
-        </span>
-
-        <span *ngIf="auth.isLoggedIn">
-          <a href="#" (click)="signout($event)">Sign out</a>
-        </span>
-
-        <span *ngIf="!auth.isLoggedIn">
-          <a routerLink="/signin" routerLinkActive="active">Sign In</a>
-        </span>
-      </div>
-    </div>
-  </nav>
-
+  <nav-bar></nav-bar>
   <flash-message [data]="fmData"></flash-message>
 </header>
 

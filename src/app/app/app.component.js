@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { BoardComponent } from 'app/board';
 import { HomeComponent } from 'app/home';
 import { PageNotFoundComponent } from 'app/page-not-found';
 import { LoginFormComponent } from 'app/login-form';
+import { NavbarComponent } from 'app/navbar';
 import { AuthService } from 'service/auth';
 
 @Component({
   selector: 'my-app',
-  directives: [ROUTER_DIRECTIVES],
   template: require('./app.component.html'),
   styles: [require('./app.component.css')],
+  directives: [
+    NavbarComponent,
+    ROUTER_DIRECTIVES,
+  ],
   precompile: [
     BoardComponent,
     HomeComponent,
@@ -19,20 +23,11 @@ import { AuthService } from 'service/auth';
   ],
 })
 export class AppComponent {
-  constructor(_auth: AuthService, _router: Router) {
+  constructor(_auth: AuthService): void {
     this.auth = _auth;
-    this.router = _router;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.auth.isAlreadyLogged();
-  }
-
-  signout(e) {
-    e.preventDefault();
-
-    if (this.auth.signOut()) {
-      this.router.navigate(['/']);
-    }
   }
 }
