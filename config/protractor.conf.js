@@ -6,6 +6,7 @@ exports.config = {
   // use `npm run e2e`
   specs: [
     helpers.root('src/app/**/**.e2e.js'),
+    helpers.root('tests/e2e/**/**.e2e.js'),
   ],
   exclude: [],
 
