@@ -1,11 +1,13 @@
 {
   "extends": [
     "airbnb",
-    "plugin:jasmine/recommended"
+    "plugin:jasmine/recommended",
+    "plugin:protractor/recommended"
   ],
   "plugins": [
     "import",
-    "jasmine"
+    "jasmine",
+    "protractor"
   ],
   "env": {
     "browser": true,
