@@ -16,11 +16,15 @@ main {
   float: right;
 }
 
-.nav-right a {
+.nav-right a, .nav-right .separator {
   color: #ffffff;
   font-size: 1.5em;
 }
 
 .nav-right .active {
   text-decoration: underline;
+}
+
+.separator:after {
+  content: ' | ';
 }

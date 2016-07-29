@@ -3,7 +3,6 @@ import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { AuthService } from 'service/auth';
 
 @Component({
-  providers: [AuthService],
   directives: [ROUTER_DIRECTIVES],
   selector: 'login-form',
   template: require('./login-form.component.html'),
@@ -19,7 +18,8 @@ export class LoginFormComponent {
   }
 
   login() {
-    if (this.auth.signIn(this.user)) {
+    const success = this.auth.signIn(this.user);
+    if (success) {
       this.router.navigate(['/board']);
     } else {
       this.hasError = true;

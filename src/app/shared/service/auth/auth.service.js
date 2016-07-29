@@ -18,6 +18,8 @@ export class AuthService {
     if (this.login === login && this.password === password) {
       localStorage.setItem('user-token', this.tokenGenerator.generate());
       this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
     }
 
     return this.isLoggedIn;
@@ -26,6 +28,8 @@ export class AuthService {
   signOut() {
     localStorage.removeItem('user-token');
     this.isLoggedIn = false;
+
+    return true;
   }
 
   isAlreadyLogged() {
