@@ -10,21 +10,21 @@
     <div class="nav-right">
 
       <span>
-        <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Home</a>
+        <a class="home-link" routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Home</a>
         <i class="separator"></i>
       </span>
 
       <span *ngIf="auth.isLoggedIn">
-        <a routerLink="/board" routerLinkActive="active">Board</a>
+        <a class="board-link" routerLink="/board" routerLinkActive="active">Board</a>
         <i class="separator"></i>
       </span>
 
        <span *ngIf="auth.isLoggedIn">
-        <a href="#" (click)="signout($event)">Sign out</a>
+        <a class="signout-link" href="#" (click)="signout($event)">Sign out</a>
       </span>
 
       <span *ngIf="!auth.isLoggedIn">
-        <a routerLink="/signin" routerLinkActive="active">Sign In</a>
+        <a class="signin-link" routerLink="/signin" routerLinkActive="active">Sign In</a>
       </span>
 
     </div>
