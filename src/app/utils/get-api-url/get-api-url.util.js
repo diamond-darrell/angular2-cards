@@ -10,6 +10,8 @@ export function getApiUrl(url: string, param: string = ''): string {
     base = origin.replace(port, '3000');
   }
 
+  base = `${base}/api`;
+
   switch (url) {
     case 'rows':
       return `${base}/rows/${param}`;

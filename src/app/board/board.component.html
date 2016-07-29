@@ -1,19 +1,13 @@
-<header>
-  <flash-message [data]="fmData"></flash-message>
-</header>
-<main class="container">
-  <h1>Angular 2 Cards App</h1>
-  <h4 *ngIf="!rowService.rows.length">
-    Press "Add row" button in bottom right corner to start
-  </h4>
+<h4 *ngIf="!rowService.rows.length">
+  Press "Add row" button in bottom right corner to start
+</h4>
 
-  <row-holder
-    class="row"
-    *ngFor="let row of rowService.rows"
-    [row]="row"
-    (onRemoveRow)="removeRow($event)"
-    (onUpdateRowTitle)="updateRowTitle($event)">
-  </row-holder>
+<row-holder
+  class="row"
+  *ngFor="let row of rowService.rows"
+  [row]="row"
+  (onRemoveRow)="removeRow($event)"
+  (onUpdateRowTitle)="updateRowTitle($event)">
+</row-holder>
 
-  <add-row-btn (onAddRow)="addRow()"></add-row-btn>
-</main>
+<add-row-btn (onAddRow)="addRow()"></add-row-btn>
